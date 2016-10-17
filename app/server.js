@@ -1,12 +1,18 @@
-var http = require('http');
-var db = require('./connectionDB');
-var express = require('express');
-var app = express();
+/*var http = require('http');
+var url = require('./routes');
 
-//var connect = require('connect');
-//var app = connect();
+var connect = require('connect');
+var app = connect();
 
-app.get('/', function(request, response, next) {
+var path = require('path');
+console.log(__dirname);
+console.log(__filename);
+
+//app.use(bodyParser.urlencoded({extended: true}));
+//app.set('view engine', 'ejs');
+*/
+
+/*app.get('/', function(request, response, next) {
 	console.log(db);
 	
 	db.query('SELECT * FROM tags', function(error, rows, fields) {
@@ -19,13 +25,13 @@ app.get('/', function(request, response, next) {
         }
     });
 	response.end();
-});
+});*/
 
 //app.get('/', dbRun);
 
 
-http.createServer(app).listen(8888);
-console.log("server is now running...");
+//http.createServer(url.app).listen(url.port);
+//console.log("server is now running...");
 
 
 /*function onRequest(requset, response) {
@@ -37,4 +43,3 @@ console.log("server is now running...");
 }*/
 
 //npm install connect
-//https://www.youtube.com/watch?v=_D2w0voFlEk&list=PL6gx4Cwl9DGBMdkKFn3HasZnnAqVjzHn_&index=14

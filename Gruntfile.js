@@ -1,7 +1,7 @@
 module.exports = function (grunt) {
-    grunt.initConfig({
+	grunt.initConfig({
         jshint: {
-            files: ['Gruntfile.js', 'app/*.js', 'app/*/*.js'],
+            files: ['Gruntfile.js', 'assets/app/*.js', 'assets/app/*/*.js'],
             options: {
                 globals: {
                     jQuery: true
@@ -19,7 +19,7 @@ module.exports = function (grunt) {
         
         concat: {
 			dist: {
-				src: ['app/*.js', 'app/*.js'],
+				src: ['assets/app/*.js', 'assets/app/*.js'],
 				dest: 'dist/app.js'
 			}
 		},
@@ -74,5 +74,4 @@ module.exports = function (grunt) {
 
 
     grunt.registerTask('default', ['concat', 'jshint', 'uglify', 'sass', 'connect', 'open', 'watch']);
-
 };

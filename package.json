@@ -6,6 +6,8 @@
   "dependencies": {
     "express": "^4.10.6",
     "mysql": "^2.5.4",
+	"ejs": "latest",
+	"body-parser": "latest",
     "grunt": "^0.4.5",
     "grunt-contrib-concat": "^1.0.1",
     "grunt-contrib-connect": "^1.0.2",
