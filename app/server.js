@@ -10,10 +10,12 @@ app.get('/', function(request, response, next) {
 	console.log(db);
 	
 	db.query('SELECT * FROM tags', function(error, rows, fields) {
-        if(error) {
-            console.log(error);
+        if(!error) {
+            for(var i in rows) {
+            	console.log(rows[i].post_name);
+			}
         } else {
-            console.log(rows);
+            console.log(error);
         }
     });
 	response.end();
