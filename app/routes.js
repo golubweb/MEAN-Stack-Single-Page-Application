@@ -28,7 +28,7 @@ router.get('/login', function(req, res){
 	res.render('login.ejs');
 });
 
-app.post('/api/login-user', function(req, res){
+app.post('/login-user', function(req, res){
 
 	if(req.method == 'POST') {
 		var email = req.body.user_email;
@@ -36,7 +36,9 @@ app.post('/api/login-user', function(req, res){
 
 		if(email !== false && pass !== false) {
 			db.query('SELECT admin_id, admin_name, admin_email, admin_hash FROM admin WHERE admin_email="'+ email +'" AND admin_password="'+ pass +'" AND admin_stats="1"', function(error, rows, fields){
-				console.log(rows);
+				var admin_data = rows;
+				res.render('admin.ejs', {info: admin_data});
+				res.end();
 			});
 		} else {
 			res.redirect('/login');
@@ -44,8 +46,6 @@ app.post('/api/login-user', function(req, res){
 	} else {
 		res.redirect('/login');
 	}
-   	//console.log(req.body.userPass);
-	res.end();
 });
 
 router.get('/blog', function(req, res) {
