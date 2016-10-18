@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title><%= title %></title>
+        <title><%= item.post_name %></title>
 
         <!--[if IE]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
     </head>
 
     <body>
-		<h1>Dobrodosi na <%= title %>!</h1>
+		<h1>Dobrodosi na <%= item.post_name %>!</h1>
+		<ul>
+			<li>Author: <%= item.post_author %></li>
+			<li>Date: <%= item.post_date %></li>
+			<li>Tags: <%= item.post_tags %></li>
+			<li>Comments: <%= item.post_comment_sum %></li>
+		</ul>
+		<p><%= item.post_content %></p>
     </body>
 </html>

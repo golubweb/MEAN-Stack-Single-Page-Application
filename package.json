@@ -4,10 +4,9 @@
   "description": "",
   "main": "Gruntfile.js",
   "dependencies": {
+    "body-parser": "latest",
+    "ejs": "latest",
     "express": "^4.10.6",
-    "mysql": "^2.5.4",
-	"ejs": "latest",
-	"body-parser": "latest",
     "grunt": "^0.4.5",
     "grunt-contrib-concat": "^1.0.1",
     "grunt-contrib-connect": "^1.0.2",
@@ -17,7 +16,9 @@
     "grunt-contrib-uglify": "^0.5.1",
     "grunt-contrib-watch": "^1.0.0",
     "grunt-open": "^0.2.3",
-    "ruby": "^0.6.1"
+    "mysql": "^2.5.4",
+    "ruby": "^0.6.1",
+    "urlencoded-request-parser": "^1.0.1"
   },
   "devDependencies": {
     "grunt-contrib-sass": "^1.0.0"

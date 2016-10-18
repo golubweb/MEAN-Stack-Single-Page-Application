@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login Page</title>
+		<link href="style.css" rel="stylesheet" media="screen" />
+    </head>
+
+    <body>
+		<!-- Start Login panel -->
+		<div class="login">
+			<form action="/api/login-user" method="POST" >
+				<input name="user_email" type="email" class="login__email" placeholder="Email" />
+
+				<input name="user_pass" type="password" class="login__pass" placeholder="Password" />
+
+				<input class="login__submit" type="submit" value="Login" />
+			</form>
+		</div>
+		<!-- End Login panel -->
+	</body>
+</html>

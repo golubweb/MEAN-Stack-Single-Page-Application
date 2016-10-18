@@ -1,0 +1,169 @@
+
+@mixin font-size($size) {
+  font-size: $size;
+}
+
+// @include font-size(14px)
+
+@mixin transition($args...) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+
+// @include transition(color .3s ease);
+
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity=$opacity-ie); //IE8
+}
+
+// @include opacity(0.8);
+
+%clearfix {
+  *zoom: 1;
+  &:before, &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+// @extend %clearfix;
+
+@mixin keyframes($animation-name) {
+    @-webkit-keyframes #{$animation-name} {
+        @content;
+    }
+    @-moz-keyframes #{$animation-name} {
+        @content;
+    }
+    @-ms-keyframes #{$animation-name} {
+        @content;
+    }
+    @-o-keyframes #{$animation-name} {
+        @content;
+    }
+    @keyframes #{$animation-name} {
+        @content;
+    }
+}
+
+/*
+@include keyframes(slide-down) {
+  0% { opacity: 1; }
+  90% { opacity: 0; }
+}
+*/
+
+@mixin animation($str) {
+  -webkit-animation: #{$str};
+  -moz-animation: #{$str};
+  -ms-animation: #{$str};
+  -o-animation: #{$str};
+  animation: #{$str};
+}
+
+// @include animation('slide-down 5s 3');
+
+
+$image-path: '../assets/img/svg' !default;
+$fallback-extension: 'png' !default;
+$retina-suffix: '@2x';
+
+@mixin background-image($name, $size:false){
+  background-image: url(#{$image-path}/#{$name}.svg);
+  background-repeat: no-repeat;
+  -webkit-mask-size: cover;
+  mask-size: cover;
+
+  @if($size){
+      background-size: $size;
+  }
+  .no-svg &{
+    background-image: url(#{$image-path}/#{$name}.#{$fallback-extension});
+  }
+}
+
+
+// @include background-image('pattern');
+
+%currency {
+  position: relative;
+  &:before {
+    content: '$';
+    position: relative;
+    left: 0;
+  }
+}
+.USD %currency:before { content: '$'; }
+.EUR %currency:before { content: '\20AC'; } // must escape the html entities for each currency symbol
+.ILS %currency:before { content: '\20AA'; }
+.GBP %currency:before { content: '\00A3'; }
+
+// @extend %currency;
+
+@mixin bp-large {
+  @media only screen and (max-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin bp-medium {
+  @media only screen and (max-width: 768) {
+    @content;
+  }
+}
+
+@mixin bp-small {
+  @media only screen and (max-width: 480) {
+    @content;
+  }
+}
+
+// @include bp-small {}
+
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+
+// @include border-radius(10px);
+
+
+@mixin shadow($shadow) {
+  -webkit-box-shadow: $shadow;
+     -moz-box-shadow: $shadow;
+          box-shadow: $shadow;
+}
+
+// @include shadow(0 8px 6px -6px);
+
+@mixin nth-child-margin($n, $margin) {
+  &:nth-child(#{$n}) {
+    margin: $margin;
+  }
+}
+
+// @include nth-child-margin(2, 0 20px);
+
+
+
+
+
+
+
+
+
+
+
+
+

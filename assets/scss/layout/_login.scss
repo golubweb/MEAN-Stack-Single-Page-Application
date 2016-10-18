@@ -1,0 +1,33 @@
+.login {
+	max-width: 360px;
+	margin: 40px auto;
+  	padding: 50px 40px;
+  	@include border-radius(15px);
+  	@include shadow(0 8px 25px -6px #a3a5a5);
+  	background: #eef1f2;
+
+	input {
+		width: 100%;
+		display: block;
+		margin-bottom: 15px;
+		padding: 10px;
+		color: #7e8287;
+		@include border-radius(6px);
+		border: 1px solid #fbfbfb;
+		background: #cdd2d7;
+
+		&.login__submit {
+			margin: 0;
+			color: #fff;
+			font-size: 18px;
+			font-weight: 700;
+			cursor: pointer;
+			border: none;
+			background: #414141;
+
+			&:hover {opacity: 0.8;}
+		}
+
+		.login__msg {color: #455569; font-size: 13px;}
+	}
+}

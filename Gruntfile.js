@@ -12,7 +12,7 @@ module.exports = function (grunt) {
         uglify: {
 			dist: {
 				files: {
-					'dist/main.min.js': ['assets/js/*.js']
+					'app/public/main.min.js': ['assets/js/*.js']
 				}
 			}
 		},
@@ -20,14 +20,14 @@ module.exports = function (grunt) {
         concat: {
 			dist: {
 				src: ['assets/app/*.js', 'assets/app/*.js'],
-				dest: 'dist/app.js'
+				dest: 'app/public/app.js'
 			}
 		},
 
 		sass: {
 			dist: {
 				files: {
-					'dist/style.css': 'assets/scss/style.scss'
+					'app/public/style.css': 'assets/scss/style.scss'
 				}
 			}
 		},

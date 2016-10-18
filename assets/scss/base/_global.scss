@@ -1,0 +1,23 @@
+@import '../helpers/variables';
+@import '../helpers/mixins';
+
+/*===============// Body */
+body {font-family: $font-open;}
+
+/*===============// Box Model */
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+/*===============// Global Links */
+a {
+  font-family: $font-open;
+  text-decoration: none;
+
+  &:hover {text-decoration: none;}
+}
+
+/*===============// Global Input Setup */
+input::-moz-focus-inner {border: 0; padding: 0;}
