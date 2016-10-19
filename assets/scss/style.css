@@ -129,9 +129,9 @@ h1, h2, h3 {
   -moz-border-radius: 15px;
   -ms-border-radius: 15px;
   border-radius: 15px;
-  -webkit-box-shadow: 0 8px 25px -6px #a3a5a5;
-  -moz-box-shadow: 0 8px 25px -6px #a3a5a5;
-  box-shadow: 0 8px 25px -6px #a3a5a5;
+  -webkit-box-shadow: 0 1px 10px -2px #a3a5a5;
+  -moz-box-shadow: 0 1px 10px -2px #a3a5a5;
+  box-shadow: 0 1px 10px -2px #a3a5a5;
   background: #eef1f2; }
   /* line 9, C:/Users/Darko/git/admin_gw/assets/scss/layout/_login.scss */
   .login input {
@@ -158,10 +158,12 @@ h1, h2, h3 {
       /* line 28, C:/Users/Darko/git/admin_gw/assets/scss/layout/_login.scss */
       .login input.login__submit:hover {
         opacity: 0.8; }
-    /* line 31, C:/Users/Darko/git/admin_gw/assets/scss/layout/_login.scss */
-    .login input .login__msg {
-      color: #455569;
-      font-size: 13px; }
+  /* line 32, C:/Users/Darko/git/admin_gw/assets/scss/layout/_login.scss */
+  .login .login__msg {
+    margin: 15px 0 0;
+    font-size: 14px;
+    color: #455569;
+    font-size: 13px; }
 
 /*=========// Max 1024px //=========*/
 /*=========// Max 981px //=========*/

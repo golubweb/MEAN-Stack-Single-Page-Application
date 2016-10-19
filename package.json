@@ -5,8 +5,12 @@
   "main": "Gruntfile.js",
   "dependencies": {
     "body-parser": "latest",
+    "cookie-parser": "^1.4.3",
     "ejs": "latest",
     "express": "^4.10.6",
+	"express-validator": "*",
+    "urlencoded-request-parser": "^1.0.1",
+	"cookie-parser": "^1/4/1",
     "grunt": "^0.4.5",
     "grunt-contrib-concat": "^1.0.1",
     "grunt-contrib-connect": "^1.0.2",
@@ -18,7 +22,6 @@
     "grunt-open": "^0.2.3",
     "mysql": "^2.5.4",
     "ruby": "^0.6.1",
-    "urlencoded-request-parser": "^1.0.1"
   },
   "devDependencies": {
     "grunt-contrib-sass": "^1.0.0"

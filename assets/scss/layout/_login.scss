@@ -3,7 +3,7 @@
 	margin: 40px auto;
   	padding: 50px 40px;
   	@include border-radius(15px);
-  	@include shadow(0 8px 25px -6px #a3a5a5);
+  	@include shadow(0 1px 10px -2px #a3a5a5);
   	background: #eef1f2;
 
 	input {
@@ -27,7 +27,7 @@
 
 			&:hover {opacity: 0.8;}
 		}
-
-		.login__msg {color: #455569; font-size: 13px;}
 	}
+
+	.login__msg {margin: 15px 0 0; font-size: 14px; color: #455569; font-size: 13px;}
 }
