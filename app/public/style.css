@@ -113,9 +113,9 @@ h1, h2, h3 {
   -moz-border-radius: 15px;
   -ms-border-radius: 15px;
   border-radius: 15px;
-  -webkit-box-shadow: 0 8px 25px -6px #a3a5a5;
-  -moz-box-shadow: 0 8px 25px -6px #a3a5a5;
-  box-shadow: 0 8px 25px -6px #a3a5a5;
+  -webkit-box-shadow: 0 1px 10px -2px #a3a5a5;
+  -moz-box-shadow: 0 1px 10px -2px #a3a5a5;
+  box-shadow: 0 1px 10px -2px #a3a5a5;
   background: #eef1f2; }
   .login input {
     width: 100%;
@@ -139,9 +139,11 @@ h1, h2, h3 {
       background: #414141; }
       .login input.login__submit:hover {
         opacity: 0.8; }
-    .login input .login__msg {
-      color: #455569;
-      font-size: 13px; }
+  .login .login__msg {
+    margin: 15px 0 0;
+    font-size: 14px;
+    color: #455569;
+    font-size: 13px; }
 
 /*=========// Max 1024px //=========*/
 /*=========// Max 981px //=========*/

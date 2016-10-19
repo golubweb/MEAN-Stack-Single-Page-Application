@@ -11,7 +11,8 @@ var app     = express();
 var port    = process.env.PORT || 8888;
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
-//var expressValidator = require('express-validation');
+var cookieSession = require('cookie-session');
+var expressValidator = require('express-validator');
 
 // ROUTES
 // ==============================================
@@ -23,10 +24,17 @@ var router = express.Router();
 // Support encoded bodies
 app.use(bodyParser.urlencoded({ extended: true }));
 
+/*app.use(express.session({
+	secret: "cat on keyboard",
+	cookie: {maxAge: 8600000},
+	store: new express.session.MemoryStore()
+}));*/
+
 //Support Cookie
 app.use(cookieParser());
 
-//app.use(expressValidator());
+//Support Validatin
+app.use(expressValidator());
 
 // Support static folder for script and style
 app.use(express.static(path.join(__dirname, 'public')));
@@ -38,7 +46,7 @@ router.get('/login', function(req, res){
 
 router.post('/logout', function(req, res){
 	if(req.method == 'POST') {
-		res.clearCookie('userHash');
+		//res.clearCookie('userHash');
 		res.redirect('/login');
 		res.end();
 	} else {
@@ -51,9 +59,10 @@ app.post('/login-user', function(req, res) {
 		var email = req.body.user_email;
 		var pass = req.body.user_pass;
 
-		//req.checkBody('email', 'Name is required').notEmpty();
+		req.checkBody('email', 'Name is required').notEmpty();
 
-		//var error = req.validationErrors();
+		var errorValid = req.validationErrors();
+		console.log(errorValid);
 
 		if(email !== false && pass !== false) {
 			db.query('SELECT admin_id, admin_name, admin_email, admin_hash FROM admin WHERE admin_email="'+ email +'" AND admin_password="'+ pass +'" AND admin_stats="1"', function(error, rows, fields){
@@ -61,7 +70,9 @@ app.post('/login-user', function(req, res) {
 
 				if(Object.keys(rows).length > 0){
 					console.log(data.admin_hash);
-					res.cookie('userHash', data.admin_hash, {maxAge: 1000});
+
+					//var s = JSON.stringify(req.session);
+					//res.cookie('userHash', data.admin_hash, {maxAge: 1000});
 					//res.clearCookie('userHash');
 
 					res.render('admin.ejs', {info: data});
