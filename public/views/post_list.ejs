@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Blog Page</title>
+
+        <!--[if IE]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    </head>
+
+    <body>
+		<% for(var i in items) { %>
+			<article class="post__item">
+				<h1><a href=<%= "/post/" + items[i].post_id %> >Dobrodosi na <%= items[i].post_name %>!</a></h1>
+				<ul>
+					<li>Author: <%= items[i].post_author %></li>
+					<li>Date: <%= items[i].post_date %></li>
+					<li>Tags: <%= items[i].post_tags %></li>
+					<li>Comments: <%= items[i].post_comment_sum %></li>
+				</ul>
+				<p><%= items[i].post_content %></p>
+			</article>
+		<% } %>
+	</body>
+</html>

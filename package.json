@@ -1,14 +1,28 @@
 {
-  "name": "golubweb",
+  "name": "Golubweb",
   "version": "1.0.0",
   "description": "",
-  "main": "Gruntfile.js",
+  "author": "Darko Golubovic",
+  "license": "ISC",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
   "dependencies": {
-    "body-parser": "latest",
-    "cookie-parser": "^1/4/1",
+    "body-parser": "~1.15.2",
+	"cookie-parser": "~1.4.3",
     "ejs": "latest",
     "express": "^4.10.6",
     "express-validator": "^2.7.0",
+	"jsonwebtoken": "^7.2.1",
+    "mysql": "^2.5.4",
+    "ruby": "^0.6.1",
+	"knex": "^0.12.6",
+    "morgan": "~1.7.0",
+    "mysql": "^2.12.0",
+    "serve-favicon": "~2.3.0",
+    "webpack": "^1.14.0",
+    "urlencoded-request-parser": "^1.0.1",
     "grunt": "^0.4.5",
     "grunt-contrib-concat": "^1.0.1",
     "grunt-contrib-connect": "^1.0.2",
@@ -17,17 +31,9 @@
     "grunt-contrib-sass": "^1.0.0",
     "grunt-contrib-uglify": "^0.5.1",
     "grunt-contrib-watch": "^1.0.0",
-    "grunt-open": "^0.2.3",
-    "mysql": "^2.5.4",
-    "ruby": "^0.6.1",
-    "urlencoded-request-parser": "^1.0.1"
+    "grunt-open": "^0.2.3"
   },
   "devDependencies": {
     "grunt-contrib-sass": "^1.0.0"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC"
+  }
 }
