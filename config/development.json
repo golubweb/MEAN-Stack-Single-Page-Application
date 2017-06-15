@@ -1,18 +1,10 @@
 {
-	mysql: {
-    	host: '127.0.0.1',
-    	user: 'root',
-    	password: '',
-    	port: 3306,
-    	database: 'golubweb_practically'
-	},
-
-	jwt: {
-    	secret: 'w~ZS5&L-%.73me6f<<C\\WUa~d3ePWe',
-    	time: 120
-	},
-
-	urls: {
-		rootUrl: 'http://localhost:'
+	"mysql": {
+		"host": "127.0.0.1",
+		"user": "root",
+		"password": "golubweb3000",
+		"port": 3306,
+		"database": "golubweb_practically"
 	}
 }
+
