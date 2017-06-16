@@ -1,2 +1,2 @@
-install module: npm install
-ren server: node ./bin/www
+#install module: npm install
+#ren server: node ./bin/www
