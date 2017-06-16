@@ -7,7 +7,7 @@ class loginDB {
 
 	getUserData(email, pass) {
 		 return new Promise((resolve, reject) => {
-			knex.select('user_id', 'user_name', 'user_email', 'user_hash')
+			knex.first('user_id', 'user_name', 'user_email', 'user_hash')
 				.from('users')
 				.where('user_email', email)
 				.andWhere('user_password', pass)
