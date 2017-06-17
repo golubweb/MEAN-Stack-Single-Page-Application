@@ -44,10 +44,15 @@ app.use(cookieParser());
 app.use(expressValidator());
 
 //Support Static files
-app.set('views', path.join(__dirname, 'public/views'));
-app.use('/img',express.static(path.join(__dirname, 'public/images')));
-app.use('/js',express.static(path.join(__dirname, 'public/libs')));
-app.use('/css',express.static(path.join(__dirname, 'public/css')));
+app.set('views', express.static(path.join(__dirname, 'client/public/views')));
+
+app.use("/client", express.static('client'));
+app.use("/node_modules", express.static('node_modules'));
+
+app.use('/built', express.static(path.join(__dirname, 'client/built')));
+app.use('/img', express.static(path.join(__dirname, 'client/public/images')));
+app.use('/js', express.static(path.join(__dirname, 'client/public/libs')));
+app.use('/css', express.static(path.join(__dirname, 'client/public/css')));
 
 app.locals.loginMsg = 'Please enter Email and Password';
 

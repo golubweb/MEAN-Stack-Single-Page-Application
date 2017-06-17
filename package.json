@@ -65,6 +65,6 @@
     "@types/node": "^6.0.45",
     "concurrently": "^3.1.0",
     "lite-server": "^2.2.2",
-    "typescript": "^2.0.10"
+    "typescript": "^2.2.1"
   }
 }

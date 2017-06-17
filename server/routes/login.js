@@ -1,6 +1,7 @@
 "use strict";
 
 var app = require('../../app');
+var path = require("path");
 
 var express = require('express');
 var router = express.Router();
@@ -12,7 +13,7 @@ const login = require('../function/db/login');
 var loginDB = new login();
 
 router.get('/', (req, res) => {
-	res.render('login.ejs');
+	res.sendFile(path.join(__dirname + '../../../client/index.html'));
 });
 
 router.post('/logout', (req, res) => {

@@ -10,7 +10,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 export class LoginFormComponent {
   greeting: string;
   constructor() {
-    this.greeting = 'Hello Angular 2!';
+    this.greeting = 'Hello Angular 4!';
   }
 }
 
