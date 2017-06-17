@@ -22,7 +22,8 @@ var LoginFormComponent = (function () {
 LoginFormComponent = __decorate([
     core_1.Component({
         selector: 'login-form',
-        template: '<h1 class="text-center"> {{greeting}} </h1>'
+        styleUrls: ['./client/public/css/style.css'],
+        templateUrl: './client/public/template/login.html'
     }),
     __metadata("design:paramtypes", [])
 ], LoginFormComponent);
@@ -37,7 +38,7 @@ AppModule = __decorate([
     core_1.NgModule({
         imports: [platform_browser_1.BrowserModule],
         declarations: [LoginFormComponent],
-        bootstrap: [LoginFormComponent],
+        bootstrap: [LoginFormComponent]
     })
 ], AppModule);
 exports.AppModule = AppModule;

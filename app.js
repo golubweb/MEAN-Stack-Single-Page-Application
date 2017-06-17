@@ -50,6 +50,7 @@ app.use("/client", express.static('client'));
 app.use("/node_modules", express.static('node_modules'));
 
 app.use('/built', express.static(path.join(__dirname, 'client/built')));
+app.use('/template', express.static(path.join(__dirname, 'client/public/template')));
 app.use('/img', express.static(path.join(__dirname, 'client/public/images')));
 app.use('/js', express.static(path.join(__dirname, 'client/public/libs')));
 app.use('/css', express.static(path.join(__dirname, 'client/public/css')));

@@ -4,21 +4,22 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 // Our first "Hello world" component
 @Component({
-  selector: 'login-form',
-  template: '<h1 class="text-center"> {{greeting}} </h1>'
+	selector: 'login-form',
+	styleUrls: ['./client/public/css/style.css'],
+    templateUrl: './client/public/template/login.html'
 })
 export class LoginFormComponent {
-  greeting: string;
-  constructor() {
-    this.greeting = 'Hello Angular 4!';
-  }
+	greeting: string;
+	constructor() {
+		this.greeting = 'Hello Angular 4!';
+	}
 }
 
 // Main module, bootstrapping HelloAngularComponent as root component
 @NgModule({
-  imports: [BrowserModule],
-  declarations: [LoginFormComponent],
-  bootstrap: [LoginFormComponent],
+	imports: [BrowserModule],
+	declarations: [LoginFormComponent],
+	bootstrap: [LoginFormComponent]
 })
 export class AppModule { }
 
