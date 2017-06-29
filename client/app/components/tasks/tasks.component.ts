@@ -24,7 +24,8 @@ export default class TasksComponent implements OnInit {
 
     constructor(
         private taskService: TaskService,
-        private settingsService: SettingsService) {
+        private settingsService: SettingsService
+    ) {
 
         this.tasks = this.taskService.taskStore;
         this.today = new Date();
@@ -34,6 +35,12 @@ export default class TasksComponent implements OnInit {
 
     ngOnInit(): void {
         this.updateQueuedPomodoros();
+        this.taskService.taskFeed.subscribe(newTask => {
+            console.log(newTask);
+
+            this.tasks.push(newTask);
+            this.updateQueuedPomodoros();
+        });
     }
 
     toggleTask(task: Task): void {

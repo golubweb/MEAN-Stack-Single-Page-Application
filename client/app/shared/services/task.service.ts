@@ -1,38 +1,44 @@
-import { Injectable } from '@angular/core';
+import { Injectable }     from '@angular/core';
+import { Http, Response } from '@angular/http';
+import { Observable }     from 'rxjs/Observable';
+
 import { Task } from '../shared';
 
 @Injectable()
 export default class TaskService {
-    public taskStore: Array<Task> = [];
+    taskStore: Task[] = [];
+    taskFeed: Observable<Task>;
+    private taskObserver: any;
+    private dataUrl = '/data/raw-tasks.json';
 
-    constructor() {
-        const tasks = [
-            {
-                name: "Code an HTML Table",
-                deadline: "Jun 23 2017",
-                pomodorosRequired: 1
-              }, {
-                name: "Sketch a wireframe for the new homepage",
-                deadline: "Jun 24 2018",
-                pomodorosRequired: 2
-              }, {
-                name: "Style table with Bootstrap styles",
-                deadline: "Jun 25 2018",
-                pomodorosRequired: 1
-              }, {
-                name: "Reinforce SEO with custom sitemap.xml",
-                deadline: "Jun 26 2018",
-                pomodorosRequired: 3
-              }
-        ];
-
-        this.taskStore = tasks.map(item => {
-            return {
-                name: item.name,
-                deadline: new Date(item.deadline),
-                queued: false,
-                pomodorosRequired: item.pomodorosRequired
-            };
+    constructor(private http: Http) {
+        this.taskFeed = new Observable(observer => {
+            this.taskObserver = observer;
         });
+
+        this.fetchTasks();
+    }
+
+    private fetchTasks(): void {
+        this.http.get(this.dataUrl)
+            .map(response => response.json())
+            .map(stream => stream.map(res => {
+                return {
+                    name: res.name,
+                    deadline: new Date(res.deadline),
+                    pomodorosRequired: res.pomodorosRequired,
+                    queued: res.queued
+                }
+            }))
+            .subscribe(tasks => {
+                this.taskStore = tasks;
+                tasks.forEach(task => this.taskObserver.next(task))
+            },
+            error => console.log(error)
+        );
+    }
+
+    addTask(task: Task): void {
+        this.taskObserver.next(task);
     }
 }
