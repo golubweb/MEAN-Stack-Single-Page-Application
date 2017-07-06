@@ -1,4 +1,4 @@
-import { NgModule, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import TaskIconsComponent from './task-icons.component';
 import TaskTooltipDirective from './task-tooltip.directive';
@@ -36,8 +36,6 @@ export default class TasksComponent implements OnInit {
     ngOnInit(): void {
         this.updateQueuedPomodoros();
         this.taskService.taskFeed.subscribe(newTask => {
-            console.log(newTask);
-
             this.tasks.push(newTask);
             this.updateQueuedPomodoros();
         });

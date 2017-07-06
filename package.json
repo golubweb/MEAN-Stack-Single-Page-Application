@@ -46,25 +46,18 @@
     "core-js": "^2.4.1",
     "rxjs": "5.0.1",
     "zone.js": "^0.8.4",
-    "bootstrap": "^3.3.7",
-
-    "ruby": "^0.6.1",
-	"grunt": "^0.4.5",
-    "grunt-contrib-concat": "^1.0.1",
-    "grunt-contrib-connect": "^1.0.2",
-    "grunt-contrib-jshint": "^0.10.0",
-    "grunt-contrib-nodeunit": "^0.4.1",
-    "grunt-contrib-sass": "^1.0.0",
-    "grunt-contrib-uglify": "^0.5.1",
-    "grunt-contrib-watch": "^1.0.0",
-    "grunt-open": "^0.2.3",
-    "grunt-contrib-sass": "^1.0.0"
+    "bootstrap": "^3.3.7"
   },
   "devDependencies": {
     "@types/core-js": "^0.9.35",
     "@types/node": "^6.0.45",
     "concurrently": "^3.1.0",
     "lite-server": "^2.2.2",
-    "typescript": "^2.2.1"
+    "typescript": "^2.2.1",
+    "ruby": "^0.6.1",
+	"grunt": "^1.0.1",
+    "grunt-contrib-nodeunit": "^0.4.1",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0"
   }
 }
