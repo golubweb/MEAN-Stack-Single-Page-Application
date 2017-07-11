@@ -6,20 +6,33 @@ import { Component, OnInit, HostBinding }   from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
-  selector: 'pomodoro-timer',
-  template: '<h1>Kurac bre!!!!</h1>'
+    selector: 'pomodoro-timer',
+    template: `
+        <div>
+            <ul>
+                <li><a [routerLink]="['widget/1']" routerLinkActive="active">Timer Widget 1</a></li>
+            </ul>
+            <router-outlet></router-outlet>
+        </div>
+    `
 })
 export default class TimerComponent implements OnInit {
     timerID: number;
 
     constructor(
-        private route: ActivatedRoute,
-        private router: Router
-    ) {}
+        //private route: ActivatedRoute,
+        //private router: Router
+    ) {
+        alert(11111);
+        /*route.params.subscribe(params => {
+            this.courseId = params['id'];
 
-    ngOnInit() {
+            console.log(this.courseId);
+        });*/
+    }
+
+    /*ngOnInit() {
         this.route.paramMap.switchMap((params: ParamMap) => {
-            console.log(params.get('id'));
 
             this.timerID = params.get('id');
         });
@@ -29,5 +42,5 @@ export default class TimerComponent implements OnInit {
         let timer_ID = this.timerID;
 
         this.router.navigate(['/task', { id: timer_ID, foo: 'foo' }]);
-    }
+    }*/
 }
