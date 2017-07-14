@@ -23,7 +23,6 @@ export default class TimerComponent implements OnInit {
         //private route: ActivatedRoute,
         //private router: Router
     ) {
-        alert(11111);
         /*route.params.subscribe(params => {
             this.courseId = params['id'];
 
