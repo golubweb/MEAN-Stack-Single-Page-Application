@@ -19,11 +19,12 @@ import { TimerModule }      from './components/timer/timer.module';
         BrowserModule,
         HttpModule,
         FormsModule,
-        TimerModule,
+
         AppRoutingModule
     ],
     declarations: [
         AppComponent,
+        TIMER_DIRECTIVES,
         TASKS_DIRECTIVES,
         SHARED_PIPES
     ],

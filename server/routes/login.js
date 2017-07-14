@@ -13,7 +13,7 @@ const login = require('../function/db/login');
 var loginDB = new login();
 
 router.get('/', (req, res) => {
-	res.sendFile(path.join(__dirname + '../../../client/index.html'));
+	res.sendFile(path.join(__dirname + '/../../client/index.html'));
 });
 
 router.post('/logout', (req, res) => {
