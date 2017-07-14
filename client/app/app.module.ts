@@ -12,14 +12,13 @@ import { SHARED_PROVIDERS, SHARED_PIPES } from './shared/shared';
 
 import { AppComponent }     from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { TimerModule }      from './components/timer/timer.module';
+//import { TimerModule } from './components/timer/timer.module';
 
 @NgModule({
     imports:      [
         BrowserModule,
         HttpModule,
         FormsModule,
-
         AppRoutingModule
     ],
     declarations: [
