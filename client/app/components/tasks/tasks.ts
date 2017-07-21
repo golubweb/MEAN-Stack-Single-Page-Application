@@ -13,6 +13,6 @@ const TASKS_DIRECTIVES: any[] = [
 export {
     TASKS_DIRECTIVES,
     TasksComponent,
-    TaskTooltipDirective,
-    TaskEditorComponent
+    TaskEditorComponent,
+    TaskTooltipDirective
 };

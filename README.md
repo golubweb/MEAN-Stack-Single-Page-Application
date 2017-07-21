@@ -1,3 +1,5 @@
 # install module: npm install
 
-# ren server: node ./bin/www
+# run server: node ./bin/www
+# go to cd client
+# tsc -w

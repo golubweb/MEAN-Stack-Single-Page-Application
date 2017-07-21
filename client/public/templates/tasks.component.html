@@ -1,11 +1,16 @@
 <div class="container text-center">
     <div class="container">
-        <h4>Tasks backlog</h4>
+        <h1>Tasks backlog</h1>
+
+        <a [routerLink]="['/tasks', {outlets: {'sidebar': 'task-out'}}]">Start sidebar</a>
+
+        <hr />
+
         <h3>
             {{ queuedPomodoros | i18nPlural: queueHeaderMapping }} for today
 
-            <span class="small" *ngIf="queuedPomodoros > 0">(Estimated time:
-                {{ queuedPomodoros * timerMinutes | pomodoroFormattedTime }})
+            <span class="small" *ngIf="queuedPomodoros > 0">
+                (Estimated time: {{ queuedPomodoros * timerMinutes | pomodoroFormattedTime }})
             </span>
         </h3>
 
@@ -60,6 +65,10 @@
                             <ng-template ngSwitchDefault>
                                 <i class="glyphicon glyphicon-plus-sign"></i> Add
                             </ng-template>
+                        </button>
+
+                        <button type="button" class="btn btn-default btn-xs" *ngIf="item.queued" (click)="workOn(i)">
+                            <i class="glyphicon glyphicon-expand"></i> Start
                         </button>
                     </td>
                 </tr>

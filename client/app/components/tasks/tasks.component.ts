@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 import TaskIconsComponent from './task-icons.component';
 import TaskTooltipDirective from './task-tooltip.directive';
@@ -15,7 +17,7 @@ import {
     templateUrl: '/templates/tasks.component.html',
     styleUrls: ['/css/tasks.component.css']
 })
-export default class TasksComponent implements OnInit {
+class TasksComponent implements OnInit {
     today: Date;
     tasks: Task[] = [];
     queuedPomodoros: number;
@@ -23,6 +25,8 @@ export default class TasksComponent implements OnInit {
     timerMinutes: number;
 
     constructor(
+        private title: Title,
+        private router: Router,
         private taskService: TaskService,
         private settingsService: SettingsService
     ) {
@@ -34,7 +38,9 @@ export default class TasksComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        //this.title.setTitle('Task List');
         this.updateQueuedPomodoros();
+
         this.taskService.taskFeed.subscribe(newTask => {
             this.tasks.push(newTask);
             this.updateQueuedPomodoros();
@@ -53,4 +59,10 @@ export default class TasksComponent implements OnInit {
                 return pomodoros + queuedTask.pomodorosRequired;
         }, 0);
     }
+
+    workOn(index: number): void {
+        this.router.navigate(['/timer/task/' + index]);
+    }
 };
+
+export default TasksComponent;

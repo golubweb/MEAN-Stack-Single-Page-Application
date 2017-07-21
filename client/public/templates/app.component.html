@@ -4,14 +4,16 @@
             <strong class="navbar-brand">My Pomodoro App</strong>
         </div>
 
+
         <ul class="nav navbar-nav navbar-right">
-            <li><a routerLink="/task" routerLinkActive="active">Tasks</a></li>
-            <!--<li><a routerLink="/timer" routerLinkActive="active">Timer</a></li> -->
+            <li><a routerLink="/tasks" routerLinkActive="active">Tasks</a></li>
+            <li><a routerLink="/timer" routerLinkActive="active">Timer</a></li>
             <li><a routerLink="/tasks/editor" routerLinkActive="active">Publish Task</a></li>
-            <li><a routerLink="/task/1" routerLinkActive="active">Task 1</a></li>
-            <li><a routerLink="/timer" routerLinkActive="active">Timer Module</a></li>
         </ul>
     </div>
 </nav>
 
+<router-outlet name="sidebar-out"></router-outlet>
+
 <router-outlet></router-outlet>
+

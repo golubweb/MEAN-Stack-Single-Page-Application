@@ -5,7 +5,7 @@ import { Task } from '../../shared/shared';
     selector: 'pomodoro-task-icons',
     templateUrl: '/templates/task-icons.component.html'
 })
-export default class TaskIconsComponent implements OnInit {
+class TaskIconsComponent implements OnInit {
     @Input() task: Task;
     @Input() size: number;
     icons: Object[] = [];
@@ -15,3 +15,5 @@ export default class TaskIconsComponent implements OnInit {
         this.icons.fill({ name: this.task.name });
     }
 }
+
+export default TaskIconsComponent;

@@ -1,8 +1,13 @@
 import { Component } from '@angular/core';
 
 @Component({
-    moduleId: module.id,
-    selector: 'pomodoro-app',
-    templateUrl: '/templates/app.component.html'
+    selector: 'root-app',
+    templateUrl: '/templates/app.component.html',
+    styles: [`
+        .navbar-nav .active {
+            font-weight: bold;
+            border-bottom: 2px solid #d9534f
+        }
+    `]
 })
-export class AppComponent {}
+export default class AppComponent {}

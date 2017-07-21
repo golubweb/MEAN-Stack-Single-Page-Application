@@ -11,8 +11,9 @@ var expressValidator = require('express-validator');
 
 // ROUTES
 // ==============================================
+var index = require('./server/routes/index');
 var login = require('./server/routes/login');
-var blog = require('./server/routes/blog');
+var blog  = require('./server/routes/blog');
 
 var allowCrossDomain = (req, res, next)=> {
     if ('OPTIONS' == req.method) {
@@ -59,6 +60,7 @@ app.use('/css', express.static(path.join(__dirname, 'client/public/css')));
 app.locals.loginMsg = 'Please enter Email and Password';
 
 // Run Router
+app.use('/', index);
 app.use('/', login);
 app.use('/', blog);
 

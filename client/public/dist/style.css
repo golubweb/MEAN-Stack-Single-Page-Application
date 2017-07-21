@@ -88,6 +88,8 @@ h1, h2, h3 {
   color: #455569;
   line-height: normal; }
 
+h1 {font-size: 24px; margin: 0 0 25px;}
+
 /*=============// FontAwesome Font */
 @font-face {
   font-family: 'FontAwesome';

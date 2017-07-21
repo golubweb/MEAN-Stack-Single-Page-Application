@@ -11,17 +11,17 @@ export default class SettingsService {
 
         this.labelsMap = {
             'timer': {
-                'start': 'Start Timer',
-                'pause': 'Pause Timer',
+                'start':  'Start Timer',
+                'pause':  'Pause Timer',
                 'resume': 'Resume Countdown',
-                'other': 'Unknown'
+                'other':  'Unknown'
             }
         };
 
         this.pluralsMap = {
             'tasks': {
-                '=0': 'No pomodoros',
-                '=1': 'One pomodoro',
+                '=0':    'No pomodoros',
+                '=1':    'One pomodoro',
                 'other': '# pomodoros'
             }
         }

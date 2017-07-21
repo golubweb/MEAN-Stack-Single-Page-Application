@@ -1,31 +1,34 @@
 import { NgModule }              from '@angular/core';
 import { RouterModule, Routes }  from '@angular/router';
 
-import TaskComponent       from './components/tasks/tasks.component';
-import TaskEditorComponent from './components/tasks/task-editor.component';
+import AuthEditor            from './components/authorized/auth-editor.guard';
 
-import TimerComponent       from './components/timer/timer.component';
-import TimerWidgetComponent from './components/timer/timer-widget.component';
+import TaskComponent         from './components/tasks/tasks.component';
+import TaskEditorComponent   from './components/tasks/task-editor.component';
 
-//import { TimerModule }      from './components/timer/timer.module';
+import TimerComponent        from './components/timer/timer.component';
+import TimerWidgetComponent  from './components/timer/timer-widget.component';
+import LoginComponent        from './components/login/login.component';
+import PageNotFoundComponent from './components/error/page-not-found.component';
 
-const appRoutes = [
-    { path: '', redirectTo: '/task', pathMatch: 'full' },
-    { path: 'task',         component: TaskComponent },
+import { TimerModule }       from './components/timer/timer.module';
+
+const AppRoutesModule: any[] = [
+    { path: '',             redirectTo: '/tasks', pathMatch: 'full' },
+    { path: 'tasks',        component: TaskComponent },
     { path: 'tasks/editor', component: TaskEditorComponent },
-    {
-        path: 'timer',
-        component: TimerComponent,
-        children: [
-            { path: 'widget/:id', component: TimerWidgetComponent }
-        ],
-    }
+    { path: 'task-out',     component: TimerWidgetComponent, outlet: 'sidebar' },
+    { path: 'login',        component: LoginComponent },
+    { path: 'timer',        loadChildren: '/TimerModule' },
+    { path: '**',           component: PageNotFoundComponent }
 ];
 
 @NgModule({
     imports: [
-        RouterModule.forRoot(appRoutes, { enableTracing: true, useHash: true })
+        RouterModule.forRoot(AppRoutesModule, { enableTracing: true, useHash: true })
     ],
     exports: [ RouterModule ]
 })
-export class AppRoutingModule {}
+export default class AppRoutingModule {}
+
+//canActivate: [AuthEditor]

@@ -1,25 +1,60 @@
-<form class="container">
-    <h3>Task Editor:</h3>
+<div *ngIf="!task.name && !task.deadline && !task.pomodorosRequired; else forminfo">
+    <form class="container" [formGroup]="rForm" (submit)="saveTask(rForm.value)">
+        <h3>Task Editor:</h3>
+        <hr />
 
-    <div class="form-group">
-        <input type="text" class="form-control" placeholder="Task name" required />
-    </div>
+        <div class="form-group">
+            <!--[(ngModel)]="task.name" name="task.name"-->
 
-    <div class="form-group">
-        <input type="date" class="form-control" required />
-    </div>
+            <p>{{ taskLabel }} {{ name }}</p>
+            <input type="text" class="form-control" placeholder="Task name"
+               formControlName="name"
+               required
+            />
 
-    <div class="form-group">
-        <input type="number" class="form-control" placeholder="Pomodoros required" min="1" max="4" required />
-    </div>
+            <p class="text-muted"   *ngIf="rForm.controls['name'].untouched">
+                Start here by entering the task name.
+            </p>
+            <p class="text-success" *ngIf="rForm.controls['name'].valid && rForm.controls['name'].touched">
+                Well done! That's a good name for task!
+            </p>
+            <p class="text-danger"  *ngIf="!rForm.controls['name'].valid && rForm.controls['name'].touched">
+                Oops! You cannot leave the name blank...
+            </p>
+        </div>
 
-    <div class="form-group">
-        <input type="checkbox" name="queued">
-        <label for="queued"> this task by default?</label>
-    </div>
+        <div class="form-group">
+            <input type="date" class="form-control"
+                formControlName="deadline"
+                required
+            />
+        </div>
 
-    <p>
-        <input type="submit" class="btn btn-success" value="Save">
-        <a routerLink="['TasksComponent']" class="btn btn-danger">Cancel</a>
-    </p>
-</form>
+        <div class="form-group">
+            <input type="number" class="form-control" placeholder="Pomodoros required" min="1" max="4"
+                formControlName="pomodorosRequired"
+                required
+            />
+        </div>
+
+        <div class="form-group">
+            <input type="checkbox"
+                   formControlName="queued"
+            />
+            <label for="queued"> this task by default?</label>
+        </div>
+
+        <p>
+            <input type="submit" class="btn btn-success" value="Save" [disabled]="!rForm.valid" />
+            <a routerLink="/tasks" class="btn btn-danger">Cancel</a>
+        </p>
+    </form>
+</div>
+
+<ng-template #forminfo>
+    <ul>
+        <li>{{ task.name }}</li>
+        <li>{{ task.deadline }}</li>
+        <li>{{ task.pomodorosRequired }}</li>
+    </ul>
+</ng-template>

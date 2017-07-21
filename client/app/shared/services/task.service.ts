@@ -1,6 +1,7 @@
 import { Injectable }     from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable }     from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
 
 import { Task } from '../shared';
 
@@ -8,6 +9,7 @@ import { Task } from '../shared';
 export default class TaskService {
     taskStore: Task[] = [];
     taskFeed: Observable<Task>;
+
     private taskObserver: any;
     private dataUrl = '/data/raw-tasks.json';
 
@@ -32,13 +34,14 @@ export default class TaskService {
             }))
             .subscribe(tasks => {
                 this.taskStore = tasks;
-                tasks.forEach(task => this.taskObserver.next(task))
-            },
-            error => console.log(error)
-        );
+
+                tasks.forEach(task => {
+                    this.taskObserver.next(task);
+                });
+            });
     }
 
     addTask(task: Task): void {
-        this.taskObserver.next(task);
+        this.taskStore.push(task);
     }
 }
