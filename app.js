@@ -1,29 +1,31 @@
 // BASE MODULES
 // ==============================================
-var fs = require('fs');
-var path = require('path');
-var express = require('express');
-var app     = express();
+var fs      = require('fs'),
+    path    = require('path'),
+    express = require('express'),
+    app     = express();
 
-var bodyParser = require('body-parser');
-var cookieParser = require('cookie-parser');
-var expressValidator = require('express-validator');
+var bodyParser       = require('body-parser'),
+    cookieParser     = require('cookie-parser'),
+    expressValidator = require('express-validator');
 
 // ROUTES
 // ==============================================
-var index = require('./server/routes/index');
-var login = require('./server/routes/login');
-var blog  = require('./server/routes/blog');
+var index   = require('./server/routes/index'),
+    login   = require('./server/routes/login'),
+    pages   = require('./server/routes/pages'),
+    blog    = require('./server/routes/blog'),
+    menius  = require('./server/routes/menius');
 
 var allowCrossDomain = (req, res, next)=> {
     if ('OPTIONS' == req.method) {
-        res.header('Access-Control-Allow-Origin', 'www.netleaders.com');
+        res.header('Access-Control-Allow-Origin', 'www.localhost:8888');
         res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH,OPTIONS');
         res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
         res.sendStatus(200);
     }
     else {
-        res.header('Access-Control-Allow-Origin', 'www.netleaders.com');
+        res.header('Access-Control-Allow-Origin', 'www.localhost:8888');
         res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH,OPTIONS');
         res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
         next();
@@ -57,11 +59,11 @@ app.use('/data', express.static(path.join(__dirname, 'client/app/shared/data')))
 app.use('/js', express.static(path.join(__dirname, 'client/public/libs')));
 app.use('/css', express.static(path.join(__dirname, 'client/public/css')));
 
-app.locals.loginMsg = 'Please enter Email and Password';
-
 // Run Router
-app.use('/', index);
-app.use('/', login);
-app.use('/', blog);
+app.use('/',    index);
+app.use('/api', login);
+app.use('/api', pages)
+app.use('/api', blog);
+app.use('/api', menius);
 
 module.exports = app;

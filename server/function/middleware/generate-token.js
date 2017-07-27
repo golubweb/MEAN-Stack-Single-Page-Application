@@ -6,8 +6,8 @@ var loginDB = new login();
 
 function authenticate(req, res, next) {
 	var token, userData,
-		email = req.body.user_email,
-		pass = req.body.user_pass;
+		email = req.body.username,
+		pass = req.body.password;
 
 	loginDB.getUserData(email, pass).then((data) => {
 		if(data !== undefined) {
@@ -19,11 +19,13 @@ function authenticate(req, res, next) {
 
 			token = jwt.sign(userData, config.jwt.secret, {expiresIn: 4000});
 
-			res.cookie('token', token, { maxAge: 900000, httpOnly: true });
-			res.render('admin.ejs', {info: data});
-			res.end();
+            res.json({ success: true, token: token });
+
+			//res.cookie('token', token, { maxAge: 900000, httpOnly: true });
+			//res.render('admin.ejs', {info: data});
+			//res.end();
 		} else {
-			next();
+			res.json({ success: false });
 		}
 	});
 }

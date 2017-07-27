@@ -14,8 +14,8 @@ import {
 @Component({
     selector: 'pomodoro-tasks',
     directives: [TaskIconsComponent, TaskTooltipDirective],
-    templateUrl: '/templates/tasks.component.html',
-    styleUrls: ['/css/tasks.component.css']
+    templateUrl: 'templates/tasks.component.html',
+    styleUrls:   ['css/tasks.component.css']
 })
 class TasksComponent implements OnInit {
     today: Date;

@@ -37,17 +37,17 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let item of tasks; let i = index">
+                <tr *ngFor="let item of tasks; let i = index"  class="ng-animate">
                     <th scope="row">
                         {{ i + 1 }}
-                        <span *ngIf="item.queued" class="label label-info">Queued</span>
+                        <span *ngIf="item.queued" class="label label-info ng-animate">Queued</span>
                     </th>
                     <td>
-                        {{item.name | slice: 0:35 }}
+                        {{ item.name | slice: 0:35 }}
                         <span [hidden]="item.name.length < 35" >...</span>
                     </td>
                     <td>
-                        {{item.deadline | date: 'shortDate'}}
+                        {{ item.deadline | date: 'shortDate'}}
                         <span *ngIf="item.deadline < today" class="label label-danger">Due</span>
                     </td>
                     <td class="text-center">{{ item.pomodorosRequired }}</td>

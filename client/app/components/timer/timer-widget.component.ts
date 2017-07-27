@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute }       from '@angular/router';
 
 import { SettingsService, TaskService } from '../../shared/shared';
 
 @Component({
     selector: 'pomodoro-timer-widget',
-    templateUrl: '/templates/timer-widget.component.html'
+    templateUrl: 'templates/timer-widget.component.html',
+    styleUrls:   ['css/timer-widget.component.css']
 })
 export default class TimerWidgetComponent implements OnInit {
     minutes: number;

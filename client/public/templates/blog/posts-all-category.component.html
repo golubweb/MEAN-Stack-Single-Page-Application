@@ -1,0 +1,7 @@
+<h2>Stranica za sve Kategorije</h2>
+
+<ul>
+    <li *ngFor="let item of categoryList; let i = index">
+        <a [routerLink]="['/blog/category/posts/' + item.blog_id]">{{ item.blog_id }} {{ item.blog_name }}</a>
+    </li>
+</ul>

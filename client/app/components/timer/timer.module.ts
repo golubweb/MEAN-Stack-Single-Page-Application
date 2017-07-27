@@ -1,13 +1,14 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { CommonModule }  from '@angular/common';
-import { RouterModule, Routes }  from '@angular/router';
+import { CommonModule }                     from '@angular/common';
+import { RouterModule, Routes }             from '@angular/router';
 
-import TimerComponent from './timer.component';
+import TimerComponent       from './timer.component';
 import TimerWidgetComponent from './timer-widget.component';
 
-const TimerRoutesModule = [
+const TimerRoutesModule: any[] = [
     {
         path: 'timer',
+        component: TimerComponent,
         children: [
             { path: '',         component: TimerWidgetComponent },
             { path: 'task/:id', component: TimerWidgetComponent }

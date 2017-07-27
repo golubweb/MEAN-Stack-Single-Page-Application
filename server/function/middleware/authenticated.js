@@ -15,7 +15,7 @@ function checkIfAuthenticated(req, res, next) {
             }
         });
     } else {
-        res.redirect('/');
+        res.json({success: false, messages: 'Failed to authenticate token.'});
     }
 };
 

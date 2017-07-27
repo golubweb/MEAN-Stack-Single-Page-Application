@@ -1,0 +1,13 @@
+<h1>Ovo je MENI NAV!</h1>
+
+<ul>
+    <li *ngFor="let item of mainMenu; let i = index">
+        <a [routerLink]="['/' + item.url]">{{ item.title }}</a>
+
+        <ul *ngIf="item.sub !== 'false'">
+            <li *ngFor="let subItem of subMenu | subMenius: item.id ">
+                <a [routerLink]="['/'+ item.url + '/posts/' + subItem.url]">{{ subItem.title }}</a>
+            </li>
+        </ul>
+    </li>
+</ul>

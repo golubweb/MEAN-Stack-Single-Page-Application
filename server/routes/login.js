@@ -1,24 +1,22 @@
 "use strict";
 
-var app = require('../../app');
+const app = require('../../app');
 
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router  = express.Router();
 
-var checkUserToken = require('../function/middleware/authenticated');
-var generateToken = require('../function/middleware/generate-token');
+const generateToken  = require('../function/middleware/generate-token');
+const checkUserToken = require('../function/middleware/authenticated');
 
 const login = require('../function/db/login');
-var loginDB = new login();
+const loginDB = new login();
 
-router.post('/logout', (req, res) => {
-	res.clearCookie('token');
-	res.redirect('/');
-	res.end();
-});
+router.post('/login', generateToken);
 
-router.post('/user-panel', generateToken, (req, res) => {
-	res.redirect('/');
+router.post('/authenticated', checkUserToken, (req, res) => {
+    let token = req.body.token;
+
+    res.json({ success: true, token: token });
 	res.end();
 });
 

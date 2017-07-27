@@ -11,3 +11,7 @@ h1 {
     margin: auto;
     max-width: 860px;
 }
+
+.ng-animate {
+    transition: all 0.3s ease-in;
+}

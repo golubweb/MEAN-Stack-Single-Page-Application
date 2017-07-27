@@ -8,7 +8,7 @@ import {
 @Injectable()
 export default class AuthEditor implements CanActivate {
 
-    runCanActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): void {
+    runCanActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
         return false;
     }
 }

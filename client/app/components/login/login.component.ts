@@ -1,19 +1,22 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators, ControlGroup, Control } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { Title } from '@angular/platform-browser';
+import { AuthenticationService } from '../../shared/shared';
 
 @Component({
     selector: 'pomodoro-login',
-    templateUrl: '/templates/login.component.html'
+    templateUrl: 'templates/login/login.component.html'
 })
 class LoginComponent implements OnInit {
     loginForm;
     notValidCredentials: boolean = false;
     showUsernameHint: boolean = false;
 
-    construtor(
-        private router: Router
+    constructor(
+        private router: Router,
+        private authenticationService: AuthenticationService
     ) {}
 
     ngOnInit() {
@@ -31,14 +34,20 @@ class LoginComponent implements OnInit {
         const username = this.loginForm.controls['username'];
         username.valueChanges.subscribe(value => {
             this.showUsernameHint = (username.dirty && value.indexOf('@') < 0);
-
-            console.log('username', username.value);
         });
     }
 
+    authenticate() {
+        let credentials: any = this.loginForm.value;
+        this.notValidCredentials = !this.loginForm.valid && this.loginForm.dirty;
 
-    authenticate(login) {
-        console.log('Forma je poslata: ', login);
+        this.authenticationService.login(credentials).then(success => {
+            if (success) {
+                this.router.navigate(['/tasks']);
+            } else {
+                this.notValidCredentials = true;
+            }
+        });
     }
 
     private emailValidator(control: Control): { [key: string]: boolean } {

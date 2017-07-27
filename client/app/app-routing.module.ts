@@ -13,6 +13,9 @@ import PageNotFoundComponent from './components/error/page-not-found.component';
 
 import { TimerModule }       from './components/timer/timer.module';
 
+import { PagesModule }       from './components/pages/pages.module';
+import { PostsModule }       from './components/blog/posts.module';
+
 const AppRoutesModule: any[] = [
     { path: '',             redirectTo: '/tasks', pathMatch: 'full' },
     { path: 'tasks',        component: TaskComponent },
@@ -20,6 +23,8 @@ const AppRoutesModule: any[] = [
     { path: 'task-out',     component: TimerWidgetComponent, outlet: 'sidebar' },
     { path: 'login',        component: LoginComponent },
     { path: 'timer',        loadChildren: '/TimerModule' },
+    { path: 'page',         loadChildren: '/PagesModule' },
+    { path: 'blog',         loadChildren: '/PostsModule' },
     { path: '**',           component: PageNotFoundComponent }
 ];
 

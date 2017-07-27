@@ -1,0 +1,16 @@
+<h1>Postovi za kategoriju</h1>
+
+<article *ngFor="let item of postList; let i = index">
+    <h2>
+        <a [routerLink]="['/blog/post/' + item.post_id]">{{ item.post_name }}</a>
+    </h2>
+
+    <p>
+        <span>{{ item.post_author }}</span>
+        <span>{{ item.post_tags }}</span>
+        <span>{{ item.post_date | dateConvert }}</span>
+        <!-- date: 'shortDate' -->
+    </p>
+
+    <p>{{ item.post_text }}</p>
+</article>

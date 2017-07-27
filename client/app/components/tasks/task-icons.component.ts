@@ -3,7 +3,7 @@ import { Task } from '../../shared/shared';
 
 @Component({
     selector: 'pomodoro-task-icons',
-    templateUrl: '/templates/task-icons.component.html'
+    templateUrl: 'templates/task-icons.component.html'
 })
 class TaskIconsComponent implements OnInit {
     @Input() task: Task;

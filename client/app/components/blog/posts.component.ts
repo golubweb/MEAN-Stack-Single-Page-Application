@@ -1,21 +1,8 @@
-import { Component } from '@angular/core';
-
-import {
-    TaskService,
-    SettingsService,
-    Task
-} from '../../shared/shared';
+import { Component, OnInit }      from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
-    selector: '#posts-wrap',
-    templateUrl: '/templates/posts.component.html'
+    selector: 'posts-wrap',
+    templateUrl: 'templates/blog/posts.component.html'
 })
-class PostsComponent implements OnInit {
-    pageTitle: string;
-
-    constructor() {
-        this.pageTitle = 'POST PAGE';
-    }
-};
-
-export default PostsComponent;
+export default class PostsComponent { };
