@@ -6,6 +6,11 @@
 		"port": 3306,
 		"database": "golubweb_practically"
 	},
+    "mongoDB": {
+        "uri": "mongodb://localhost:27017/golubweb",
+        "secret": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+        "db": "golubweb"
+    },
 	"jwt": {
     	"secret": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
     	"time": 120

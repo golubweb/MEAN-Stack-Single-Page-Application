@@ -1,3 +1,5 @@
+var config = require('./config/development');
+
 // BASE MODULES
 // ==============================================
 var fs      = require('fs'),
@@ -8,6 +10,15 @@ var fs      = require('fs'),
 var bodyParser       = require('body-parser'),
     cookieParser     = require('cookie-parser'),
     expressValidator = require('express-validator');
+
+// DATABASE MODULES
+// ==============================================
+var mongoose = require('mongoose');
+
+    mongoose.Promise = global.Promise;
+    mongoose.connect(config.mongoDB.uri, (err)=> {
+        if(err) console.log(err);
+    });
 
 // ROUTES
 // ==============================================

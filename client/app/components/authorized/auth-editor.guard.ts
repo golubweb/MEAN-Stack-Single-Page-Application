@@ -19,7 +19,6 @@ export default class AuthEditor implements CanActivate {
             if(!authUserData) {
                 this.router.navigate(['/login']);
             } else {
-                console.log(22222);
                 return true;
             }
         });
