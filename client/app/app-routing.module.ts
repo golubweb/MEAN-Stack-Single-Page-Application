@@ -19,7 +19,7 @@ import { PostsModule }       from './components/blog/posts.module';
 const AppRoutesModule: any[] = [
     { path: '',             redirectTo: '/tasks', pathMatch: 'full' },
     { path: 'tasks',        component: TaskComponent },
-    { path: 'tasks/editor', component: TaskEditorComponent },
+    { path: 'tasks/editor', component: TaskEditorComponent, canActivate: [AuthEditor] },
     { path: 'task-out',     component: TimerWidgetComponent, outlet: 'sidebar' },
     { path: 'login',        component: LoginComponent },
     { path: 'timer',        loadChildren: '/TimerModule' },
@@ -29,11 +29,10 @@ const AppRoutesModule: any[] = [
 ];
 
 @NgModule({
-    imports: [
+    imports:   [
         RouterModule.forRoot(AppRoutesModule, { enableTracing: true, useHash: true })
     ],
-    exports: [ RouterModule ]
+    providers: [ AuthEditor ],
+    exports:   [ RouterModule ]
 })
 export default class AppRoutingModule {}
-
-//canActivate: [AuthEditor]

@@ -1,14 +1,27 @@
 import { Injectable } from '@angular/core';
-import {
-    CanActivate,
-    ActivatedRouteSnapshot,
-    RouterStateSnapshot,
-    Router } from '@angular/router';
+import { CanActivate, Router } from '@angular/router';
+
+import { AuthenticationService } from '../../shared/shared';
 
 @Injectable()
 export default class AuthEditor implements CanActivate {
 
-    runCanActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-        return false;
+    constructor(
+        private router: Router,
+        private authService: AuthenticationService) {}
+
+    canActivate(): boolean {
+        let token = this.authService.getToken();
+        let tokenData = { token: token };
+
+        return this.authService.isAuthorized(tokenData).then(authUserData => {
+
+            if(!authUserData) {
+                this.router.navigate(['/login']);
+            } else {
+                console.log(22222);
+                return true;
+            }
+        });
     }
 }

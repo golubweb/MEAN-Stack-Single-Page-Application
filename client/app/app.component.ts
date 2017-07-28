@@ -18,18 +18,17 @@ export default class AppComponent {
 
     constructor(
         private router: Router,
-        private authenticationService: AuthenticationService
+        private authService: AuthenticationService
     ) {
-        this.authenticationService.userIsloggedIn.subscribe(isLoggedIn => {
+        this.authService.userIsloggedIn.subscribe(isLoggedIn => {
             this.userIsLoggedIn = isLoggedIn;
         });
-
     }
 
     logout($event): void {
         $event.preventDefault();
 
-        this.authenticationService.logout().then(success => {
+        this.authService.logout().then(success => {
             if(success) {
                 this.router.navigate(['/']);
             }

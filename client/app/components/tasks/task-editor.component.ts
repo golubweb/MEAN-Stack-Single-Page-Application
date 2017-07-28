@@ -3,7 +3,7 @@ import { CanActivate, CanDeactivate, OnDeactivate, Router } from '@angular/route
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 
-import { Task, TaskService, AuthenticationService } from '../../shared/shared';
+import { Task, TaskService } from '../../shared/shared';
 
 @Component({
     selector: 'pomodoro-tasks-editor',
@@ -25,8 +25,7 @@ class TaskEditorComponent implements OnInit, CanDeactivate, OnDeactivate {
         private title: Title,
         private router: Router,
         private fb: FormBuilder,
-        private taskService: TaskService,
-        private authenticationService: AuthenticationService
+        private taskService: TaskService
     ) {
         this.task = <Task>{};
 
@@ -39,13 +38,6 @@ class TaskEditorComponent implements OnInit, CanDeactivate, OnDeactivate {
     }
 
     ngOnInit(): string {
-        let token = this.authenticationService.getToken();
-        let tokenData = { token: token };
-
-        this.authenticationService.isAuthorized(tokenData).then((authUserData) => {
-            if(!authUserData) this.router.navigate(['/login']);
-        });
-
         this.taskLabel = 'Your task name is ';
         this.title.setTitle('Task Editor');
 
