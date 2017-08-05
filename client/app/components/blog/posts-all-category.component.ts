@@ -18,8 +18,8 @@ export default class PostsAllCategoryComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.blogService.allCategoryFeed.subscribe(newCategory => {
-            this.categoryList.push(newCategory);
+        this.blogService.getAllCategory().subscribe(response => {
+            this.categoryList = response;
         });
     }
 }

@@ -9,7 +9,7 @@ import Page        from './interfaces/';
     templateUrl: 'templates/pages/any.component.html'
 })
 export default class PagesComponent implements OnInit {
-    singlePage: Page[] = [];
+    single: Page[] = [];
 
     constructor(
         private router: Router,
@@ -20,12 +20,9 @@ export default class PagesComponent implements OnInit {
     ngOnInit() {
         this.route.params.subscribe(params => {
             let pageID = params['id'];
-            console.log('ID: ', pageID);
 
             this.pageService.getPage(pageID).subscribe((response)=> {
-                console.log(response);
-
-                this.singlePage = response;
+                this.single = response[0];
             });
         });
     }

@@ -13,8 +13,8 @@ const PagesRoutesModule: any[] = [
         path: 'page',
         component: PagesComponent,
         children: [
-            { path: 'home',  component: HomePageComponent },
-            { path: ':id',   component: AnyPageComponent }
+            { path: 'home-page', component: HomePageComponent },
+            { path: ':id',       component: AnyPageComponent }
         ]
     }
 ];

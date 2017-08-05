@@ -8,34 +8,21 @@ import Category from '../interfaces/category.interface';
 @Injectable()
 export default class BlogService {
     allCategoryList: Category[] = [];
-    allCategoryFeed: Observable;
 
     private allCategoryObserver: any;
     private headersJson = new Headers({ 'Content-Type': 'application/json' });
     private optionJson  = new RequestOptions({ headers: this.headersJson });
 
-    constructor(public http: Http) {
-        this.allCategoryFeed = new Observable(observer => {
-            this.allCategoryObserver = observer;
-        });
-
-        this.getAllCategory();
-    }
+    constructor(public http: Http) {}
 
     getAllCategory(): Observable {
         const url = '/api/blog/category';
 
-        this.http.get(url, this.optionJson)
-            .map( response => response.json())
-            .subscribe( catResponse => {
-                let categoryData = catResponse.allCategory;
-                this.allCategoryList = categoryData;
+        return this.http.get(url, this.optionJson).map( (data: Response) => {
+            let categoryData =  data.json();
 
-                categoryData.forEach(category => {
-                    this.allCategoryObserver.next(category);
-                });
-            }
-        );
+            return categoryData.allCategory;
+        });
     }
 
     getSingleCategory(cat_id: number): Observable {

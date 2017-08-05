@@ -21,11 +21,9 @@ class MeniusComponent implements OnInit {
         private meniusService: MeniusService
     ) {
         meniusService.getMainMenus().subscribe((data) => {
-            console.log(data);
-
             this.mainMenu = data.menius;
             this.subMenu  = data.subMenius;
-        })
+        });
     }
 }
 

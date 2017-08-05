@@ -7,7 +7,7 @@ var router = express.Router();
 
 var checkUserToken = require('../function/middleware/authenticated');
 
-const Menius = require('../function/db/menius');
+const Menius = require('../function/mongoDB/menius');
 const menuDB = new Menius();
 
 router.get('/main/menius', (req, res) => {

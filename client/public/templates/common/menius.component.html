@@ -5,7 +5,7 @@
         <a [routerLink]="['/' + item.url]">{{ item.title }}</a>
 
         <ul *ngIf="item.sub !== 'false'">
-            <li *ngFor="let subItem of subMenu | subMenius: item.id ">
+            <li *ngFor="let subItem of subMenu | subMenius: item._id ">
                 <a [routerLink]="['/'+ item.url + '/posts/' + subItem.url]">{{ subItem.title }}</a>
             </li>
         </ul>

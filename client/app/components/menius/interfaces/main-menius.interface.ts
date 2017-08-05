@@ -1,10 +1,10 @@
 interface MainMeniusInterfaces {
-    id:      number;
-    title:   string;
-    url:     strig;
-    sub_url: string;
-    tpl:     string;
-    sub:     boolean;
+    id     : Numbar;
+    title  : String;
+    url    : String;
+    sub_url: String;
+    tpl    : String;
+    sub    : Boolean;
 }
 
 export default MainMeniusInterfaces;

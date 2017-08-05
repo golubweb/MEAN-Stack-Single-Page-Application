@@ -1,9 +1,9 @@
 interface SubMeniusInterface {
-    id: number;
-    title: string;
-    url: string;
-    tpl: string;
-    parent: number;
+    id    : Numbar;
+    title : String;
+    url   : String;
+    tpl   : String;
+    parent: Numbar;
 }
 
 export default SubMeniusInterface;

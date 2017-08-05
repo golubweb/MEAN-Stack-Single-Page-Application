@@ -7,7 +7,8 @@ var fs      = require('fs'),
     express = require('express'),
     app     = express();
 
-var bodyParser       = require('body-parser'),
+var cors             = require('cors'),
+    bodyParser       = require('body-parser'),
     cookieParser     = require('cookie-parser'),
     expressValidator = require('express-validator');
 
@@ -16,34 +17,25 @@ var bodyParser       = require('body-parser'),
 var mongoose = require('mongoose');
 
     mongoose.Promise = global.Promise;
-    mongoose.connect(config.mongoDB.uri, (err)=> {
+    mongoose.connect(config.mongoDB.database, (err)=> {
         if(err) console.log(err);
     });
+
+    mongoose.connection.on('connected', ()=> {
+        console.log('Connected to database ' + config.mongoDB.database );
+    })
 
 // ROUTES
 // ==============================================
 var index   = require('./server/routes/index'),
-    login   = require('./server/routes/login'),
+    users   = require('./server/routes/users'),
     pages   = require('./server/routes/pages'),
     blog    = require('./server/routes/blog'),
     menius  = require('./server/routes/menius');
 
-var allowCrossDomain = (req, res, next)=> {
-    if ('OPTIONS' == req.method) {
-        res.header('Access-Control-Allow-Origin', 'www.localhost:8888');
-        res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH,OPTIONS');
-        res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
-        res.sendStatus(200);
-    }
-    else {
-        res.header('Access-Control-Allow-Origin', 'www.localhost:8888');
-        res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH,OPTIONS');
-        res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
-        next();
-    }
-};
-
-app.use(allowCrossDomain);
+// ALLOW CROSS DOMAIN
+// ==============================================
+app.use(cors());
 
 // Support json encoded bodies
 app.use(bodyParser.json());
@@ -72,7 +64,7 @@ app.use('/css', express.static(path.join(__dirname, 'client/public/css')));
 
 // Run Router
 app.use('/',    index);
-app.use('/api', login);
+app.use('/api', users);
 app.use('/api', pages)
 app.use('/api', blog);
 app.use('/api', menius);

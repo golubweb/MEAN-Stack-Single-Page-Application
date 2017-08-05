@@ -5,10 +5,9 @@ var app = require('../../app');
 var express = require('express');
 var router = express.Router();
 
-var checkUserToken = require('../function/middleware/authenticated');
 
-const blog = require('../function/db/blog');
-const blogDB = new blog();
+const Blog = require('../function/mongoDB/blog');
+const blogDB = new Blog();
 
 router.get('/blog/category/posts/:id', (req, res)=> {
     let catID = req.params.id;
@@ -20,17 +19,18 @@ router.get('/blog/category/posts/:id', (req, res)=> {
 })
 
 router.get('/blog/category', (req, res) => {
-	blogDB.getAllCategory().then((response)=> {
-		res.status(200).json({ allCategory: response });
-		res.end();
-	});
+    blogDB.getAllCategory().then((response) => {
+        res.json({ allCategory: response });
+        res.end();
+    });
+
 });
 
 router.get('/blog/post/:id', (req, res) => {
 	var post_id = req.params.id;
 
 	blogDB.getPost(post_id).then((response)=> {
-		res.json({ post: response[0] });
+		res.json({ post: response });
 		res.end();
 	});
 });

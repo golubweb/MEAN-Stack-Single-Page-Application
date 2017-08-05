@@ -2,15 +2,15 @@
 
 <article *ngFor="let item of postList; let i = index">
     <h2>
-        <a [routerLink]="['/blog/post/' + item.post_id]">{{ item.post_name }}</a>
+        <a [routerLink]="['/blog/post/' + item._id]">{{ item.title }}</a>
     </h2>
 
     <p>
-        <span>{{ item.post_author }}</span>
-        <span>{{ item.post_tags }}</span>
-        <span>{{ item.post_date | dateConvert }}</span>
+        <span>{{ item.author }}</span>
+        <span>{{ item.tags }}</span>
+        <span>{{ item.created | dateConvert }}</span>
         <!-- date: 'shortDate' -->
     </p>
 
-    <p>{{ item.post_text }}</p>
+    <p>{{ item.summary }}</p>
 </article>

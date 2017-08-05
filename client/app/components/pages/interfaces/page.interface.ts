@@ -1,6 +1,6 @@
 interface Page {
-    page_id:       number;
-    page_title:    string;
-    page_content:  string;
-    page_template: number;
+    _id:       number;
+    title:    string;
+    content:  string;
+    template: number;
 }

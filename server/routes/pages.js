@@ -7,14 +7,14 @@ var router = express.Router();
 
 var checkUserToken = require('../function/middleware/authenticated');
 
-const pages = require('../function/db/pages');
+const pages = require('../function/mongoDB/pages');
 const pagesDB = new pages();
 
 router.get('/page/:id', (req, res)=> {
     let pageID = req.params.id;
 
     pagesDB.getPage(pageID).then((response)=> {
-        res.json({ data: response });
+        res.json({ success: true, data: response });
         res.end();
     });
 });

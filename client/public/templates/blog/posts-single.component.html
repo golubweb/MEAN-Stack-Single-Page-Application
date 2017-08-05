@@ -1,10 +1,10 @@
-<h1>{{ singlePost.post_name }}</h1>
+<h1>{{ singlePost.title }}</h1>
 
 <div>
-    <span> {{ singlePost.post_author }}</span><br />
-    <span> {{ singlePost.post_blog_cat }}</span><br />
-    <span> {{ singlePost.post_comment_sum }}</span><br />
-    <span> {{ singlePost.post_date | dateConvert }}</span><br />
-    <span> {{ singlePost.post_tags }}</span><br />
-    <span> {{ singlePost.post_content }}</span>
+    <span> {{ singlePost.author }}</span><br />
+    <span> {{ singlePost.blog_category }}</span><br />
+    <span> {{ singlePost.comment_sum }}</span><br />
+    <span> {{ singlePost.created | dateConvert }}</span><br />
+    <span> {{ singlePost.tags }}</span><br />
+    <span> {{ singlePost.content }}</span>
 </div>
