@@ -10,9 +10,6 @@ class Pages {
 
     getPage(id) {
         return new Promise((resolve, reject)=> {
-            console.log('ID: ', id);
-
-
             let pageID = mongoose.Types.ObjectId(id);
 
             this.mc.collection('pages', (err, collection) => {

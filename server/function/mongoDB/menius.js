@@ -11,11 +11,11 @@ class Menius {
     getMainMenu() {
         return new Promise((resolve, reject) => {
             this.mc.collection('first_menu', (err, collection) => {
-                collection.find().toArray((err, menu) =>
-                {
+
+                collection.find().toArray((err, menu) => {
+
                     this.mc.collection('second_menu', (err, collection) => {
                         collection.find().toArray((err, submenu) => {
-                            console.log(submenu);
                             resolve([menu, submenu]);
                         });
                     });
