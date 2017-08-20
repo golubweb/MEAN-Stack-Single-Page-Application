@@ -2,11 +2,15 @@ import { Injectable, EventEmitter } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
 
+import { CookieService } from '../shared';
+
 @Injectable()
 export default class AuthenticationService {
+    cookie: void;
     userIsloggedIn: EventEmitter<boolean>;
 
     constructor(public http: Http) {
+        this.cookie = new CookieService();
         this.userIsloggedIn = new EventEmitter();
     }
 
@@ -26,10 +30,15 @@ export default class AuthenticationService {
                     if(authResponse && authResponse.token) {
                         validCredentials = true;
 
-                        window.sessionStorage.setItem('pm-token', authResponse.token);
+                        let domain = 'localhost',
+                            today  = new Date(),
+                            expiry = new Date(today.getTime() + (60 * 60 * 1000));
+
+                        this.cookie.setItem("pm-token", authResponse.token, expiry, "/", domain, null);
                     }
 
                     this.userIsloggedIn.emit(validCredentials);
+
                     resolve(validCredentials);
                 }
             );
@@ -38,7 +47,7 @@ export default class AuthenticationService {
 
     logout(): Promise<boolean> {
         return new Promise(resolve => {
-            window.sessionStorage.removeItem('pm-token');
+            this.cookie.removeItem('pm-token');
             this.userIsloggedIn.emit(false);
 
             resolve(true);
@@ -46,7 +55,7 @@ export default class AuthenticationService {
     }
 
     getToken() {
-        return window.sessionStorage.getItem('pm-token');
+        return this.cookie.getItem('pm-token');
     }
 
     isAuthorized(token: any[]): Promise<boolean> {

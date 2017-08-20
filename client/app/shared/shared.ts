@@ -6,6 +6,7 @@ import QueuedOnlyPipe    from './pipes/queued-only.pipe';
 import DateConvertPipe   from './pipes/date-convert.pipe';
 
 import AuthenticationService from './services/authentication.service';
+import CookieService         from './services/cookie.service';
 import SettingsService       from './services/settings.service';
 import TaskService           from './services/task.service';
 
@@ -17,7 +18,8 @@ const SHARED_PIPES: any[] = [
 const SHARED_PROVIDERS: any[] = [
     AuthenticationService,
     SettingsService,
-    TaskService
+    TaskService,
+    CookieService
 ];
 
 export {
@@ -32,5 +34,6 @@ export {
     AuthenticationService,
     SettingsService,
     TaskService,
+    CookieService,
     SHARED_PROVIDERS
 };
