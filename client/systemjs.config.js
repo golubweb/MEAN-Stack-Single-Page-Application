@@ -16,7 +16,8 @@
     },
     packages: {
       client: {
-        main: './built/main.js',
+        //main: './built/main.js',
+        main: './built/app.bundle.js',
         defaultExtension: 'js'
       },
       rxjs: {

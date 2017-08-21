@@ -6,6 +6,8 @@
   "license": "ISC",
   "private": true,
   "scripts": {
+    "build": "webpack --progress",
+    "watch": "webpack --watch",
     "preinstall": "rm -rf ./built",
     "postinstall": "npm run typings install",
     "tsc": "tsc",
@@ -46,20 +48,20 @@
     "serve-favicon": "~2.3.0",
     "systemjs": "0.19.40",
     "urlencoded-request-parser": "^1.0.1",
-    "webpack": "^1.14.0",
     "zone.js": "^0.8.4"
   },
   "devDependencies": {
     "@types/core-js": "^0.9.35",
     "@types/node": "^6.0.45",
     "concurrently": "^3.1.0",
-    "grunt": "^1.0.1",
-    "grunt-contrib-nodeunit": "^0.4.1",
-    "grunt-contrib-sass": "^1.0.0",
-    "grunt-contrib-watch": "^1.0.0",
+    "extract-text-webpack-plugin": "2.1.2",
     "lite-server": "^2.2.2",
+    "node-sass": "^4.5.3",
     "nodemon": "^1.11.0",
     "ruby": "^0.6.1",
+    "sass-loader": "^6.0.6",
+    "webpack": "^3.2.0",
+    "ts-loader": "^2.3.3",
     "typescript": "^2.2.1"
   }
 }
