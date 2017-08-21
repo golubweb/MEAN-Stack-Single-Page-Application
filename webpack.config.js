@@ -9,8 +9,7 @@ module.exports = {
     entry: ['./client/app/main.ts', './client/public/assets/scss/style.scss'],
     output: {
         path: path.resolve(__dirname, 'client/built'),
-        filename: 'app.bundle.js',
-        publicPath: 'client/built'
+        filename: 'app.bundle.js'
     },
 
     module: {
@@ -37,6 +36,6 @@ module.exports = {
     ],
 
     resolve: {
-        extensions: ['.ts', '.scss']
+        extensions: ['.js', '.ts', '.scss']
     }
 }
