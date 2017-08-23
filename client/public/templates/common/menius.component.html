@@ -1,5 +1,3 @@
-<h1>Ovo je MENI NAV!</h1>
-
 <ul>
     <li *ngFor="let item of mainMenu; let i = index">
         <a [routerLink]="['/' + item.url]">{{ item.title }}</a>

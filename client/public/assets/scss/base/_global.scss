@@ -4,13 +4,6 @@
 /*===============// Body */
 body {font-family: $font-open;}
 
-/*===============// Box Model */
-* {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
-
 /*===============// Global Links */
 a {
   font-family: $font-open;
@@ -19,5 +12,53 @@ a {
   &:hover {text-decoration: none;}
 }
 
-/*===============// Global Input Setup */
+/*------- Hedings -------*/
+h1 {font-size: 26px;}
+h2 {font-size: 24px; color: #bb152f;}
+	h2 a {color: #bb152f;}
+
+h3 {font-size: 22px;}
+	h3 a {color: #222;}
+
+h3 {font-size: 20px;}
+h5 {font-size: 18px;}
+h6 {font-size: 16px;}
+
+h1, h2, h3, h4, h5, h6 {font-family: 'Oswald', sans-serif; text-transform: uppercase;}
+
+/*===========================================================
+	GLOBAL
+===========================================================*/
+body {
+	position: relative;
+	font: normal 13px/150% 'Open Sans';
+	color: #333;
+	line-height: normal;
+	background: fixed center top;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+section {width: 100%; display: table}
+
+a {outline: none; text-decoration: none;}
+/*a:hover {opacity: 0.7;}*/
+
+.left   {float: left;}
+.right  {float: right;}
+
+.hidden {display: none;}
+.show   {display: block;}
+
+ul, ol {list-style: none;}
+
+*, *:before, *:after {
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
 input::-moz-focus-inner {border: 0; padding: 0;}
+form input[type="text"], form input[type="submit"] {vertical-align: middle; box-shadow: none; -moz-box-shadow: none; -webkit-box-shadow: none; border-radius: 0;}
+.headlogo strong, .foot-logo strong {position: absolute; top: -999em; left: -999em; overflow: hidden; text-indent: -999em;}

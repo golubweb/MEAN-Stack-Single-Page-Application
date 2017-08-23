@@ -5,13 +5,7 @@ import { AuthenticationService } from './shared/shared';
 
 @Component({
     selector: 'root-app',
-    templateUrl: '/templates/app.component.html',
-    styles: [`
-        .navbar-nav .active {
-            font-weight: bold;
-            border-bottom: 2px solid #d9534f
-        }
-    `]
+    templateUrl: '/templates/app.component.html'
 })
 export default class AppComponent {
     userIsLoggedIn: boolean;

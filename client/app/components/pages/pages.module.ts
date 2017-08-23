@@ -1,4 +1,4 @@
-import { NgModule }      from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule }  from '@angular/common';
 import { RouterModule }  from '@angular/router';
 
@@ -6,7 +6,8 @@ import PagesComponent    from './pages.component';
 import HomePageComponent from './home-page.component';
 import AnyPageComponent  from './any-page.component';
 
-import PagesService   from './services/pages.service';
+import PagesService from './services/pages.service';
+import LayoutModule from '../layout/layout.module';
 
 const PagesRoutesModule: any[] = [
     {
@@ -20,9 +21,18 @@ const PagesRoutesModule: any[] = [
 ];
 
 @NgModule({
-    imports:      [ CommonModule, RouterModule.forRoot(PagesRoutesModule) ],
-    declarations: [ PagesComponent, HomePageComponent, AnyPageComponent ],
+    imports:      [
+        CommonModule,
+        LayoutModule,
+        RouterModule.forRoot(PagesRoutesModule)
+    ],
+    declarations: [
+        PagesComponent,
+        HomePageComponent,
+        AnyPageComponent
+    ],
     providers:    [ PagesService ],
+    schemas:      [ CUSTOM_ELEMENTS_SCHEMA ],
     exports:      [ PagesComponent ]
 })
 export default class PagesModule { }

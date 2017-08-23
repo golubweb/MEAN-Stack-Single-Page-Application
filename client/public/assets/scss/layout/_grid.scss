@@ -1,0 +1,193 @@
+
+/*===========================================================
+	One Article Box
+===========================================================*/
+.one-article h2 {padding: 15px 1.7% 15px 1.7%; text-shadow: 1px 2px 1px #2e2e2e; border-bottom:1px solid #c5c2c2;}
+	.one-article article {width: 100%; display: table; padding: 0 1.7% 15px; border-bottom:1px solid #c5c2c2;
+        background: repeat-x left 1px;
+    }
+
+	.bigImg-left figure     {float: left; margin: 5px 15px 15px 0; z-index: 12;}
+	.bigImg-left figure a:hover {opacity: 1;}
+	.bigImg-left figure a img   {width: 100%; display: block; overflow: hidden; border: 1px solid #d3cdcc;}
+	.one-article.bigImg-left > img {width: 100%;}
+
+	.one-article article .text-box {width: 100%; display: table;}
+	.one-article article:last-child {box-shadow: 0 3px 4px #000;}
+
+/*===========================================================
+	Two Article Box
+===========================================================*/
+.two-article {}
+	.two-article h2 {padding: 15px 1.7% 15px 1.7%; text-shadow: 1px 2px 1px #2e2e2e; border-bottom:1px solid #c5c2c2;}
+	.two-article article {width:50%; display: table; float: left; padding: 0 1.7% 15px; border-bottom:1px solid #c5c2c2;
+        background: repeat-x left 1px;
+    }
+
+/*===========================================================
+	Three Article Box
+===========================================================*/
+.three-article {}
+	.three-article h2 {padding: 15px 1.7% 15px 1.7%; text-shadow: 1px 2px 1px #2e2e2e; border-bottom:1px solid #c5c2c2;}
+	.three-article article {width:33.3%; display: table; float: left; padding: 0 1.7% 15px; border-bottom:1px solid #c5c2c2;
+        background:repeat-x left 1px;
+    }
+
+/*===========================================================
+	Four Article Box
+===========================================================*/
+.four-article {}
+
+/*===========================================================
+	Five Article Box
+===========================================================*/
+.five-article {}
+
+/*===========================================================
+	Global position images in figure tag
+===========================================================*/
+.bigImg-left   {float: left;}
+.img-center {margin: 0 auto;}
+.img-center figure {margin: 0 auto;}
+
+.img-right  {float: right;}
+
+
+
+
+/*===========================================================
+	Main layout
+===========================================================*/
+#left-main {float: left; margin-right: 1%;}
+#center-main {width: 76%; float: left; margin:  0 1%;}
+#fullwidth-main {
+    display: table;
+    float: none;
+    margin: 0;
+    padding-top: 15px;
+    width: 100%;
+}
+
+/*===========================================================
+	Sidebar layout
+===========================================================*/
+#sidebar-right {}
+
+	/* Right Main Navigation
+	--------------------------------------------------*/
+	#sidebar-right nav li .sub-menu {left: -97%;}
+
+/*===========================================================
+	Portfolio layout
+===========================================================*/
+.portfolio_List .one-article {padding-bottom: 20px;}
+.portfolio_List .one-article h2 {margin-bottom: 20px;}
+.portfolio_List article {
+		float: left;
+	    width: 45%;
+	    position: relative;
+	    padding: 0;
+	    margin: 15px 2.5%;
+	    text-align: center;
+	    border: 5px solid #332e20;
+	    background: none;
+	}
+	.portfolio_List article:nth-child(even) {clear: both;}
+	.portfolio_List article:first-of-type(1) {clear: none;}
+	.portfolio_List article:last-of-type {box-shadow: none;}
+
+	.portfolio_List article .blog-box {
+	    width: calc(100% - 60px);
+		position: absolute;
+		z-index: 99;
+	    color: #252729;
+	    margin: 0 auto;
+	    padding: 15px 10px;
+	    position: absolute;
+	    top: 40%;
+	    left: 30px;
+	    text-transform: uppercase;
+	    border: 1px solid #cdcdcf;
+		background-color: rgba(224, 222, 217, 0.7);
+	}
+	.portfolio_List article .blog-box h3 {margin: 0;}
+	.portfolio_List article .blog-box .port-link {
+		width: 70px;
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		background-color: #332e20;
+	}
+	.portfolio_List article .blog-box .port-link:after {
+	    width: 100%;
+	    height: 100%;
+	    padding: 11px;
+		content: "\f0c1";
+		color: #fff;
+	    display: block;
+	    font-family: "FontAwesome";
+	    font-size: 30px;
+	    text-align: center;
+	}
+	.portfolio_List article .blog-box:hover .port-link:after {opacity: 0.6;}
+
+	.portfolio_List article figure {width: 100%; margin: 0;}
+	.portfolio_List article figure img {width: 100%;}
+	.portfolio_List article .port-text {color: #fff; z-index: 99; position: absolute; bottom: 0; left: 0; padding: 5px; background-color:rgba(0,0,0,0.3); }
+
+/*===========================================================
+	Width in Elements
+===========================================================*/
+.wid-100 {width: 100%;}
+	.wid-99 {width: 99%;}
+	.wid-98 {width: 98%;}
+	.wid-97 {width: 97%;}
+	.wid-96 {width: 96%;}
+.wid-95 {width: 95%;}
+	.wid-94 {width: 94%;}
+	.wid-93 {width: 93%;}
+	.wid-92 {width: 92%;}
+	.wid-91 {width: 91%;}
+.wid-90 {width: 90%;}
+.wid-85 {width: 85%;}
+.wid-80 {width: 80%;}
+.wid-75 {width: 75%;}
+.wid-70 {width: 70%;}
+.wid-65 {width: 65%;}
+.wid-60 {width: 60%;}
+	.wid-59 {width: 59%;}
+	.wid-58 {width: 58%;}
+	.wid-57 {width: 57%;}
+	.wid-56 {width: 56%;}
+.wid-55 {width: 55%;}
+	.wid-54 {width: 54%;}
+	.wid-53 {width: 53%;}
+	.wid-52 {width: 52%;}
+	.wid-51 {width: 51%;}
+.wid-50 {width: 50%;}
+	.wid-49 {width: 49%;}
+	.wid-48 {width: 48%;}
+	.wid-47 {width: 47%;}
+	.wid-46 {width: 46%;}
+.wid-45 {width: 45%;}
+	.wid-44 {width: 44%;}
+	.wid-43 {width: 43%;}
+	.wid-42 {width: 42%;}
+	.wid-41 {width: 41%;}
+.wid-40 {width: 40%;}
+	.wid-39 {width: 39%;}
+	.wid-38 {width: 38%;}
+	.wid-37 {width: 37%;}
+	.wid-36 {width: 36%;}
+	.wid-35 {width: 35%;}
+.wid-35 {width: 35%;}
+	.wid-34 {width: 34%;}
+	.wid-33 {width: 33%;}
+	.wid-32 {width: 32%;}
+	.wid-31 {width: 31%;}
+.wid-30 {width: 30%;}
+.wid-25 {width: 25%;}
+.wid-20 {width: 20%;}
+.wid-15 {width: 15%;}
+.wid-10 {width: 10%;}
+.wid-5  {width: 5%;}

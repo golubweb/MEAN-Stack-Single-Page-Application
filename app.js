@@ -52,15 +52,15 @@ app.use(expressValidator());
 //Support Static files
 app.set('views', express.static(path.join(__dirname, '../client/public/views')));
 
-app.use("/client", express.static('client'));
+app.use("/client",       express.static('client'));
 app.use("/node_modules", express.static('node_modules'));
 
-app.use('/built', express.static(path.join(__dirname, 'client/built')));
+app.use('/built',     express.static(path.join(__dirname, 'client/built')));
 app.use('/templates', express.static(path.join(__dirname, 'client/public/templates')));
-app.use('/images', express.static(path.join(__dirname, 'client/public/assets/images')));
-app.use('/data', express.static(path.join(__dirname, 'client/app/shared/data')))
-app.use('/js', express.static(path.join(__dirname, 'client/public/libs')));
-app.use('/css', express.static(path.join(__dirname, 'client/public/css')));
+app.use('/images',    express.static(path.join(__dirname, 'client/public/assets/images')));
+app.use('/data',      express.static(path.join(__dirname, 'client/app/shared/data')))
+app.use('/js',        express.static(path.join(__dirname, 'client/public/libs')));
+app.use('/css',       express.static(path.join(__dirname, 'client/public/css')));
 
 // Run Router
 app.use('/',    index);

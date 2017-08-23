@@ -6,7 +6,10 @@ var extractPlugin = new ExtractTextPlugin({
 });
 
 module.exports = {
-    entry: ['./client/app/main.ts', './client/public/assets/scss/style.scss'],
+    entry: [
+        './client/app/main.ts',
+        './client/public/assets/scss/style.scss'
+    ],
     output: {
         path: path.resolve(__dirname, 'client/built'),
         filename: 'app.bundle.js'
