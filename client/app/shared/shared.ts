@@ -4,6 +4,8 @@ import Queueable from './interfaces/queueable';
 import FormattedTimePipe from './pipes/formatted-time.pipe';
 import QueuedOnlyPipe    from './pipes/queued-only.pipe';
 import DateConvertPipe   from './pipes/date-convert.pipe';
+import DateYearPipe      from './pipes/date-year.pipe';
+import DateMonthPipe     from './pipes/date-month.pipe';
 
 import AuthenticationService from './services/authentication.service';
 import CookieService         from './services/cookie.service';
@@ -29,6 +31,8 @@ export {
     FormattedTimePipe,
     QueuedOnlyPipe,
     DateConvertPipe,
+    DateYearPipe,
+    DateMonthPipe,
     SHARED_PIPES,
 
     AuthenticationService,

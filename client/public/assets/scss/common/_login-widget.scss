@@ -1,0 +1,102 @@
+/* Global Login right top
+--------------------------------------------------*/
+.login__panel {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 9999;
+    cursor: pointer;
+    text-align: center;
+    background: #d71d3b;
+
+    &:before {
+        width: 150px;
+        height: 150px;
+        position: absolute;
+        bottom: -64%;
+        left: -20px;
+        content: "";
+        z-index: -1;
+        -webkit-transform: rotate(46deg);
+        -moz-transform: rotate(46deg);
+        -o-transform: rotate(46deg);
+        transform: rotate(46deg);
+        box-shadow: 0 1px 4px #222;
+        background: #d71d3b;
+    }
+
+    > .profil__login {
+        width: 250px;
+        height: 90px;
+        position: absolute;
+        top: -80px;
+        left: 77px;
+        padding: 10px 0;
+        z-index: -2;
+        text-align: left;
+        background: #fff;
+
+        &:before {
+            width: 0;
+            height: 0;
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -93px;
+            border-bottom: 90px solid transparent;
+            border-right: 93px solid #fff;
+            border-top: 0 solid transparent;
+        }
+    }
+
+    &--form {
+        border: 1px solid red;
+
+        &:before,
+        input:not([type="submit"]) {
+            width: calc(100% - 88px);
+            height: 25px;
+            font-size: 12px;
+            margin-bottom: 5px;
+            padding: 5px;
+            color: #7c7b7b;
+            box-shadow: none;
+            border: 1px solid #bab9b9;
+        }
+        input[type="email"] {
+            width: calc(100% - 59px);
+            position: relative;
+            margin-left: -29px;
+        }
+        input:active,
+        input:focus {box-shadow: none; outline: 0;}
+
+        button {
+            width: 35px;
+            height: 35px;
+            position: absolute;
+            top: 35px;
+            right: 47px;
+            line-height: 0;
+            border: none;
+            background: none;
+        }
+        button:before {content: "\f023"; font-family: 'FontAwesome'; font-size: 36px; line-height: 35px; color: #8b8b8b;}
+        button.notLocked:before {content: "\f09c";}
+
+        a {padding-left: 15px; font-size: 10px; color: #bab9b9;}
+    }
+}
+
+
+
+
+
+.icon__login, .icon-login-active {width: 30px; height: 30px; display: block; position: absolute; top: calc(50% - 10px); left: calc(50% - 15px);}
+.icon__login:hover,
+.icon__login-active:hover {opacity: 0.7;}
+.icon__login:before,
+.icon__login-active:before {content: "\f007"; font-family:'FontAwesome'; font-size: 32px; line-height: normal; color: #d9d9d9;}
+.icon__login-active:before {content: "\f124";}

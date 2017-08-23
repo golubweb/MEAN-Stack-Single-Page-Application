@@ -11,7 +11,7 @@ import SubMenius     from './interfaces/sub-menius.interface';
     selector:    'nav-menu',
     templateUrl: 'templates/common/menius.component.html'
 })
-class MeniusComponent implements OnInit {
+class MeniusComponent {
     mainMenu: MainMenius[] = [];
     subMenu:  SubMenius[] = [];
 

@@ -1,0 +1,28 @@
+<!-- Start Login Widget -->
+<div class="login__panel">
+    <span class="icon__login"></span>
+
+    <form class="login__panel--form">
+        <input
+            type="email"
+            placeholder="Email"
+            name="user_email"
+            ng-model="usr.email"
+            required
+        />
+
+        <input
+            type="password"
+            placeholder="Password"
+            name="user_pass"
+            ng-model="usr.pass"
+            ng-minlength="5"
+            ng-maxlength="20"
+            required
+        />
+
+        <button id="submit-log"></button>
+        <a href="#/register">Create account</a>
+    </form>
+</div>
+<!-- End Login Widget -->

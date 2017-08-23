@@ -25,11 +25,18 @@ module.exports = {
                 test: /\.scss$/,
                 use: extractPlugin.extract({
                     use: [
-                        { loader: 'css-loader'},
-                        { loader: 'sass-loader'}
+                        { loader: 'css-loader?url=false' },
+                        { loader: 'sass-loader' }
                     ],
                     fallback: 'style-loader'
                 })
+            },
+            {
+                test: /\.(jpe?g|png|gif|svg)$/i,
+                loaders: [
+                    'file?hash=sha512&digest=hex&name=images/[name].[ext]',
+                    'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
+                ]
             }
         ]
     },

@@ -13,11 +13,9 @@ import LoginComponent        from './components/login/login.component';
 import PageNotFoundComponent from './components/error/page-not-found.component';
 
 import AppRoutingModule from './app-routing.module';
-//import MeniusModule     from './components/layout/menius/menius.module';
 import TimerModule      from './components/timer/timer.module';
 import PagesModule      from './components/pages/pages.module';
 import PostsModule      from './components/blog/posts.module';
-//import LayoutModule     from './components/layout/layout.module';
 
 @NgModule({
     imports:      [
@@ -25,11 +23,9 @@ import PostsModule      from './components/blog/posts.module';
         FormsModule,
         HttpModule,
         ReactiveFormsModule,
-        //MeniusModule,
         TimerModule,
         PagesModule,
         PostsModule,
-        //LayoutModule,
         AppRoutingModule
     ],
     declarations: [

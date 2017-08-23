@@ -4,8 +4,8 @@ import { Pipe, PipeTransform } from '@angular/core';
     name: 'dateConvert'
 })
 export default class DateConvertPipe implements PipeTransform {
-    transform(datePost: string): string {
-        let date  = new Date(datePost),
+    transform(postDate: string): string {
+        let date  = new Date(postDate),
             day   = date.getDate(),
             year  = date.getFullYear(),
             month = date.getMonth();

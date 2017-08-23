@@ -2,18 +2,48 @@
 /*===========================================================
 	One Article Box
 ===========================================================*/
-.one-article h2 {padding: 15px 1.7% 15px 1.7%; text-shadow: 1px 2px 1px #2e2e2e; border-bottom:1px solid #c5c2c2;}
-	.one-article article {width: 100%; display: table; padding: 0 1.7% 15px; border-bottom:1px solid #c5c2c2;
-        background: repeat-x left 1px;
+.one__article {
+    h2 {
+        padding: 15px 1.7% 15px 1.7%;
+        text-shadow: 1px 2px 1px #2e2e2e;
+        border-bottom:1px solid #c5c2c2;
     }
 
-	.bigImg-left figure     {float: left; margin: 5px 15px 15px 0; z-index: 12;}
-	.bigImg-left figure a:hover {opacity: 1;}
-	.bigImg-left figure a img   {width: 100%; display: block; overflow: hidden; border: 1px solid #d3cdcc;}
-	.one-article.bigImg-left > img {width: 100%;}
+    &.big__left {
+        > img {width: 100%;}
+    }
 
-	.one-article article .text-box {width: 100%; display: table;}
-	.one-article article:last-child {box-shadow: 0 3px 4px #000;}
+
+	article {
+        width: 100%;
+        display: table;
+        padding: 0 1.7% 15px;
+        border-bottom:1px solid #c5c2c2;
+        background: repeat-x left 1px;
+
+        .text-box {
+            width: 100%;
+            display: table;
+        }
+
+        &:last-child {box-shadow: 0 3px 4px #000;}
+    }
+
+	figure     {
+        float: left;
+        margin: 5px 15px 15px 0;
+        z-index: 12;
+
+        a img   {
+            width: 100%;
+            display: block;
+            overflow: hidden;
+            border: 1px solid #d3cdcc;
+
+            &:hover {opacity: 1;}
+        }
+    }
+}
 
 /*===========================================================
 	Two Article Box
@@ -46,7 +76,7 @@
 /*===========================================================
 	Global position images in figure tag
 ===========================================================*/
-.bigImg-left   {float: left;}
+.big__left   {float: left;}
 .img-center {margin: 0 auto;}
 .img-center figure {margin: 0 auto;}
 

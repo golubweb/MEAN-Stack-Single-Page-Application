@@ -1,16 +1,69 @@
-<h1>Postovi za kategoriju</h1>
+<div id="wrapper" class="blog__CatList">
+	<!-- Start Page -->
+	<div class="page">
+		<!-- Start Aside -->
+		<aside>
+			<!-- Start Header -->
+            <main-header></main-header>
+			<!-- End Header -->
 
-<article *ngFor="let item of postList; let i = index">
-    <h2>
-        <a [routerLink]="['/blog/post/' + item._id]">{{ item.title }}</a>
-    </h2>
+			<!-- Start Sidebar -->
+			<!--<sidebar></sidebar>-->
+			<!-- End Sidebar -->
+		</aside>
+		<!-- End Aside -->
 
-    <p>
-        <span>{{ item.author }}</span>
-        <span>{{ item.tags }}</span>
-        <span>{{ item.created | dateConvert }}</span>
-        <!-- date: 'shortDate' -->
-    </p>
+		<!-- Start Main -->
+		<main>
+			<section class="one__article big__left">
+				<h2>Blog</h2>
 
-    <p>{{ item.summary }}</p>
-</article>
+				<article *ngFor="let item of postList; let i = index">
+					<div class="blog__box">
+						<figure>
+							<span>{{ item.created | dateMonth }}<i>{{ item.created | dateYear }}</i></span>
+						</figure>
+
+						<h3>
+                            <a [routerLink]="['/blog/post/' + item._id]">{{ item.title }}</a>
+                        </h3>
+
+						<ul>
+							<li><span>By:</span> {{ item.author }}</li>
+							<li><a [routerLink]="['/blog/post/' + item._id]"><span>Category:</span> {{ item.blog_category }}</a></li>
+							<li><span>Comment:</span> {{ item.comment_sum }}</li>
+							<li><a [routerLink]="['/blog/post/' +item.tags_id]"><span>Tags:</span> {{ item.tags }}</a></li>
+						</ul>
+					</div>
+
+					<figure class="wid-45 shadow" *ngIf="item.thumb_stats == 1">
+						<div class="overlay-top">
+							<img src="/images/{{ item.thumb }}" alt="Hands" />
+							<div class="overlay-panel">
+								<a class="zoom-img" href="/"></a>
+								<a class="read-more" [routerLink]="['/blog/post/' + item._id]"></a>
+							</div>
+						</div>
+					</figure>
+
+					<div class="text__box">
+						<p>{{ item.summary }}</p>
+						<a [routerLink]="['/blog/post/' + item._id]" class="btn-medium">Read More</a>
+					</div>
+				</article>
+			</section>
+
+			<!-- Start Footer -->
+			<main-footer></main-footer>
+			<!-- End Footer -->
+		</main>
+		<!-- End Main -->
+	</div>
+	<!-- End Page -->
+
+	<!-- Start Login -->
+	<login-widget></login-widget>
+	<!-- End Login -->
+</div>
+<!-- End Wrapper -->
+

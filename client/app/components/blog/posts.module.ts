@@ -3,7 +3,7 @@ import { CommonModule }                     from '@angular/common';
 import { RouterModule, Routes }             from '@angular/router';
 
 import BlogService         from './services/blog.service';
-import { DateConvertPipe } from '../../shared/shared';
+import { DateConvertPipe, DateYearPipe, DateMonthPipe } from '../../shared/shared';
 
 import PostsComponent            from './posts.component';
 import PostSingleComponent       from './posts-single.component';
@@ -11,6 +11,8 @@ import PostsAllCategoryComponent from './posts-all-category.component';
 import PostsCategoryComponent    from './posts-category.component';
 
 import PageNotFoundComponent    from '../error/page-not-found.component';
+
+import LayoutModule from '../layout/layout.module';
 
 const TimerRoutsModule: any[] = [
     {
@@ -26,9 +28,15 @@ const TimerRoutsModule: any[] = [
 ];
 
 @NgModule({
-    imports:      [ CommonModule, RouterModule.forRoot(TimerRoutsModule) ],
+    imports:      [
+        CommonModule,
+        LayoutModule,
+        RouterModule.forRoot(TimerRoutsModule)
+    ],
     declarations: [
         DateConvertPipe,
+        DateYearPipe,
+        DateMonthPipe,
         PostsComponent,
         PostsCategoryComponent,
         PostSingleComponent,
