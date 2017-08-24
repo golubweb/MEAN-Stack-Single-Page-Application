@@ -1,11 +1,4 @@
 {
-	"mysql": {
-		"host": "127.0.0.1",
-		"user": "root",
-		"password": "golubweb3000",
-		"port": 3306,
-		"database": "golubweb_practically"
-	},
     "mongoDB": {
         "database": "mongodb://localhost:27017/golubweb-mean",
         "secret":   "da39a3ee5e6b4b0d3255bfef95601890afd80709"

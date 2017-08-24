@@ -4,7 +4,7 @@ import { Router }    from '@angular/router';
 import { AuthenticationService } from './shared/shared';
 
 @Component({
-    selector: 'root-app',
+    selector:    'root-app',
     templateUrl: '/templates/app.component.html'
 })
 export default class AppComponent {

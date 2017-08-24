@@ -1,0 +1,39 @@
+/* User Page
+--------------------------------------------------*/
+.user__page {
+    h1 {
+        color: #bb152f;
+        font-size: 24px;
+        padding: 20px;
+        text-shadow: 1px 2px 1px #2e2e2e;
+        border-bottom: 1px solid #c5c2c2;
+    }
+
+    form {
+        width: 310px;
+        display: table;
+        padding: 20px;
+        text-align: left;
+
+        label {
+            display: block;
+            padding-bottom: 5px;
+        }
+
+        input {
+            width: 300px;
+            height: auto;
+            margin-bottom: 5px;
+            padding: 10px 5px;
+            color: #7c7b7b;
+            box-shadow: none;
+            outline: 0;
+            border: 1px solid #bab9b9;
+
+            &:focus {box-shadow: none; outline: 0;}
+
+            &[type="text"] {width: 300px;}
+            &[type="submit"] {height: auto; margin-top: 10px; padding: 10px; border: none;}
+        }
+    }
+}

@@ -1,0 +1,26 @@
+/* Button Medium
+--------------------------------------------------*/
+.btn-medium {
+    float: left;
+    margin-top: 10px;
+    padding: 7px 15px;
+    color: #151515;
+    font-size: 18px;
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    border: 1px solid #dadada;
+
+    background-image: -webkit-gradient(
+        linear,
+        left bottom,
+        left top,
+        color-stop(0, #B2B1B1),
+        color-stop(0.22, #E4E4E4),
+        color-stop(0.58, #FFFFFF)
+    );
+
+    background-image: -o-linear-gradient(bottom, #B2B1B1 0%, #E4E4E4 10%, #FFFFFF 58%);
+    background-image: -moz-linear-gradient(bottom, #B2B1B1 0%, #E4E4E4 10%, #FFFFFF 58%);
+    background-image: -webkit-linear-gradient(bottom, #B2B1B1 0%, #E4E4E4 10%, #FFFFFF 58%);
+    background-image: -ms-linear-gradient(bottom, #B2B1B1 0%, #E4E4E4 10%, #FFFFFF 58%);
+}

@@ -1,0 +1,38 @@
+/* Shadow
+--------------------------------------------------*/
+.shadow {
+    position:relative;
+
+    &:before, &:after {
+      z-index: -1;
+      position: absolute;
+      content: "";
+      bottom: 20px;
+      width: 42%;
+      top: 4%;
+      max-width:300px;
+      -webkit-box-shadow: 0 25px 7px #818181;
+      -moz-box-shadow: 0 25px 7px #818181;
+      box-shadow: 0 25px 7px #818181;
+    }
+
+    &:before {
+      -webkit-transform: rotate(-8deg);
+      -moz-transform: rotate(-8deg);
+      -o-transform: rotate(-8deg);
+      -ms-transform: rotate(-8deg);
+      transform: rotate(-8deg);
+      left: 15px;
+      right: auto;
+    }
+
+    &:after {
+      -webkit-transform: rotate(8deg);
+      -moz-transform: rotate(8deg);
+      -o-transform: rotate(8deg);
+      -ms-transform: rotate(8deg);
+      transform: rotate(8deg);
+      right: 15px;
+      left: auto;
+    }
+}

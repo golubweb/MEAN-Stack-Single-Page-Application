@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, FormControl, Validators, ControlGroup, Control } from '@angular/forms';
 
 @Component({
-    selector: 'login-widget',
+    selector:    '[login-widget]',
     templateUrl: 'templates/layout/login-widget.component.html'
 })
 class LoginWidgetComponent implements OnInit {

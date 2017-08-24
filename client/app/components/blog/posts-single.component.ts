@@ -9,7 +9,7 @@ import BlogService from './services/blog.service';
     templateUrl: 'templates/blog/posts-single.component.html'
 })
 export default class PostSingleComponent implements OnInit {
-    singlePost: Post[] = [];
+    single: Post[] = [];
 
     constructor(
         private router: Router,
@@ -22,7 +22,7 @@ export default class PostSingleComponent implements OnInit {
             let postID = params['id'];
 
             this.blogService.getPost(postID).subscribe(response => {
-                this.singlePost = response;
+                this.single = response;
             });
         });
     }

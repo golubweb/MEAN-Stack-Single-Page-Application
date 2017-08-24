@@ -1,0 +1,36 @@
+/* Home Content
+--------------------------------------------------*/
+.home__page {
+    nav {margin-bottom: 0 !important;}
+
+    .home__content {
+        width: 100%;
+        margin: 500px 0 10px;
+        background-color: rgba(0, 0, 1, 0.6);
+        -webkit-box-shadow: 0 8px 4px -6px #000;
+           -moz-box-shadow: 0 8px 4px -6px #000;
+                box-shadow: 0 8px 4px -6px #000;
+
+        &--title {
+            position: relative;
+            padding: 25px 30px;
+
+            h2 {
+                font-size: 45px;
+                color: #fff;
+                text-shadow: 0 2px 4px #000;
+
+                span {margin-top: 25px; padding-left: 45px; font-size: 35px; color: #bb152f; text-shadow: 0 2px 4px #000;}
+            }
+        }
+
+        &--links {
+            width: 100%;
+            display: table;
+            padding: 10px;
+            background: #fff;
+
+            a {width: 33%; float: left; font-size: 26px; color: #bb152f; font-family: 'Oswald'; text-align: center;}
+        }
+    }
+}

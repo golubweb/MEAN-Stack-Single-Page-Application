@@ -15,16 +15,22 @@
 @import 'layout/grid';
 
 // COMMON =============================
+@import 'common/header';
+@import 'common/footer';
+@import 'common/shadow';
+@import 'common/button';
 @import 'common/login-widget';
+@import 'common/figure-image';
 
 // PAGES ============================
 @import 'pages/pages';
+@import 'pages/home-page';
+@import 'pages/user-profile';
+@import 'pages/user-page';
 
 // BLOG ============================
 @import 'blog/blog';
-
-// COMPONENTS ============================
-//@import 'components/';
+@import 'blog/comments';
 
 // RESPONSIV =============================
 @import "responsiv/max-1024";

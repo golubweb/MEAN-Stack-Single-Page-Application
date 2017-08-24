@@ -1,14 +1,15 @@
-<div id="wrapper" class="blog__CatList">
+<!-- Start Wrapper -->
+<div id="wrapper">
 	<!-- Start Page -->
 	<div class="page">
 		<!-- Start Aside -->
 		<aside>
 			<!-- Start Header -->
-            <main-header></main-header>
+            <header main-header></header>
 			<!-- End Header -->
 
 			<!-- Start Sidebar -->
-			<!--<sidebar></sidebar>-->
+			<div main-sidebar-left></div>
 			<!-- End Sidebar -->
 		</aside>
 		<!-- End Aside -->
@@ -24,24 +25,23 @@
 							<span>{{ item.created | dateMonth }}<i>{{ item.created | dateYear }}</i></span>
 						</figure>
 
-						<h3>
-                            <a [routerLink]="['/blog/post/' + item._id]">{{ item.title }}</a>
-                        </h3>
-
-						<ul>
-							<li><span>By:</span> {{ item.author }}</li>
-							<li><a [routerLink]="['/blog/post/' + item._id]"><span>Category:</span> {{ item.blog_category }}</a></li>
-							<li><span>Comment:</span> {{ item.comment_sum }}</li>
-							<li><a [routerLink]="['/blog/post/' +item.tags_id]"><span>Tags:</span> {{ item.tags }}</a></li>
-						</ul>
+                        <div>
+                            <h3><a [routerLink]="['/blog/post/' + item._id]">{{ item.title }}</a></h3>
+                            <ul>
+                                <li><span>By:</span> {{ item.author }}</li>
+                                <li><a [routerLink]="['/blog/post/' + item._id]"><span>Category:</span> {{ item.blog_category }}</a></li>
+                                <li><span>Comment:</span> {{ item.comment_sum }}</li>
+                                <li><a [routerLink]="['/blog/post/' +item.tags_id]"><span>Tags:</span> {{ item.tags }}</a></li>
+                            </ul>
+                        </div>
 					</div>
 
 					<figure class="wid-45 shadow" *ngIf="item.thumb_stats == 1">
-						<div class="overlay-top">
+						<div class="overlay__top">
 							<img src="/images/{{ item.thumb }}" alt="Hands" />
-							<div class="overlay-panel">
-								<a class="zoom-img" href="/"></a>
-								<a class="read-more" [routerLink]="['/blog/post/' + item._id]"></a>
+							<div class="overlay__panel">
+								<a class="zoom__img" href="/"></a>
+								<a class="read__more" [routerLink]="['/blog/post/' + item._id]"></a>
 							</div>
 						</div>
 					</figure>
@@ -54,7 +54,7 @@
 			</section>
 
 			<!-- Start Footer -->
-			<main-footer></main-footer>
+			<footer main-footer></footer>
 			<!-- End Footer -->
 		</main>
 		<!-- End Main -->
@@ -62,7 +62,7 @@
 	<!-- End Page -->
 
 	<!-- Start Login -->
-	<login-widget></login-widget>
+	<div class="login__panel" login-widget></div>
 	<!-- End Login -->
 </div>
 <!-- End Wrapper -->

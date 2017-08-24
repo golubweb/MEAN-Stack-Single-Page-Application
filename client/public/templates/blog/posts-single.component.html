@@ -1,10 +1,55 @@
-<h1>{{ singlePost.title }}</h1>
+<!-- Start Wrapper -->
+<div id="wrapper">
+	<!-- Start Page -->
+	<div class="page">
+		<!-- Start Aside -->
+		<aside>
+			<!-- Start Header -->
+            <header main-header></header>
+			<!-- End Header -->
 
-<div>
-    <span> {{ singlePost.author }}</span><br />
-    <span> {{ singlePost.blog_category }}</span><br />
-    <span> {{ singlePost.comment_sum }}</span><br />
-    <span> {{ singlePost.created | dateConvert }}</span><br />
-    <span> {{ singlePost.tags }}</span><br />
-    <span> {{ singlePost.content }}</span>
+			<!-- Start Sidebar -->
+			<div main-sidebar-left></div>
+			<!-- End Sidebar -->
+		</aside>
+		<!-- End Aside -->
+
+		<!-- Start Main -->
+		<main>
+            <section class="one__article big__left">
+				<article>
+					<div class="blog__box">
+						<figure>
+							<span>{{ single.created | dateMonth }}<i>{{ single.created | dateYear }}</i></span>
+						</figure>
+
+                        <div>
+                            <h3><a href="#/post/{{ single.post_id }}">{{ single.title }}</a></h3>
+                            <ul>
+                                <li><span>By:</span> {{ single.author }}</li>
+                                <li><a [routerLink]="['/blog/post/' + single._id]"><span>Category:</span> {{ single.blog_category }}</a></li>
+                                <li><span>Comment:</span> {{ single.comment_sum }}</li>
+                                <li><a [routerLink]="['/blog/post/' + single.tags_id]"><span>Tags:</span> {{ single.tags }}</a></li>
+                            </ul>
+                        </div>
+					</div>
+
+					<img *ngIf="single.thumb_stats == 1" src="/images/{{ single.thumb }}" alt="Hands" style="width: 100%" />
+
+					<div class="text__box">{{ single.content }}</div>
+				</article>
+			</section>
+
+			<!-- Start Footer -->
+			<footer main-footer></footer>
+			<!-- End Footer -->
+		</main>
+		<!-- End Main -->
+	</div>
+	<!-- End Page -->
+
+	<!-- Start Login -->
+	<div class="login__panel" login-widget></div>
+	<!-- End Login -->
 </div>
+<!-- End Wrapper -->

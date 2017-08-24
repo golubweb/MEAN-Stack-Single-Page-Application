@@ -1,0 +1,71 @@
+/*===========================================================
+	USER PROFIL
+===========================================================*/
+.user_profil {
+    .topIcon {
+        width: 100%;
+        display: table;
+        background-color: rgba(0, 0, 1, 0.7);
+
+        > a {
+            width: 64px;
+            height: 50px;
+            float: left;
+            padding: 5px;
+            color: #fff;
+            font-family: "FontAwesome";
+            font-size: 32px;
+            text-align: center;
+            line-height: normal;
+            border: 1px solid #51524a;
+
+            &.userProfile:after {content: "\f007";}
+	        &.postProfile:after {content: "\F02D";}
+	        &.cmtProfile:after {content: "\f086";}
+	        &.editProfile:after {content: "\f044";}
+	        &.msgProfile:after {content: "\f01c";}
+        }
+    }
+
+	input[type="text"],
+	.area {
+        max-width: 100%;
+        height: 0;
+        color: #fff;
+        font-size: 0;
+	    border: 1px solid #51524a;
+	    /*box-shadow: 2px 3px 4px #ccc inset;*/
+	    color: #ebecec;
+	    font: 13px "Open Sans";
+	    min-height: 0;
+	    margin-top: 10px;
+	    max-width: 100%;
+	    padding-top: 3px;
+	    text-indent: 5px;
+	    width: 100%;
+	    color: #000;
+	}
+
+	.jqte_source.jqte_hiddenField {min-height: 0; height: 0; display: block; padding: 0; background: #fff;}
+
+	.profileContent input[type="submit"] {
+	    color: #151515;
+	    display: block;
+	    font-family: "Oswald",sans-serif;
+	    font-size: 18px;
+	    margin-top: 10px;
+	    padding: 7px 15px;
+	    cursor: pointer;
+	    text-transform: uppercase;
+	    border: 1px solid #dadada;
+	    background-image: -moz-linear-gradient(center bottom , #b2b1b1 0%, #e4e4e4 10%, #ffffff 58%);
+	}
+
+	form[name="postPfl"] {
+        select {width: 150px; display: block;}
+        label  {display: block; padding: 15px 0;}
+        input[type="submit"] {float: none;}
+    }
+
+	.msgPost {display: block; padding-top: 15px;}
+}

@@ -4,9 +4,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 import MeniusComponent from '../menius/menius.component';
 
 @Component({
-    selector: 'main-header',
+    selector: '[main-header]',
     directives: [ MeniusComponent ],
-    templateUrl: 'templates/header/header.component.html'
+    templateUrl: 'templates/common/header.component.html'
 })
 class HeaderComponent implements OnInit {
     constructor() {}

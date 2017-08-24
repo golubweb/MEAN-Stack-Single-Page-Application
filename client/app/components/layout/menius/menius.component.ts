@@ -8,7 +8,7 @@ import MainMenius    from './interfaces/main-menius.interface';
 import SubMenius     from './interfaces/sub-menius.interface';
 
 @Component({
-    selector:    'nav-menu',
+    selector:    '[nav-menu]',
     templateUrl: 'templates/common/menius.component.html'
 })
 class MeniusComponent {
