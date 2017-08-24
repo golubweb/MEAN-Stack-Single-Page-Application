@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators, ControlGroup, Control } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { Title } from '@angular/platform-browser';
 import { AuthenticationService } from '../../../shared/shared';
 
 @Component({
@@ -14,10 +13,11 @@ class LoginWidgetComponent implements OnInit {
     notValidCredentials: boolean = false;
     showUsernameHint:    boolean = false;
     showPasswordHint:    boolean = false;
+    userIsValid:         boolean = false;
 
     constructor(
         private router: Router,
-        private authenticationService: AuthenticationService
+        private authService: AuthenticationService
     ) {}
 
     ngOnInit() {
@@ -54,11 +54,22 @@ class LoginWidgetComponent implements OnInit {
         let credentials: any = this.loginForm.value;
         this.notValidCredentials = !this.loginForm.valid && this.loginForm.dirty;
 
-        this.authenticationService.login(credentials).then(success => {
+        this.authService.login(credentials).then(success => {
             if (success) {
-                this.router.navigate(['page/home-page']);
+                this.userIsValid = true;
+                //this.router.navigate(['page/home-page']);
             } else {
                 this.notValidCredentials = true;
+            }
+        });
+    }
+
+    logout($event): void {
+        $event.preventDefault();
+
+        this.authService.logout().then(success => {
+            if(success) {
+                this.userIsValid = true;
             }
         });
     }
@@ -74,7 +85,7 @@ class LoginWidgetComponent implements OnInit {
     }
 
     private passwordValidator(control: Control): { [key: string]: boolean } {
-        if(!/\s+/g.test(control.value)) {
+        if(/\s+/g.test(control.value)) {
             return {
                 'password': true
             }

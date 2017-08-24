@@ -1,11 +1,11 @@
 <!-- Start Login Widget -->
 <span class="login__panel--icon"></span>
 
-<div class="login__panel--form">
+<div class="login__panel--info" *ngIf="!userIsValid; else loginInfo">
     <form [formGroup]="loginForm" (ngSubmit)="authenticate(loginForm.value)">
         <div class="form-group">
             <input type="email" placeholder="Email" formControlName="username" required />
-            <p *ngIf="showUsernameHint" class="help-block">That does not look like a proper username(Email address)</p>
+            <p *ngIf="showUsernameHint" class="help-block">That does not look like a proper email</p>
         </div>
 
         <div class="form-group">
@@ -21,3 +21,11 @@
     </form>
 </div>
 <!-- End Login Widget -->
+
+<ng-template #loginInfo>
+    <div class="login__panel--info">
+        <p>Ulogovani ste!</p>
+
+        <button (click)="logout($event)">Logout</button>
+    </div>
+</ng-template>
