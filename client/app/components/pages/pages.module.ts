@@ -2,9 +2,10 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule }  from '@angular/common';
 import { RouterModule }  from '@angular/router';
 
-import PagesComponent    from './pages.component';
-import HomePageComponent from './home-page.component';
-import AnyPageComponent  from './any-page.component';
+import PagesComponent        from './pages.component';
+import HomePageComponent     from './home-page.component';
+import AnyPageComponent      from './any-page.component';
+import PageNotFoundComponent from './page-not-found.component';
 
 import PagesService from './services/pages.service';
 import LayoutModule from '../layout/layout.module';
@@ -15,8 +16,9 @@ const PagesRoutesModule: any[] = [
         component: PagesComponent,
         children: [
             { path: 'home-page', component: HomePageComponent },
-            { path: ':id',       component: AnyPageComponent }
-        ]
+            { path: ':id',       component: AnyPageComponent },
+            { path: '**',        component: PageNotFoundComponent }
+        ],
     }
 ];
 
@@ -29,7 +31,8 @@ const PagesRoutesModule: any[] = [
     declarations: [
         PagesComponent,
         HomePageComponent,
-        AnyPageComponent
+        AnyPageComponent,
+        PageNotFoundComponent
     ],
     providers:    [ PagesService ],
     schemas:      [ CUSTOM_ELEMENTS_SCHEMA ],

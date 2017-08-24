@@ -1,4 +1,39 @@
-<h1>Any STRANICA!</h1>
+<!-- Start Wrapper -->
+<div id="wrapper">
+	<!-- Start Page -->
+	<div class="page">
+		<!-- Start Aside -->
+		<aside>
+			<!-- Start Header -->
+            <header main-header></header>
+			<!-- End Header -->
 
-<h2>{{ single.title }}</h2>
-<div [innerHTML]="single.content"></div>
+			<!-- Start Sidebar -->
+			<div main-sidebar-left></div>
+			<!-- End Sidebar -->
+		</aside>
+		<!-- End Aside -->
+
+		<!-- Start Main -->
+		<main>
+            <section class="one__article big__left">
+				<h2>{{ single.title }}</h2>
+
+                <article>
+                    <div class="text__box" [innerHTML]="single.content"></div>
+				</article>
+			</section>
+
+			<!-- Start Footer -->
+			<footer main-footer></footer>
+			<!-- End Footer -->
+		</main>
+		<!-- End Main -->
+	</div>
+	<!-- End Page -->
+
+	<!-- Start Login -->
+	<div class="login__panel" login-widget></div>
+	<!-- End Login -->
+</div>
+<!-- End Wrapper -->

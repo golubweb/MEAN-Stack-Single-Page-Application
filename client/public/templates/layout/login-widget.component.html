@@ -2,28 +2,22 @@
 <span class="login__panel--icon"></span>
 
 <div class="login__panel--form">
-    <form>
-        <input
-            type="email"
-            placeholder="Email"
-            name="user_email"
-            ng-model="usr.email"
-            required
-        />
+    <form [formGroup]="loginForm" (ngSubmit)="authenticate(loginForm.value)">
+        <div class="form-group">
+            <input type="email" placeholder="Email" formControlName="username" required />
+            <p *ngIf="showUsernameHint" class="help-block">That does not look like a proper username(Email address)</p>
+        </div>
 
-        <input
-            type="password"
-            placeholder="Password"
-            name="user_pass"
-            ng-model="usr.pass"
-            ng-minlength="5"
-            ng-maxlength="20"
-            required
-        />
+        <div class="form-group">
+            <input type="password" placeholder="Password" formControlName="password" required />
+            <p *ngIf="showPasswordHint">The entered password is incorrect</p>
+        </div>
 
-        <button type="submit" class="login__panel--submit"></button>
+        <span class="login__panel-message" *ngIf="notValidCredentials">Your credentials are not valid!</span>
 
-        <a href="#/register">Create account</a>
+        <button type="submit" class="login__panel--submit" [disabled]="!loginForm.valid"></button>
+
+        <a routerLink="#/register">Create account</a>
     </form>
 </div>
 <!-- End Login Widget -->

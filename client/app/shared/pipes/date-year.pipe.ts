@@ -8,8 +8,6 @@ export default class DateYearPipe implements PipeTransform {
         let date = new Date(postDate),
             year = date.getFullYear();
 
-        console.log(year);
-
         return year;
     }
 }
