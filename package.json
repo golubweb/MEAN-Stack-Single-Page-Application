@@ -6,16 +6,11 @@
   "license": "ISC",
   "private": true,
   "scripts": {
+    "start": "nodemon ./bin/www",
     "build": "webpack --progress",
     "watch": "webpack --watch",
-    "preinstall": "rm -rf ./built",
-    "postinstall": "npm run typings install",
-    "tsc": "tsc",
-    "tsc:w": "tsc -w",
-    "lite": "lite-server",
-    "prestart": "tsc",
-    "start": "nodemon ./bin/www",
-    "typings": "typings"
+    "preinstall": "rm -rf ./client/built",
+    "postinstall": "npm run typings install"
   },
   "dependencies": {
     "@angular/common": "~4.0.0",
