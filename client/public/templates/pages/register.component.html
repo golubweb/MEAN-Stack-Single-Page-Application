@@ -1,25 +1,59 @@
-<!-- Start Register Page -->
-<div class="register__page">
-    <h2>Register Page</h2>
+<!-- Start Wrapper -->
+<div id="wrapper">
+	<!-- Start Page -->
+	<div class="page">
+		<!-- Start Aside -->
+		<aside>
+			<!-- Start Header -->
+            <header main-header></header>
+			<!-- End Header -->
 
-    <form>
-        <div class="form-group">
-            <input type="text" placeholder="name" required />
-        </div>
+			<!-- Start Sidebar -->
+			<div main-sidebar-left></div>
+			<!-- End Sidebar -->
+		</aside>
+		<!-- End Aside -->
 
-        <div class="form-group">
-            <input type="text" placeholder="nickname" required />
-        </div>
+		<!-- Start Main -->
+		<main>
+            <section class="one__article big__left">
+                <!-- Start Register Page -->
+                <div class="register__page">
+                    <h2>Register Page</h2>
 
-        <div class="form-group">
-            <input type="email" placeholder="email" required />
-        </div>
+                    <form [formGroup]="authorForm" (ngSubmit)="saveAuthor(authorForm.value)">
+                        <div class="form-group">
+                            <input type="text" placeholder="name" formControlName="name" required />
+                        </div>
 
-        <div class="form-group">
-            <input type="password" placeholder="password" required />
-        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="lastname" formControlName="lastname" required />
+                        </div>
 
-        <button type="submit" class="register__page--submit"></button>
-    </form>
+                        <div class="form-group">
+                            <input type="text" placeholder="nickname" formControlName="nickname" required />
+                        </div>
+
+                        <div class="form-group">
+                            <input type="email" placeholder="email" formControlName="email" required />
+                        </div>
+
+                        <div class="form-group">
+                            <input type="password" placeholder="password" formControlName="password" required />
+                        </div>
+
+                        <button type="submit" class="register__page--submit">Register Author</button>
+                    </form>
+                </div>
+                <!-- End Register Page -->
+            </section>
+
+			<!-- Start Footer -->
+			<footer main-footer></footer>
+			<!-- End Footer -->
+		</main>
+		<!-- End Main -->
+	</div>
+	<!-- End Page -->
 </div>
-<!-- End Register Page -->
+<!-- End Wrapper -->

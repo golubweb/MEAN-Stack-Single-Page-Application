@@ -1,0 +1,25 @@
+.login__wrap {
+    padding: 20px;
+
+    .login__panel {
+        &--icon {display: none;}
+
+        &--info {
+            position: static;
+            top: auto;
+            left: auto;
+
+            form {
+                input {margin: 0 0 15px;}
+
+                button[type="submit"] {
+                    position: static;
+
+                    &:before {display: none;}
+                }
+            }
+
+            &:before, &:after {display: none;}
+        }
+    }
+}

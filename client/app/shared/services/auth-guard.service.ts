@@ -20,12 +20,11 @@ export default class AuthGuardService implements CanActivate {
 
         return this.authService.isAuthorized(tokenData).then(authUserData => {
             if(!authUserData) {
-                alert('Nije Ulogovan');
-                this.router.navigate(['/page/register']);
-            } else {
-                alert('Jeste Ulogovan');
                 return true;
-            }
+            } else {
+                return false;
+            };
         });
     }
 }
+//this.router.navigate(['/page/register']);

@@ -15,7 +15,7 @@
 
         <span class="login__panel-message" *ngIf="notValidCredentials">Your credentials are not valid!</span>
 
-        <button type="submit" class="login__panel--submit" [disabled]="!loginForm.valid"></button>
+        <button type="submit" class="login__panel--submit" [disabled]="!loginForm.valid">Login</button>
 
         <a routerLink="/page/register">Create account</a>
     </form>
@@ -28,6 +28,8 @@
             <span>Name:  {{ userData.nick }}</span><br />
             <span>Email: {{ userData.email }}</span>
         </p>
+
+        <a routerLink="/profile/author">Your Profile</a>
 
         <button (click)="logout($event)">Logout</button>
     </div>

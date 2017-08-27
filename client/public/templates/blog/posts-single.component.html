@@ -24,12 +24,12 @@
 						</figure>
 
                         <div>
-                            <h3><a href="#/post/{{ single.post_id }}">{{ single.title }}</a></h3>
+                            <h3>{{ single.title }}</h3>
                             <ul>
                                 <li><span>By:</span> {{ single.author }}</li>
-                                <li><a [routerLink]="['/blog/post/' + single._id]"><span>Category:</span> {{ single.blog_category }}</a></li>
+                                <li><a [routerLink]="['/blog/post',  single.blog_category_id]"><span>Category:</span> {{ single.blog_category }}</a></li>
                                 <li><span>Comment:</span> {{ single.comment_sum }}</li>
-                                <li><a [routerLink]="['/blog/post/' + single.tags_id]"><span>Tags:</span> {{ single.tags }}</a></li>
+                                <li><a [routerLink]="['/blog/post', single.tags_id]"><span>Tags:</span> {{ single.tags }}</a></li>
                             </ul>
                         </div>
 					</div>

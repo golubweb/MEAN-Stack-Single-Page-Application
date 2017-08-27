@@ -24,6 +24,7 @@ const layoutList: any[] = [
 @NgModule({
     imports:      [
         CommonModule,
+        RouterModule,
         FormsModule,
         ReactiveFormsModule,
         MeniusModule

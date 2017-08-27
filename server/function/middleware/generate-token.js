@@ -18,7 +18,7 @@ function authenticate(userDB, req, res) {
 			}
 
 			token = jwt.sign(userData, config.jwt.secret, {expiresIn: 4000});
-            res.json({ success: true, token: token, data: userData });
+            res.json({ success: true, token: token });
 		} else {
 			res.json({ success: false, token: false });
 		}

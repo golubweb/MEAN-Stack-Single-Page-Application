@@ -3,15 +3,25 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule }                    from '@angular/platform-browser';
 import { HttpModule }                       from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule, Routes }             from '@angular/router';
 import { CookieService }                    from 'ngx-cookie-service';
 
 import { SHARED_PROVIDERS, SHARED_PIPES } from './shared/shared';
 
-import AppComponent     from './app.component';
+import AppComponent      from './app.component';
+import HomePageComponent from './components/pages/home-page.component';
 
-import AppRoutingModule from './app-routing.module';
-import PagesModule      from './components/pages/pages.module';
-import PostsModule      from './components/blog/posts.module';
+import PagesModule       from './components/pages/pages.module';
+import PostsModule       from './components/blog/posts.module';
+import ProfileModule     from './components/profile/profile.module';
+
+const AppRoutesModule: any[] = [
+    { path: '',               redirectTo:   'page/home-page', pathMatch: 'full' },
+    { path: 'page/home-page', component:    HomePageComponent },
+    { path: 'page',           loadChildren: '/PagesModule' },
+    { path: 'blog',           loadChildren: '/PostsModule' },
+    { path: 'profile',        loadChildren: '/ProfileModule' }
+];
 
 @NgModule({
     imports:      [
@@ -21,7 +31,8 @@ import PostsModule      from './components/blog/posts.module';
         ReactiveFormsModule,
         PagesModule,
         PostsModule,
-        AppRoutingModule
+        ProfileModule,
+        RouterModule.forRoot(AppRoutesModule, { enableTracing: true, useHash: true })
     ],
     declarations: [
         AppComponent,

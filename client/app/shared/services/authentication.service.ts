@@ -59,8 +59,6 @@ export default class AuthenticationService {
         let base64Url = token.split('.')[1];
         let base64 = base64Url.replace('-', '+').replace('_', '/');
 
-        console.log(JSON.parse(window.atob(base64))));
-
         return JSON.parse(window.atob(base64)));
     }
 

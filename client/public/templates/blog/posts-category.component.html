@@ -26,12 +26,12 @@
 						</figure>
 
                         <div>
-                            <h3><a [routerLink]="['/blog/post/' + item._id]">{{ item.title }}</a></h3>
+                            <h3><a [routerLink]="['/blog/post', item._id]">{{ item.title }}</a></h3>
                             <ul>
                                 <li><span>By:</span> {{ item.author }}</li>
-                                <li><a [routerLink]="['/blog/post/' + item._id]"><span>Category:</span> {{ item.blog_category }}</a></li>
+                                <li><a [routerLink]="['/blog/post', item._id]"><span>Category:</span> {{ item.blog_category }}</a></li>
                                 <li><span>Comment:</span> {{ item.comment_sum }}</li>
-                                <li><a [routerLink]="['/blog/post/' +item.tags_id]"><span>Tags:</span> {{ item.tags }}</a></li>
+                                <li><a [routerLink]="['/blog/post', item.tags_id]"><span>Tags:</span> {{ item.tags }}</a></li>
                             </ul>
                         </div>
 					</div>
@@ -41,14 +41,14 @@
 							<img src="/images/{{ item.thumb }}" alt="Hands" />
 							<div class="overlay__panel">
 								<a class="zoom__img" href="/"></a>
-								<a class="read__more" [routerLink]="['/blog/post/' + item._id]"></a>
+								<a class="read__more" [routerLink]="['/blog/post', item._id]"></a>
 							</div>
 						</div>
 					</figure>
 
 					<div class="text__box">
 						<p>{{ item.summary }}</p>
-						<a [routerLink]="['/blog/post/' + item._id]" class="btn-medium">Read More</a>
+						<a [routerLink]="['/blog/post', item._id]" class="btn-medium">Read More</a>
 					</div>
 				</article>
 			</section>

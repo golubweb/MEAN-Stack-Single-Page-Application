@@ -1,6 +1,7 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule }  from '@angular/common';
 import { RouterModule }  from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import AuthGuard             from '../../shared/services/auth-guard.service';
 
@@ -19,8 +20,8 @@ const PagesRoutesModule: any[] = [
         path: 'page',
         component: PagesComponent,
         children: [
-            { path: 'home-page', component: HomePageComponent },
             { path: 'login',     component: LoginComponent, canActivate: [AuthGuard] },
+            { path: 'home-page', component: HomePageComponent },
             { path: 'register',  component: RegisterComponent },
             { path: ':id',       component: AnyPageComponent },
             { path: '**',        component: PageNotFoundComponent }
@@ -31,6 +32,8 @@ const PagesRoutesModule: any[] = [
 @NgModule({
     imports:      [
         CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
         LayoutModule,
         RouterModule.forRoot(PagesRoutesModule)
     ],

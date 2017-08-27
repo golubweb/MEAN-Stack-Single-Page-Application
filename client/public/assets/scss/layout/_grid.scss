@@ -48,20 +48,42 @@
 /*===========================================================
 	Two Article Box
 ===========================================================*/
-.two-article {}
-	.two-article h2 {padding: 15px 1.7% 15px 1.7%; text-shadow: 1px 2px 1px #2e2e2e; border-bottom:1px solid #c5c2c2;}
-	.two-article article {width:50%; display: table; float: left; padding: 0 1.7% 15px; border-bottom:1px solid #c5c2c2;
+.two__article {
+	h2 {
+        padding: 15px 1.7% 15px 1.7%;
+        text-shadow: 1px 2px 1px #2e2e2e;
+        border-bottom:1px solid #c5c2c2;
+    }
+
+	article {
+        width:50%;
+        display: table;
+        float: left;
+        padding: 0 1.7% 15px;
+        border-bottom:1px solid #c5c2c2;
         background: repeat-x left 1px;
     }
+}
 
 /*===========================================================
 	Three Article Box
 ===========================================================*/
-.three-article {}
-	.three-article h2 {padding: 15px 1.7% 15px 1.7%; text-shadow: 1px 2px 1px #2e2e2e; border-bottom:1px solid #c5c2c2;}
-	.three-article article {width:33.3%; display: table; float: left; padding: 0 1.7% 15px; border-bottom:1px solid #c5c2c2;
+.three__article {
+	h2 {
+        padding: 15px 1.7% 15px 1.7%;
+        text-shadow: 1px 2px 1px #2e2e2e;
+        border-bottom:1px solid #c5c2c2;
+    }
+
+	article {
+        width:33.3%;
+        display: table;
+        float: left;
+        padding: 0 1.7% 15px;
+        border-bottom:1px solid #c5c2c2;
         background:repeat-x left 1px;
     }
+}
 
 /*===========================================================
 	Four Article Box
@@ -77,10 +99,10 @@
 	Global position images in figure tag
 ===========================================================*/
 .big__left   {float: left;}
-.img-center {margin: 0 auto;}
-.img-center figure {margin: 0 auto;}
+.img__center {margin: 0 auto;}
+.img__center figure {margin: 0 auto;}
 
-.img-right  {float: right;}
+.img__right  {float: right;}
 
 
 
@@ -88,9 +110,9 @@
 /*===========================================================
 	Main layout
 ===========================================================*/
-#left-main {float: left; margin-right: 1%;}
-#center-main {width: 76%; float: left; margin:  0 1%;}
-#fullwidth-main {
+.left__main {float: left; margin-right: 1%;}
+.center__main {width: 76%; float: left; margin:  0 1%;}
+.fullwidth__main {
     display: table;
     float: none;
     margin: 0;
@@ -101,11 +123,11 @@
 /*===========================================================
 	Sidebar layout
 ===========================================================*/
-#sidebar-right {}
+.sidebar__right {}
 
 	/* Right Main Navigation
 	--------------------------------------------------*/
-	#sidebar-right nav li .sub-menu {left: -97%;}
+	.sidebar__right nav li .sub__menu {left: -97%;}
 
 /*===========================================================
 	Portfolio layout

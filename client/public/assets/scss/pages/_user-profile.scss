@@ -1,7 +1,7 @@
 /*===========================================================
 	USER PROFIL
 ===========================================================*/
-.user_profil {
+.profil {
     .topIcon {
         width: 100%;
         display: table;
@@ -48,7 +48,7 @@
 
 	.jqte_source.jqte_hiddenField {min-height: 0; height: 0; display: block; padding: 0; background: #fff;}
 
-	.profileContent input[type="submit"] {
+	&__content input[type="submit"] {
 	    color: #151515;
 	    display: block;
 	    font-family: "Oswald",sans-serif;

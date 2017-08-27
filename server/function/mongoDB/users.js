@@ -3,6 +3,7 @@
 const mongoose = require('mongoose');
 const Schema   = mongoose.Schema;
 const bcrypt   = require('bcrypt');
+const rand     = require("random-key");
 
 class User {
 	constructor() {
@@ -41,11 +42,13 @@ class User {
     addUser(user) {
         return new Promise((resolve, reject) => {
             this.newUser = {
-                name:     user.username,
+                name:     user.name,
+                lastname: user.lastname,
                 nickname: user.nickname,
                 email:    user.email,
                 password: user.password,
-                hash:     user.hash,
+                created:  new Date(),
+                hash:     rand.generate(30),
                 stats: 0
             };
 
