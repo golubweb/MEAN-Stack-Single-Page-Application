@@ -1,8 +1,6 @@
 import { NgModule }              from '@angular/core';
 import { RouterModule, Routes }  from '@angular/router';
 
-import AuthEditor            from './components/authorized/auth-editor.guard';
-
 import HomePageComponent     from './components/pages/home-page.component';
 
 import { PagesModule }       from './components/pages/pages.module';
@@ -19,8 +17,7 @@ const AppRoutesModule: any[] = [
     imports:   [
         RouterModule.forRoot(AppRoutesModule, { enableTracing: true, useHash: true })
     ],
-    providers: [ AuthEditor ],
+    providers: [ ],
     exports:   [ RouterModule ]
 })
 export default class AppRoutingModule {}
-//canActivate: [AuthEditor] outlet: 'sidebar'

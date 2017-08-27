@@ -5,7 +5,6 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 class PagesService {
-
     constructor(private http: Http) {}
 
     getPage(page_id: number): Observable {

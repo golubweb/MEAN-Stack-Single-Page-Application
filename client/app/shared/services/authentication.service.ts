@@ -2,15 +2,17 @@ import { Injectable, EventEmitter } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
 
-import { CookieService } from '../shared';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable()
 export default class AuthenticationService {
     cookie: void;
     userIsloggedIn: EventEmitter<boolean>;
 
-    constructor(public http: Http) {
-        this.cookie = new CookieService();
+    constructor(
+        public http: Http,
+        private cookieService: CookieService
+    ) {
         this.userIsloggedIn = new EventEmitter();
     }
 
@@ -25,21 +27,20 @@ export default class AuthenticationService {
             this.http.post(url, body, option)
                 .map( response => response.json())
                 .subscribe( authResponse => {
+                    let userData: any[] = [];
                     let validCredentials: boolean = false;
 
                     if(authResponse && authResponse.token) {
-                        validCredentials = true;
-
                         let domain = 'localhost',
                             today  = new Date(),
                             expiry = new Date(today.getTime() + (60 * 60 * 1000));
 
-                        this.cookie.setItem("pm-token", authResponse.token, expiry, "/", domain, null);
+                        this.cookieService.set("gw-token", authResponse.token, expiry, "/", domain);
                     }
 
                     this.userIsloggedIn.emit(validCredentials);
 
-                    resolve(validCredentials);
+                    resolve([this.decodeJWT(authResponse.token), validCredentials]);
                 }
             );
         });
@@ -47,15 +48,24 @@ export default class AuthenticationService {
 
     logout(): Promise<boolean> {
         return new Promise(resolve => {
-            this.cookie.removeItem('pm-token');
+            this.cookieService.delete('gw-token');
             this.userIsloggedIn.emit(false);
 
             resolve(true);
         });
     }
 
+    decodeJWT(token) {
+        let base64Url = token.split('.')[1];
+        let base64 = base64Url.replace('-', '+').replace('_', '/');
+
+        console.log(JSON.parse(window.atob(base64))));
+
+        return JSON.parse(window.atob(base64)));
+    }
+
     getToken() {
-        return this.cookie.getItem('pm-token');
+        return this.cookieService.get('gw-token');
     }
 
     isAuthorized(token: any[]): Promise<boolean> {

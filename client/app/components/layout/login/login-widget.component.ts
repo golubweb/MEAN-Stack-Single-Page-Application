@@ -1,31 +1,51 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators, ControlGroup, Control } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router }        from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 import { AuthenticationService } from '../../../shared/shared';
 
 @Component({
     selector:    '[login-widget]',
-    templateUrl: 'templates/layout/login-widget.component.html'
+    templateUrl: 'templates/layout/login-widget.component.html',
+    styles: [`
+        .ng-valid {border-color: #3c763d;}
+        .ng-invalid {border-color: #a94442;}
+        .ng-untouched {border-color: #999;}
+    `]
 })
-class LoginWidgetComponent implements OnInit {
+export default class LoginWidgetComponent implements OnInit {
     loginForm;
+    userData: any[] = [];
     notValidCredentials: boolean = false;
     showUsernameHint:    boolean = false;
     showPasswordHint:    boolean = false;
-    userIsValid:         boolean = false;
+    userIsLoggedIn:      boolean = true;
 
     constructor(
         private router: Router,
+        private cookieService: CookieService,
         private authService: AuthenticationService
-    ) {}
+    ) {
+        const tokenValue: string = cookieService.get('gw-token');
+
+        if(!(/^\s*$/).test(tokenValue)) {
+            this.userIsLoggedIn = false;
+            this.userData = authService.decodeJWT(tokenValue);
+            console.log(this.userData);
+        }
+
+        this.authService.userIsloggedIn.subscribe(isLoggedIn => {
+            this.userIsLoggedIn = isLoggedIn;
+        });
+    }
 
     ngOnInit() {
         this.loginForm = new FormGroup({
             username: new FormControl('', Validators.compose(
                 [
                     Validators.required,
-                    this.emailValidator
+                    //this.emailValidator
                 ]
             )),
             password: new FormControl('', Validators.compose(
@@ -33,7 +53,7 @@ class LoginWidgetComponent implements OnInit {
                     Validators.required,
                     Validators.minLength(3),
                     Validators.maxLength(15),
-                    this.passwordValidator
+                    //this.passwordValidator
                 ]
             ))
         });
@@ -54,10 +74,10 @@ class LoginWidgetComponent implements OnInit {
         let credentials: any = this.loginForm.value;
         this.notValidCredentials = !this.loginForm.valid && this.loginForm.dirty;
 
-        this.authService.login(credentials).then(success => {
-            if (success) {
-                this.userIsValid = true;
-                //this.router.navigate(['page/home-page']);
+        this.authService.login(credentials).then(response => {
+            if (response) {
+                this.userData = response[0];
+                this.userIsLoggedIn = response[1];
             } else {
                 this.notValidCredentials = true;
             }
@@ -69,7 +89,7 @@ class LoginWidgetComponent implements OnInit {
 
         this.authService.logout().then(success => {
             if(success) {
-                this.userIsValid = true;
+                this.userIsLoggedIn = true;
             }
         });
     }
@@ -85,7 +105,7 @@ class LoginWidgetComponent implements OnInit {
     }
 
     private passwordValidator(control: Control): { [key: string]: boolean } {
-        if(/\s+/g.test(control.value)) {
+        if(!/\s+/g.test(control.value)) {
             return {
                 'password': true
             }
@@ -94,5 +114,3 @@ class LoginWidgetComponent implements OnInit {
         return null;
     }
 }
-
-export default LoginWidgetComponent;

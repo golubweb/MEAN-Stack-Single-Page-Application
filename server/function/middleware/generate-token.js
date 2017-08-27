@@ -11,15 +11,14 @@ function authenticate(userDB, req, res) {
 	userDB.getUserData(email, pass).then((data) => {
 		if(data !== undefined) {
 			userData = {
-				id: data['_id'],
-				username: data['name'],
+				_id:   data['_id'],
+				name:  data['name'],
+                nick:  data['nickname'],
 				email: data['email']
 			}
 
 			token = jwt.sign(userData, config.jwt.secret, {expiresIn: 4000});
-            res.json({ success: true, token: token });
-
-			//res.cookie('token', token, { maxAge: 900000, httpOnly: true });
+            res.json({ success: true, token: token, data: userData });
 		} else {
 			res.json({ success: false, token: false });
 		}
