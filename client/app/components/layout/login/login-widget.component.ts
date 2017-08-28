@@ -95,7 +95,7 @@ export default class LoginWidgetComponent implements OnInit {
     }
 
     private emailValidator(control: Control): { [key: string]: boolean } {
-        if(!/(.+)@(.+){2,}\.(.+){2,}/.test(control.value)) {
+        if(!/^[\w.%+-]+@[\w.-]+\.[a-zA-Z]{2,}$/.test(control.value)) {
             return {
                 'username': true
             }

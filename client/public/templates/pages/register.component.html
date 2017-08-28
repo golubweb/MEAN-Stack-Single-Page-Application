@@ -16,37 +16,57 @@
 
 		<!-- Start Main -->
 		<main>
-            <section class="one__article big__left">
-                <!-- Start Register Page -->
-                <div class="register__page">
-                    <h2>Register Page</h2>
+            <!-- Start Register Page -->
+            <section class="register__page">
+                <h2>Register Page</h2>
 
-                    <form [formGroup]="authorForm" (ngSubmit)="saveAuthor(authorForm.value)">
-                        <div class="form-group">
-                            <input type="text" placeholder="name" formControlName="name" required />
-                        </div>
+                <div class="register__page--content">
+                    <div>
+                        <h3>Register Account</h3>
 
-                        <div class="form-group">
-                            <input type="text" placeholder="lastname" formControlName="lastname" required />
-                        </div>
+                        <form [formGroup]="authorForm" (ngSubmit)="saveAuthor(authorForm.value)">
+                            <div class="form-group">
+                                <input type="text" placeholder="Your Name" formControlName="name" required />
+                                <p *ngIf="authorForm.controls['name'].valid && authorForm.controls['name'].touched">Well done! That's a good name!</p>
+                            </div>
 
-                        <div class="form-group">
-                            <input type="text" placeholder="nickname" formControlName="nickname" required />
-                        </div>
+                            <div class="form-group">
+                                <input type="text" placeholder="Your Lastname" formControlName="lastname" required />
+                            </div>
 
-                        <div class="form-group">
-                            <input type="email" placeholder="email" formControlName="email" required />
-                        </div>
+                            <div class="form-group">
+                                <input type="text" placeholder="Your Nickname" formControlName="nickname" required />
+                            </div>
 
-                        <div class="form-group">
-                            <input type="password" placeholder="password" formControlName="password" required />
-                        </div>
+                            <div class="form-group">
+                                <input type="email" placeholder="Your Email" formControlName="email" required />
+                            </div>
 
-                        <button type="submit" class="register__page--submit">Register Author</button>
-                    </form>
+                            <div class="form-group">
+                                <input type="password" placeholder="Your Password" formControlName="password" required />
+                            </div>
+
+                            <p *ngIf="!errorDisplay">{{ errorMsg }}</p>
+
+                            <button type="submit" class="register__page--submit btn-medium">Register Author</button>
+                        </form>
+                    </div>
+
+                    <div>
+                        <h3>Lorem Ipsum is simply dummy text</h3>
+
+                        <p>
+                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+
+                            <br />
+                            <br />
+
+                            It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                        </p>
+                    </div>
                 </div>
-                <!-- End Register Page -->
             </section>
+                <!-- End Register Page -->
 
 			<!-- Start Footer -->
 			<footer main-footer></footer>

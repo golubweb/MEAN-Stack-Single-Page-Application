@@ -12,9 +12,11 @@ class User {
 
         this.userSchema = new Schema({
             name:     { type: String, required: true },
+            lastname: { type: String, required: true },
             nickname: { type: String, required: true },
             email:    { type: String, required: true },
             password: { type: String, required: true },
+            created:  { type: Date,   required: true },
             hash:     { type: String, required: true },
             stats:    { type: Number, required: true }
         });
@@ -39,7 +41,7 @@ class User {
         });
     }
 
-    addUser(user) {
+    saveAuthor(user) {
         return new Promise((resolve, reject) => {
             this.newUser = {
                 name:     user.name,

@@ -1,0 +1,41 @@
+.register__page {
+    > h2 {
+        padding: 15px 1.7%;
+        border-bottom: 1px solid #c5c2c2;
+    }
+
+    &--content {
+        width: 100%;
+        display: table;
+
+        h3 {
+            font-size: 18px;
+            margin: 0 0 20px;
+            font-weight: 700;
+            line-height: normal;
+        }
+
+        > div {
+            width: 50%;
+            float: left;
+            padding: 25px 30px;
+        }
+    }
+
+    form {
+        width: 100%;
+
+        .form-group {margin-bottom: 15px;}
+
+        input {
+            width: 100%;
+            display: block;
+            padding: 10px 15px;
+            color: #616060;
+            font-size: 14px;
+            border: 1px solid #ccc;
+        }
+    }
+
+    &--submit {cursor: pointer;}
+}
