@@ -1,7 +1,6 @@
 <form [formGroup]="authorForm" (ngSubmit)="saveAuthor(authorForm.value)">
-    <div class="form-group">
+     <div class="form-group">
         <input type="text" placeholder="Your Name" formControlName="name" required />
-        <p *ngIf="authorForm.controls['name'].valid && authorForm.controls['name'].touched">Well done! That's a good name!</p>
     </div>
 
     <div class="form-group">
@@ -10,6 +9,14 @@
 
     <div class="form-group">
         <input type="text" placeholder="Your Nickname" formControlName="nickname" required />
+    </div>
+
+    <div class="form-group">
+        <input type="text" placeholder="Your Phone" formControlName="phone" required />
+    </div>
+
+    <div class="form-group">
+        <input type="text" placeholder="Your Country" formControlName="country" required />
     </div>
 
     <div class="form-group">

@@ -42,20 +42,16 @@ export default class LoginWidgetComponent implements OnInit {
 
     ngOnInit() {
         this.loginForm = new FormGroup({
-            'username': new FormControl('', Validators.compose(
-                [
-                    Validators.required,
-                    Validators.pattern(/^[\w.%+-]+@[\w.-]+\.[a-zA-Z]{2,}$/)
-                ]
-            )),
-            'password': new FormControl('', Validators.compose(
-                [
-                    Validators.required,
-                    Validators.minLength(7),
-                    Validators.maxLength(40),
-                    Validators.pattern(/^.{7,40}$/)
-                ]
-            ))
+            'username': new FormControl('', Validators.compose([
+                Validators.required,
+                Validators.pattern(/^[\w.%+-]+@[\w.-]+\.[a-zA-Z]{2,}$/)
+            ])),
+            'password': new FormControl('', Validators.compose([
+                Validators.required,
+                Validators.minLength(7),
+                Validators.maxLength(40),
+                Validators.pattern(/^.{7,40}$/)
+            ]))
         });
 
         const username = this.loginForm.controls['username'];
