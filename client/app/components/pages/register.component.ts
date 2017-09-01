@@ -5,7 +5,7 @@ import { FormBuilder, FormGroup, FormControl, Validators, ControlGroup, Control 
 import PageService from './services/pages.service';
 
 @Component({
-    selector:    '[register-page]',
+    selector:    '[app-register-page]',
     templateUrl: 'templates/pages/register.component.html'
 })
 export default class RegisterComponent implements OnInit {

@@ -6,41 +6,39 @@ import { CookieService } from 'ngx-cookie-service';
 
 @Injectable()
 export default class AuthenticationService {
-    cookie: void;
     userIsloggedIn: EventEmitter<boolean>;
 
     constructor(
-        public http: Http,
-        private cookieService: CookieService
+        public  _http: Http,
+        private _cookieService: CookieService
     ) {
         this.userIsloggedIn = new EventEmitter();
     }
 
     login(credentials: any[]): Promise<boolean> {
-        return new Promise(resolve => {
+        return new Promise((resolve, reject) => {
             const url = '/api/login';
             const body = JSON.stringify(credentials);
 
             const headers = new Headers({ 'Content-Type': 'application/json' });
             const option  = new RequestOptions({ headers: headers });
 
-            this.http.post(url, body, option)
+            this._http.post(url, body, option)
                 .map( response => response.json())
                 .subscribe( authResponse => {
-                    let userData: any[] = [];
-                    let validCredentials: boolean = false;
-
-                    if(authResponse && authResponse.token) {
+                    if(authResponse.hasOwnProperty('token') && authResponse.token) {
                         let domain = 'localhost',
                             today  = new Date(),
                             expiry = new Date(today.getTime() + (60 * 60 * 1000));
 
-                        this.cookieService.set("gw-token", authResponse.token, expiry, "/", domain);
+                        this.userIsloggedIn.emit(false);
+                        this._cookieService.set("gw-token", authResponse.token, expiry, "/", domain);
+
+                        resolve([this.decodeJWT(authResponse.token), false]);
+                    } else {
+                        this.userIsloggedIn.emit(true);
+                        resolve(true);
                     }
-
-                    this.userIsloggedIn.emit(validCredentials);
-
-                    resolve([this.decodeJWT(authResponse.token), validCredentials]);
                 }
             );
         });
@@ -48,7 +46,7 @@ export default class AuthenticationService {
 
     logout(): Promise<boolean> {
         return new Promise(resolve => {
-            this.cookieService.delete('gw-token');
+            this._cookieService.delete('gw-token');
             this.userIsloggedIn.emit(false);
 
             resolve(true);
@@ -63,7 +61,7 @@ export default class AuthenticationService {
     }
 
     getToken() {
-        return this.cookieService.get('gw-token');
+        return this._cookieService.get('gw-token');
     }
 
     isAuthorized(token: any[]): Promise<boolean> {
@@ -74,7 +72,7 @@ export default class AuthenticationService {
             const headers = new Headers({ 'Content-Type': 'application/json' });
             const option  = new RequestOptions({ headers: headers });
 
-            this.http.post(url, body, option)
+            this._http.post(url, body, option)
                 .map( response => response.json())
                 .subscribe( tokenResponse => {
                     resolve(tokenResponse.success);

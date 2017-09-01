@@ -5,7 +5,7 @@ import PageService from './services/pages.service';
 import Page        from './interfaces/';
 
 @Component({
-    selector:    'any-page',
+    selector:    '[app-any-page]',
     templateUrl: 'templates/pages/any.component.html'
 })
 export default class PagesComponent implements OnInit {

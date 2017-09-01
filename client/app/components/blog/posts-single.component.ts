@@ -5,7 +5,7 @@ import Post                 from './interfaces/post.interface';
 import BlogService from './services/blog.service';
 
 @Component({
-    selector:    'post-single',
+    selector:    '[app-post-single]',
     templateUrl: 'templates/blog/posts-single.component.html'
 })
 export default class PostSingleComponent implements OnInit {

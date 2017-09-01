@@ -34,7 +34,7 @@ router.post('/login', (req, res) => {
         if(!err)
             generateToken(userDB, req, res);
         else
-            res.json({ success: false, msg: 'Failed to register user!', error: err.toString().slice(7, err.length) });
+            res.json({ success: false, msg: 'Failed to register user!', error: err.toString().slice(7, err.length), token: false });
     });
 });
 

@@ -5,7 +5,7 @@ import Post         from './interfaces/post.interface';
 import BlogService  from './services/blog.service';
 
 @Component({
-    selector:    '[posts-category]',
+    selector:    '[app-posts-category]',
     templateUrl: 'templates/blog/posts-category.component.html'
 })
 export default class PostsCategoryComponent implements OnInit {

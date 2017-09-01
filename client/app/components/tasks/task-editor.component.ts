@@ -6,7 +6,7 @@ import { Title } from '@angular/platform-browser';
 import { Task, TaskService } from '../../shared/shared';
 
 @Component({
-    selector: 'pomodoro-tasks-editor',
+    selector: '[app-pomodoro-tasks-editor]',
     templateUrl: 'templates/tasks-editor.component.html',
     styles: [`
         .ng-valid {border-color: #3c763d;}

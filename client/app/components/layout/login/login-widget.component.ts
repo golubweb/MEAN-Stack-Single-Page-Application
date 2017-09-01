@@ -6,7 +6,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { AuthenticationService } from '../../../shared/shared';
 
 @Component({
-    selector:    '[login-widget]',
+    selector:    '[app-login-widget]',
     templateUrl: 'templates/layout/login-widget.component.html',
     styles: [`
         .ng-valid {border-color: #3c763d;}
@@ -25,35 +25,35 @@ export default class LoginWidgetComponent implements OnInit {
     constructor(
         private router: Router,
         private cookieService: CookieService,
-        private authService: AuthenticationService
+        private _authService: AuthenticationService
     ) {
-        const tokenValue: string = cookieService.get('gw-token');
+        let tokenValue: string = cookieService.get('gw-token');
 
         if(!(/^\s*$/).test(tokenValue)) {
             this.userIsLoggedIn = false;
-            this.userData = authService.decodeJWT(tokenValue);
-            console.log(this.userData);
+
+            this.userData = _authService.decodeJWT(tokenValue);
         }
 
-        this.authService.userIsloggedIn.subscribe(isLoggedIn => {
+        this._authService.userIsloggedIn.subscribe(isLoggedIn => {
             this.userIsLoggedIn = isLoggedIn;
         });
     }
 
     ngOnInit() {
         this.loginForm = new FormGroup({
-            username: new FormControl('', Validators.compose(
+            'username': new FormControl('', Validators.compose(
                 [
                     Validators.required,
-                    //this.emailValidator
+                    Validators.pattern(/^[\w.%+-]+@[\w.-]+\.[a-zA-Z]{2,}$/)
                 ]
             )),
-            password: new FormControl('', Validators.compose(
+            'password': new FormControl('', Validators.compose(
                 [
                     Validators.required,
-                    Validators.minLength(3),
-                    Validators.maxLength(15),
-                    //this.passwordValidator
+                    Validators.minLength(7),
+                    Validators.maxLength(40),
+                    Validators.pattern(/^.{7,40}$/)
                 ]
             ))
         });
@@ -62,11 +62,11 @@ export default class LoginWidgetComponent implements OnInit {
         const password = this.loginForm.controls['password'];
 
         username.valueChanges.subscribe(value => {
-            this.showUsernameHint = (username.dirty && value.indexOf('@') < 0);
+            this.showUsernameHint = this.emailValidator(value);
         });
 
         password.valueChanges.subscribe(value => {
-            this.showPasswordHint = (password.invalid && password.touched);
+            this.showPasswordHint = this.passwordValidator(value);
         });
     }
 
@@ -74,12 +74,12 @@ export default class LoginWidgetComponent implements OnInit {
         let credentials: any = this.loginForm.value;
         this.notValidCredentials = !this.loginForm.valid && this.loginForm.dirty;
 
-        this.authService.login(credentials).then(response => {
-            if (response) {
+        this._authService.login(credentials).then(response => {
+            if(response.success && response.token) {
                 this.userData = response[0];
                 this.userIsLoggedIn = response[1];
             } else {
-                this.notValidCredentials = true;
+                this.notValidCredentials = response;
             }
         });
     }
@@ -87,30 +87,26 @@ export default class LoginWidgetComponent implements OnInit {
     logout($event): void {
         $event.preventDefault();
 
-        this.authService.logout().then(success => {
+        this._authService.logout().then(success => {
             if(success) {
                 this.userIsLoggedIn = true;
             }
         });
     }
 
-    private emailValidator(control: Control): { [key: string]: boolean } {
-        if(!/^[\w.%+-]+@[\w.-]+\.[a-zA-Z]{2,}$/.test(control.value)) {
-            return {
-                'username': true
-            }
+    private emailValidator(velue): boolean {
+        if(/^[\w.%+-]+@[\w.-]+\.[a-zA-Z]{2,}$/.test(velue)) {
+            return false;
+        } else {
+            return true;
         }
-
-        return null;
     }
 
-    private passwordValidator(control: Control): { [key: string]: boolean } {
-        if(!/\s+/g.test(control.value)) {
-            return {
-                'password': true
-            }
+    private passwordValidator(value): boolean {
+        if(/^.{7,40}$/.test(value)) {
+            return false;
+        } else {
+            return true;
         }
-
-        return null;
     }
 }

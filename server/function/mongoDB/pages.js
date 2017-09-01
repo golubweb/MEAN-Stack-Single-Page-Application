@@ -14,8 +14,6 @@ class Pages {
 
             this.mc.collection('pages', (err, collection) => {
                 collection.find({'_id': pageID}).toArray((err, results) => {
-                    console.log(results);
-
                     resolve(results);
                 });
             });

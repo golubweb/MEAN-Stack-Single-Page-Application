@@ -5,12 +5,14 @@
     <form [formGroup]="loginForm" (ngSubmit)="authenticate(loginForm.value)">
         <div class="form-group">
             <input type="email" placeholder="Email" formControlName="username" required />
-            <p *ngIf="showUsernameHint" class="help-block">That does not look like a proper email</p>
+
+            <p *ngIf="showUsernameHint">That does not look like a proper email</p>
         </div>
 
         <div class="form-group">
-            <input type="password" placeholder="Password" formControlName="password" required />
-            <p *ngIf="showPasswordHint">The entered password is incorrect</p>
+            <input type="password" placeholder="Password" formControlName="password" min="7" max="40" required />
+
+            <p *ngIf="showPasswordHint">The entered password is incorrect!</p>
         </div>
 
         <span class="login__panel-message" *ngIf="notValidCredentials">Your credentials are not valid!</span>

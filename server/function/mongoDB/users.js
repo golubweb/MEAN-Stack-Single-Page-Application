@@ -27,13 +27,19 @@ class User {
     getUserData(email, pass) {
         return new Promise((resolve, reject) => {
             this.modelUser.collection.findOne({'email': email}, (err, results) => {
-                bcrypt.compare(pass, results.password, (err, res) => {
-                    if(res === true) {
-                        resolve(results);
-                    } else {
-                        reject();
-                    }
-                });
+
+                if(results) {
+                    bcrypt.compare(pass, results.password, (err, res) => {
+                        if(res === true) {
+                            console.log('PASSWORD: ', res);
+                            resolve(results);
+                        } else {
+                            reject();
+                        }
+                    });
+                } else {
+                    resolve();
+                }
             });
         })
         .catch((reason) => {
