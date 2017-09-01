@@ -80,4 +80,21 @@ export default class AuthenticationService {
             );
         });
     }
+
+    registerAuthor(usarData: any[]): Promise<boolean> {
+        return new Promise((resolve, reject) => {
+            const url = '/api/register';
+            const body = JSON.stringify(usarData);
+
+            const headers = new Headers({ 'Content-Type': 'application/json' });
+            const option  = new RequestOptions({ headers: headers });
+
+            this._http.post(url, body, option)
+                .map( response => response.json())
+                .subscribe(data => {
+                    console.log(data);
+                    resolve(data);
+            });
+        });
+    }
 }

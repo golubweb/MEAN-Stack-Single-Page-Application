@@ -9,8 +9,8 @@
 
 <!-- Start Navigation -->
 <nav>
-    <h2 class="nab__btn">Menu</h2>
+    <h2 class="nab__btn" (click)="collapseMenu()">Menu</h2>
 
-    <ul app-nav-menu></ul>
+    <ul app-nav-menu [hidden]="!visible"></ul>
 </nav>
 <!-- End Navigation -->
