@@ -20,7 +20,6 @@ export default class RegisterWidgetComponent implements OnInit {
         private _fb: FormBuilder,
         private _authService: AuthenticationService
     ) {
-
         this.authorForm = _fb.group({
             name:     ['', [Validators.required, Validators.pattern(/^[^;]{2,30}$/)]],
             lastname: ['', [Validators.required, Validators.pattern(/^[^;]{2,30}$/)]],

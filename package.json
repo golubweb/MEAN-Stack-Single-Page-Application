@@ -28,6 +28,7 @@
     "cookie-parser": "~1.4.3",
     "core-js": "^2.4.1",
     "cors": "^2.8.4",
+    "country-data": "0.0.31",
     "ejs": "latest",
     "es6-shim": "^0.35.3",
     "express": "^4.10.6",
