@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
     selector:    '[app-main-footer]',
-    templateUrl: 'templates/footer/footer.component.html'
+    templateUrl: 'templates/common/footer.component.html'
 })
 class FooterComponent implements OnInit {
     constructor() {}
