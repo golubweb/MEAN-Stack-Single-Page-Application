@@ -31,13 +31,13 @@ export default class AuthenticationService {
                             today  = new Date(),
                             expiry = new Date(today.getTime() + (60 * 60 * 1000));
 
-                        this.userIsloggedIn.emit(false);
+                        this.userIsloggedIn.emit(true);
                         this._cookieService.set("gw-token", authResponse.token, expiry, "/", domain);
 
-                        resolve([this.decodeJWT(authResponse.token), false]);
+                        resolve({ success: true, data: this.decodeJWT(authResponse.token) });
                     } else {
-                        this.userIsloggedIn.emit(true);
-                        resolve(true);
+                        this.userIsloggedIn.emit(false);
+                        resolve({ success: false });
                     }
                 }
             );
@@ -49,7 +49,7 @@ export default class AuthenticationService {
             this._cookieService.delete('gw-token');
             this.userIsloggedIn.emit(false);
 
-            resolve(true);
+            resolve(false);
         });
     }
 
@@ -92,7 +92,6 @@ export default class AuthenticationService {
             this._http.post(url, body, option)
                 .map( response => response.json())
                 .subscribe(data => {
-                    console.log(data);
                     resolve(data);
             });
         });

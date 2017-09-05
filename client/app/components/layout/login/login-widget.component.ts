@@ -9,8 +9,8 @@ import { AuthenticationService } from '../../../shared/shared';
     selector:    '[app-login-widget]',
     templateUrl: 'templates/layout/login-widget.component.html',
     styles: [`
-        .ng-valid {border-color: #3c763d;}
-        .ng-invalid {border-color: #a94442;}
+        .ng-valid     {border-color: #3c763d;}
+        .ng-invalid   {border-color: #a94442;}
         .ng-untouched {border-color: #999;}
     `]
 })
@@ -20,7 +20,7 @@ export default class LoginWidgetComponent implements OnInit {
     notValidCredentials: boolean = false;
     showUsernameHint:    boolean = false;
     showPasswordHint:    boolean = false;
-    userIsLoggedIn:      boolean = true;
+    userIsLoggedIn:      boolean = false;
 
     constructor(
         private router: Router,
@@ -30,14 +30,11 @@ export default class LoginWidgetComponent implements OnInit {
         let tokenValue: string = cookieService.get('gw-token');
 
         if(!(/^\s*$/).test(tokenValue)) {
-            this.userIsLoggedIn = false;
-
+            this.userIsLoggedIn = true;
             this.userData = _authService.decodeJWT(tokenValue);
         }
 
-        this._authService.userIsloggedIn.subscribe(isLoggedIn => {
-            this.userIsLoggedIn = isLoggedIn;
-        });
+        this._authService.userIsloggedIn.subscribe(value => this.userIsLoggedIn = value);
     }
 
     ngOnInit() {
@@ -71,9 +68,10 @@ export default class LoginWidgetComponent implements OnInit {
         this.notValidCredentials = !this.loginForm.valid && this.loginForm.dirty;
 
         this._authService.login(credentials).then(response => {
-            if(response.success && response.token) {
-                this.userData = response[0];
-                this.userIsLoggedIn = response[1];
+            if(response.success && response.hasOwnProperty('data')) {
+                this.userData = response.data;
+
+                this._authService.userIsloggedIn.subscribe( value => this.userIsLoggedIn = value );
             } else {
                 this.notValidCredentials = response;
             }
@@ -83,10 +81,8 @@ export default class LoginWidgetComponent implements OnInit {
     logout($event): void {
         $event.preventDefault();
 
-        this._authService.logout().then(success => {
-            if(success) {
-                this.userIsLoggedIn = true;
-            }
+        this._authService.logout().then(response => {
+            this._authService.userIsloggedIn.subscribe( value => this.userIsLoggedIn = value );
         });
     }
 
