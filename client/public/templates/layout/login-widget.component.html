@@ -1,31 +1,30 @@
 <!-- Start Login Widget -->
 <span class="login__panel--icon"></span>
 
-<div class="login__panel--info" *ngIf="!userIsLoggedIn; else loginInfo">
-    <form [formGroup]="loginForm" (ngSubmit)="authenticate(loginForm.value)">
-        <div class="form-group">
-            <input type="email" placeholder="Email" formControlName="username" required />
+<div class="login__panel--info" [ngSwitch]="!userIsLoggedIn">
+    <ng-template [ngSwitchCase]="true">
+        <form [formGroup]="loginForm" (ngSubmit)="authenticate(loginForm.value)">
+            <div class="form-group">
+                <input type="email" placeholder="Email" formControlName="username" required />
 
-            <p *ngIf="showUsernameHint">That does not look like a proper email</p>
-        </div>
+                <p *ngIf="showUsernameHint">That does not look like a proper email</p>
+            </div>
 
-        <div class="form-group">
-            <input type="password" placeholder="Password" formControlName="password" min="7" max="40" required />
+            <div class="form-group">
+                <input type="password" placeholder="Password" formControlName="password" min="7" max="40" required />
 
-            <p *ngIf="showPasswordHint">The entered password is incorrect!</p>
-        </div>
+                <p *ngIf="showPasswordHint">The entered password is incorrect!</p>
+            </div>
 
-        <span class="login__panel-message" *ngIf="notValidCredentials">Your credentials are not valid!</span>
+            <span class="login__panel-message" *ngIf="notValidCredentials">Your credentials are not valid!</span>
 
-        <button type="submit" class="login__panel--submit" [disabled]="!loginForm.valid">Login</button>
+            <button type="submit" class="login__panel--submit" [disabled]="!loginForm.valid">Login</button>
 
-        <a routerLink="/page/register">Create account</a>
-    </form>
-</div>
-<!-- End Login Widget -->
+            <a routerLink="/page/register">Create account</a>
+        </form>
+    </ng-template>
 
-<ng-template #loginInfo>
-    <div class="login__panel--info">
+    <ng-template [ngSwitchCase]="false">
         <p>
             <span>Name:  {{ userData.nick }}</span><br />
             <span>Email: {{ userData.email }}</span>
@@ -34,5 +33,7 @@
         <a routerLink="/profile/author">Your Profile</a>
 
         <button (click)="logout($event)">Logout</button>
-    </div>
-</ng-template>
+    </ng-template>
+</div>
+<!-- End Login Widget -->
+

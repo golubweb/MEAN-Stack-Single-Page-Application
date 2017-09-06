@@ -3,6 +3,8 @@ import { CommonModule }  from '@angular/common';
 import { RouterModule }  from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import ToggleElementDirective from './header/directive/toggle-element.directive';
+
 import LayoutComponent         from './layout.component';
 import HeaderComponent         from './header/header.component';
 import SidebarLeftComponent    from './sidebar/sidebar-left.component';
@@ -32,7 +34,8 @@ const layoutList: any[] = [
         MeniusModule
     ],
     declarations: [
-        layoutList
+        layoutList,
+        ToggleElementDirective
     ],
     schemas:      [ CUSTOM_ELEMENTS_SCHEMA ],
     exports:      [ layoutList ]

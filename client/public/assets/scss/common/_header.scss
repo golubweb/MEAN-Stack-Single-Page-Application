@@ -76,18 +76,18 @@ header {
             color: #fff;
             cursor: pointer;
             background: url(../images/nav-batton.png) no-repeat right 5px top 3px #d71d3b;
-
-            //&:hover + ul {display: block;}
         }
 
         ul {
             width: 100%;
             position: absolute;
-            display: none;
+            //display: none;
             list-style: none;
             background: #D71D3B;
 
             &:hover {display: block;}
+
+            &.open {display: block;}
 
             li {
                 position: relative;
