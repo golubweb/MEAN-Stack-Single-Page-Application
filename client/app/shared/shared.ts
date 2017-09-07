@@ -3,7 +3,7 @@ import DateConvertPipe   from './pipes/date-convert.pipe';
 import DateYearPipe      from './pipes/date-year.pipe';
 import DateMonthPipe     from './pipes/date-month.pipe';
 
-import ToggleElementDirective from './directives/toggle-element.directive';
+import ToggleElementDirective  from './directives/toggle-element.directive';
 
 import AuthGuardService       from './services/auth-guard.service';
 import AuthenticationService  from './services/authentication.service';

@@ -1,5 +1,5 @@
 {
-  "name": "Golubweb",
+  "name": "MEAN-Stack-Single-Page-Application",
   "version": "1.0.0",
   "description": "",
   "author": "Darko Golubovic",
@@ -13,6 +13,7 @@
     "postinstall": "npm run typings install"
   },
   "dependencies": {
+    "@angular/animations": "^4.1.3",
     "@angular/common": "~4.0.0",
     "@angular/compiler": "~4.0.0",
     "@angular/core": "~4.0.0",

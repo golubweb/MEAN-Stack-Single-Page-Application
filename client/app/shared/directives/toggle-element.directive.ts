@@ -6,7 +6,7 @@ import { Directive, ElementRef, Renderer, HostListener } from '@angular/core';
 export default class ToggleElementDirective {
     constructor(
         private _el: ElementRef,
-        private renderer: Renderer
+        private _renderer: Renderer
     ) { }
 
     @HostListener('click') onMouseClick() {
@@ -20,6 +20,6 @@ export default class ToggleElementDirective {
     }
 
     private showHideElement(element, value) {
-        this.renderer.setElementStyle(element, 'display', value);
+        this._renderer.setElementStyle(element, 'display', value);
     }
 }
