@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators, ControlGroup, Control } from '@angular/forms';
 import { Router }        from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
@@ -21,6 +21,8 @@ export default class LoginWidgetComponent implements OnInit {
     showUsernameHint:    boolean = false;
     showPasswordHint:    boolean = false;
     userIsLoggedIn:      boolean = false;
+
+    //@ViewChild("loginPanel") private loginPanel: any;
 
     constructor(
         private router: Router,
@@ -61,6 +63,10 @@ export default class LoginWidgetComponent implements OnInit {
         password.valueChanges.subscribe(value => {
             this.showPasswordHint = this.passwordValidator(value);
         });
+
+        /*console.log('----------------------');
+        console.log(this.loginPanel.nextElementSibling());
+        console.log('----------------------');*/
     }
 
     authenticate() {

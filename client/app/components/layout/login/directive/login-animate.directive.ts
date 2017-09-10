@@ -1,28 +1,30 @@
-import { Directive, ElementRef, Renderer, HostListener } from '@angular/core';
-//import { trigger, state, animate, transition, style }    from '@angular/animations';
+import { Directive, Renderer, HostListener } from '@angular/core';
+import { trigger, state, animate, transition, style }    from '@angular/animations';
 
 @Directive({
     selector: '[app-login-animate]'
 })
 export default class LoginAnimateDirective {
-    constructor(
-        private _el: ElementRef,
-        private _renderer: Renderer
-    ) {}
+    openLogin: boolean = false;
+
+    constructor(private _renderer: Renderer) {}
 
     @HostListener('click') onMouseClick() {
-        this.animateLogin();
+        let loginPanel = document.querySelector('.login__panel--info');
+
+        (!this.openLogin) ? this.animate(loginPanel, '6px', '-200px', true) : this.animate(loginPanel, '6px', '200px', false);
     }
 
-    private animateLogin() {
-        //let loginPanel = this._el.nativeElement;
-        //.querySelector('.login__panel--info');
-        //console.log(loginPanel.style);
+    private animate(element, top, left, open) {
+        this._renderer.invokeElementMethod(element, 'animate', [
+                [
+                    { top : top, left : '0', offset : 0 },
+                    { top : top, left : left, offset : 1 }
+                ],
+                { delay: 0, duration: 500, easing: 'ease', fill: 'both' }
+            ]
+        );
 
-        /*state('*', style({
-            top: '-80px',
-            left: '77px',
-            right: 'auto'
-        }))*/
+        this.openLogin = open;
     }
 }
