@@ -15,11 +15,11 @@ export default class LoginAnimateDirective {
         (!this.openLogin) ? this.animate(loginPanel, '6px', '-200px', true) : this.animate(loginPanel, '6px', '200px', false);
     }
 
-    private animate(element, top, left, open) {
+    private animate(element, topValue, leftValue, open) {
         this._renderer.invokeElementMethod(element, 'animate', [
                 [
-                    { top : top, left : '0', offset : 0 },
-                    { top : top, left : left, offset : 1 }
+                    { top : topValue, left : '0', offset : 0 },
+                    { top : topValue, left : leftValue, offset : 1 }
                 ],
                 { delay: 0, duration: 500, easing: 'ease', fill: 'both' }
             ]
