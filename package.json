@@ -50,14 +50,16 @@
     "@types/core-js": "^0.9.35",
     "@types/node": "^6.0.45",
     "concurrently": "^3.1.0",
+    "css-loader": "^0.28.7",
     "extract-text-webpack-plugin": "2.1.2",
     "lite-server": "^2.2.2",
     "node-sass": "^4.5.3",
     "nodemon": "^1.11.0",
     "ruby": "^0.6.1",
     "sass-loader": "^6.0.6",
-    "webpack": "^3.2.0",
+    "style-loader": "^0.18.2",
     "ts-loader": "^2.3.3",
-    "typescript": "^2.2.1"
+    "typescript": "^2.2.1",
+    "webpack": "^3.2.0"
   }
 }
