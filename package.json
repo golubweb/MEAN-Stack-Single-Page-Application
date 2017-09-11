@@ -8,7 +8,9 @@
   "scripts": {
     "start": "nodemon ./bin/www",
     "build": "webpack --progress",
-    "watch": "webpack --watch"
+    "watch": "webpack --watch",
+    "preinstall": "rm -rf ./client/built",
+    "postinstall": "npm run typings install"
   },
   "dependencies": {
     "@angular/animations": "^4.1.3",
