@@ -7,12 +7,7 @@ import { AuthenticationService } from '../../../shared/shared';
 
 @Component({
     selector:    '[app-login-widget]',
-    templateUrl: 'templates/layout/login-widget.component.html',
-    styles: [`
-        .ng-valid     {border-color: #3c763d;}
-        .ng-invalid   {border-color: #a94442;}
-        .ng-untouched {border-color: #999;}
-    `]
+    templateUrl: 'templates/layout/login-widget.component.html'
 })
 export default class LoginWidgetComponent implements OnInit {
     loginForm;
@@ -21,8 +16,6 @@ export default class LoginWidgetComponent implements OnInit {
     showUsernameHint:    boolean = false;
     showPasswordHint:    boolean = false;
     userIsLoggedIn:      boolean = false;
-
-    //@ViewChild("loginPanel") private loginPanel: any;
 
     constructor(
         private router: Router,
@@ -43,13 +36,13 @@ export default class LoginWidgetComponent implements OnInit {
         this.loginForm = new FormGroup({
             'username': new FormControl('', Validators.compose([
                 Validators.required,
-                Validators.pattern(/^[\w.%+-]+@[\w.-]+\.[a-zA-Z]{2,}$/)
+                this.emailValidator
             ])),
             'password': new FormControl('', Validators.compose([
                 Validators.required,
                 Validators.minLength(7),
                 Validators.maxLength(40),
-                Validators.pattern(/^.{7,40}$/)
+                this.passwordValidator
             ]))
         });
 
@@ -63,10 +56,6 @@ export default class LoginWidgetComponent implements OnInit {
         password.valueChanges.subscribe(value => {
             this.showPasswordHint = this.passwordValidator(value);
         });
-
-        /*console.log('----------------------');
-        console.log(this.loginPanel.nextElementSibling());
-        console.log('----------------------');*/
     }
 
     authenticate() {
@@ -93,18 +82,10 @@ export default class LoginWidgetComponent implements OnInit {
     }
 
     private emailValidator(velue): boolean {
-        if(/^[\w.%+-]+@[\w.-]+\.[a-zA-Z]{2,}$/.test(velue)) {
-            return false;
-        } else {
-            return true;
-        }
+        return (/^[\w.%+-]+@[\w.-]+\.[a-zA-Z]{2,}$/.test(velue)) ? false : true;
     }
 
     private passwordValidator(value): boolean {
-        if(/^.{7,40}$/.test(value)) {
-            return false;
-        } else {
-            return true;
-        }
+        return (/^.{7,40}$/.test(value)) ? false : true;
     }
 }
