@@ -28,6 +28,7 @@ var mongoose = require('mongoose');
 // ROUTES
 // ==============================================
 var index   = require('./server/routes/index'),
+    data    = require('./server/routes/data'),
     users   = require('./server/routes/users'),
     pages   = require('./server/routes/pages'),
     blog    = require('./server/routes/blog'),
@@ -64,6 +65,7 @@ app.use('/css',       express.static(path.join(__dirname, 'client/public/css')))
 
 // Run Router
 app.use('/',    index);
+app.use('/api', data);
 app.use('/api', users);
 app.use('/api', pages)
 app.use('/api', blog);

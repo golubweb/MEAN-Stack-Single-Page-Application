@@ -34,7 +34,7 @@ const AppRoutesModule: any[] = [
         PagesModule,
         PostsModule,
         ProfileModule,
-        RouterModule.forRoot(AppRoutesModule, { enableTracing: true, useHash: true })
+        RouterModule.forRoot(AppRoutesModule, { useHash: true })
     ],
     declarations: [
         AppComponent,

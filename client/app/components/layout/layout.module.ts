@@ -1,7 +1,12 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { CommonModule }  from '@angular/common';
-import { RouterModule }  from '@angular/router';
+import { CommonModule }                     from '@angular/common';
+import { RouterModule }                     from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EffectsModule }                    from '@ngrx/effects';
+import { StoreModule }                      from '@ngrx/store';
+
+import { CountryEffects } from './register/effects/country.effects';
+import { CountryReducer } from './register/reducers/country.reducer';
 
 import { SHARED_DIRECTIVES } from '../../shared/shared';
 import LoginAnimateDirective from './login/directive/login-animate.directive';
@@ -32,6 +37,8 @@ const layoutList: any[] = [
         RouterModule,
         FormsModule,
         ReactiveFormsModule,
+        EffectsModule.forRoot([CountryEffects]),
+        StoreModule.forRoot({ registerCountry: CountryReducer }),
         MeniusModule
     ],
     declarations: [

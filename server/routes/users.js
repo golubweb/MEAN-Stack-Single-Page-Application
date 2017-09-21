@@ -5,8 +5,6 @@ const app = require('../../app');
 const express  = require('express'),
       router   = express.Router();
 
-//const countries = require('country-data').countries;
-
 const Joi = require('joi');
 const registerAuthor = require('../function/middleware/validation/register-author'),
       loginAuthor    = require('../function/middleware/validation/login-author');

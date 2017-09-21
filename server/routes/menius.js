@@ -13,9 +13,10 @@ const menuDB = new Menius();
 router.get('/main/menius', (req, res) => {
     menuDB.getMainMenu().then((response)=> {
         let menu = response[0],
-            subMenu = response[1];
+            subMenu = response[1],
+            thirdmenu = response[2];
 
-        res.json({ menius: menu, subMenius: subMenu });
+        res.json({ menius: menu, subMenius: subMenu, thirdMenius: thirdmenu });
         res.end();
     });
 });
