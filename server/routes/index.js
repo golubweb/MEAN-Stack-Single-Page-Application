@@ -1,10 +1,9 @@
 "use strict";
 
-var app = require('../../app');
-var path = require("path");
+const app = require('../../app'),
+      path = require("path");
 
-var express = require('express');
-var router = express.Router();
+const router = require('express').Router();
 
 router.get('/', (req, res) => {
 	res.sendFile(path.join(__dirname + '/../../client/index.html'));

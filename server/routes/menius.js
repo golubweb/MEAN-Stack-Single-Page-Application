@@ -1,14 +1,12 @@
 "use strict";
 
-var app = require('../../app');
+const app = require('../../app'),
+      router = require('express').Router();
 
-var express = require('express');
-var router = express.Router();
+const checkUserToken = require('../function/middleware/authenticated');
 
-var checkUserToken = require('../function/middleware/authenticated');
-
-const Menius = require('../function/mongoDB/menius');
-const menuDB = new Menius();
+const Menius = require('../function/mongoDB/menius'),
+      menuDB = new Menius();
 
 router.get('/main/menius', (req, res) => {
     menuDB.getMainMenu().then((response)=> {

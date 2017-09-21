@@ -1,14 +1,12 @@
 "use strict";
 
-var app = require('../../app');
+const app = require('../../app'),
+      router = require('express').Router();
 
-var express = require('express');
-var router = express.Router();
+const checkUserToken = require('../function/middleware/authenticated');
 
-var checkUserToken = require('../function/middleware/authenticated');
-
-const pages = require('../function/mongoDB/pages');
-const pagesDB = new pages();
+const pages = require('../function/mongoDB/pages'),
+      pagesDB = new pages();
 
 router.get('/page/:id', (req, res)=> {
     let pageID = req.params.id;

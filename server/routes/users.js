@@ -1,19 +1,17 @@
 "use strict";
 
-const app = require('../../app');
+const app = require('../../app'),
+      router  = require('express').Router();
 
-const express  = require('express'),
-      router   = express.Router();
-
-const Joi = require('joi');
-const registerAuthor = require('../function/middleware/validation/register-author'),
+const Joi = require('joi'),
+      registerAuthor = require('../function/middleware/validation/register-author'),
       loginAuthor    = require('../function/middleware/validation/login-author');
 
-const generateToken  = require('../function/middleware/generate-token');
-const checkUserToken = require('../function/middleware/authenticated');
+const generateToken  = require('../function/middleware/generate-token'),
+      checkUserToken = require('../function/middleware/authenticated');
 
-const User = require('../function/mongoDB/users');
-const userDB = new User();
+const User = require('../function/mongoDB/users'),
+      userDB = new User();
 
 router.post('/register', (req, res) => {
     Joi.validate(req.body, registerAuthor, (err, validator) => {

@@ -1,13 +1,10 @@
 "use strict";
 
-var app = require('../../app');
+const app = require('../../app'),
+      router = require('express').Router();
 
-var express = require('express');
-var router = express.Router();
-
-
-const Blog = require('../function/mongoDB/blog');
-const blogDB = new Blog();
+const Blog = require('../function/mongoDB/blog'),
+      blogDB = new Blog();
 
 router.get('/blog/category/posts/:id', (req, res)=> {
     let catID = req.params.id;

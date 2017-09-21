@@ -1,11 +1,10 @@
 "use strict";
 
-const app = require('../../app');
+const app = require('../../app'),
+      router  = require('express').Router();
 
-const router  = require('express').Router();
-
-const Widgets = require('../function/mongoDB/widgets');
-const widgetsDB = new Widgets();
+const Widgets = require('../function/mongoDB/widgets'),
+      widgetsDB = new Widgets();
 
 router.get('/data/widgets', (req, res) => {
     let big    = widgetsDB.getBannerBig(),
