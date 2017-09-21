@@ -3,7 +3,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-class blog {
+class Blog {
 	constructor() {
         this.mc = mongoose.connection.db;
 
@@ -62,4 +62,4 @@ class blog {
     }
 }
 
-module.exports = blog;
+module.exports = Blog;
