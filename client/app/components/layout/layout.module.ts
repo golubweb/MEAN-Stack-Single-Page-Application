@@ -19,7 +19,8 @@ import FooterComponent         from './footer/footer.component';
 import LoginWidgetComponent    from './login/login-widget.component';
 import RegisterWidgetComponent from './register/register-widget.component';
 
-import MeniusModule from './menius/menius.module';
+import MeniusModule  from './menius/menius.module';
+import WidgetsModule from './widgets/widgets.module';
 
 const layoutList: any[] = [
     LayoutComponent,
@@ -39,7 +40,8 @@ const layoutList: any[] = [
         ReactiveFormsModule,
         EffectsModule.forRoot([CountryEffects]),
         StoreModule.forRoot({ registerCountry: CountryReducer }),
-        MeniusModule
+        MeniusModule,
+        WidgetsModule
     ],
     declarations: [
         layoutList,

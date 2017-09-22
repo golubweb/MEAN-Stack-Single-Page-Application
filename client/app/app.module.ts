@@ -13,8 +13,8 @@ import { SHARED_PROVIDERS, SHARED_PIPES } from './shared/shared';
 import AppComponent      from './app.component';
 import HomePageComponent from './components/pages/home-page.component';
 
-import WidgetsService    from './components/widgets/services/widgets.service';
-import WidgetsReducer    from './components/widgets/reducers/widgets.reducer';
+import WidgetsService    from './components/layout/widgets/services/widgets.service';
+import WidgetsReducer    from './components/layout/widgets/reducers/widgets.reducer';
 
 import PagesModule       from './components/pages/pages.module';
 import PostsModule       from './components/blog/posts.module';

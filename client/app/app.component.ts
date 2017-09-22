@@ -4,10 +4,10 @@ import { Router }    from '@angular/router';
 import { Store }      from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
-import * as WidgetsActions from './components/widgets/actions/widgets.action';
-import Widgets             from './components/widgets/interfaces/widgets.interface';
+import * as WidgetsActions from './components/layout/widgets/actions/widgets.action';
 
-import WidgetsService from './components/widgets/services/widgets.service';
+import Widgets             from './components/layout/widgets/interfaces/widgets.interface';
+import WidgetsService      from './components/layout/widgets/services/widgets.service';
 
 interface AppState {
     widgets: Widgets
@@ -37,5 +37,7 @@ export default class AppComponent implements OnInit {
         this._store.select('widgets').subscribe(respose => {
             this.widgetsList = respose;
         });
+
+    this._store.subscribe(state => console.log(state));
     }
 }
