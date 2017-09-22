@@ -5,7 +5,9 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export default class PagesService {
-    constructor(private http: Http) {}
+    constructor(private _http: Http) {
+        console.log(this._http);
+    }
 
     getPage(page_id: number): Observable {
         const url = '/api/page/' + page_id;
@@ -13,7 +15,7 @@ export default class PagesService {
         const headersType    = new Headers({ 'Content-Type': 'application/json' });
         const requestHeaders = new RequestOptions({ headers: this.headersType });
 
-        return this.http.get(url, requestHeaders).map((data: Response) => {
+        return this._http.get(url, requestHeaders).map((data: Response) => {
             let dataPage = data.json();
 
             return dataPage.data;

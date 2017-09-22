@@ -13,12 +13,12 @@ export default class BlogService {
     private headersJson = new Headers({ 'Content-Type': 'application/json' });
     private optionJson  = new RequestOptions({ headers: this.headersJson });
 
-    constructor(public http: Http) {}
+    constructor(public _http: Http) {}
 
     getAllCategory(): Observable {
         const url = '/api/blog/category';
 
-        return this.http.get(url, this.optionJson).map( (data: Response) => {
+        return this._http.get(url, this.optionJson).map((data: Response) => {
             let categoryData =  data.json();
 
             return categoryData.allCategory;
@@ -28,22 +28,20 @@ export default class BlogService {
     getSingleCategory(cat_id: number): Observable {
         const url = '/api/blog/category/posts/' + cat_id;
 
-        return this.http.get(url, this.optionJson)
-            .map((data: Response) => {
-                let data = data.json();
+        return this._http.get(url, this.optionJson).map((data: Response) => {
+            let data = data.json();
 
-                return data.category;
+            return data.category;
         });
     }
 
     getPost(post_id: number): Observable {
         const url = '/api/blog/post/' + post_id;
 
-        return this.http.get(url, this.optionJson)
-            .map((data: Response) => {
-                let data = data.json();
+        return this._http.get(url, this.optionJson).map((data: Response) => {
+            let data = data.json();
 
-                return data.post;
+            return data.post;
         });
     }
 }

@@ -6,11 +6,15 @@ import { HttpModule }                       from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes }             from '@angular/router';
 import { CookieService }                    from 'ngx-cookie-service';
+import { StoreModule }                      from '@ngrx/store';
 
 import { SHARED_PROVIDERS, SHARED_PIPES } from './shared/shared';
 
 import AppComponent      from './app.component';
 import HomePageComponent from './components/pages/home-page.component';
+
+import WidgetsService    from './components/widgets/services/widgets.service';
+import WidgetsReducer    from './components/widgets/reducers/widgets.reducer';
 
 import PagesModule       from './components/pages/pages.module';
 import PostsModule       from './components/blog/posts.module';
@@ -34,7 +38,8 @@ const AppRoutesModule: any[] = [
         PagesModule,
         PostsModule,
         ProfileModule,
-        RouterModule.forRoot(AppRoutesModule, { useHash: true })
+        RouterModule.forRoot(AppRoutesModule, { useHash: true }),
+        StoreModule.forRoot({ widgets: WidgetsReducer })
     ],
     declarations: [
         AppComponent,
@@ -42,7 +47,8 @@ const AppRoutesModule: any[] = [
     ],
     providers:    [
         CookieService,
-        SHARED_PROVIDERS
+        WidgetsService,
+        SHARED_PROVIDERS,
     ],
     schemas:      [ CUSTOM_ELEMENTS_SCHEMA ],
     bootstrap:    [ AppComponent ]
