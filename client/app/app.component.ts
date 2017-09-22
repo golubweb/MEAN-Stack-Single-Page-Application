@@ -38,6 +38,6 @@ export default class AppComponent implements OnInit {
             this.widgetsList = respose;
         });
 
-    this._store.subscribe(state => console.log(state));
+        this._store.subscribe(state => console.log(state));
     }
 }

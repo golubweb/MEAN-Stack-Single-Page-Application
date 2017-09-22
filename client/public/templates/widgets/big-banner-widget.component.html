@@ -1,6 +1,7 @@
 <div id="big-banner" class="widget">
     <h2>Big Banner</h2>
-    <div>
-        <figure><a href="" target="_blank"><img src="image/" alt="" /></a></figure>
-    </div>
+
+    <figure *ngFor="let item of banners; let i = index">
+        <a href="{{ item.url }}" target="_blank"><img src="images/{{ item.src }}" alt="{{ item.alt }}" /></a>
+    </figure>
 </div>

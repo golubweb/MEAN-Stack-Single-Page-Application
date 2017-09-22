@@ -1,6 +1,7 @@
 <div id="social-icon" class="widget">
     <h2>Social Widget</h2>
-    <figure>
-        <a href="" target="_blank" title=""></a>
+
+    <figure *ngFor="let item of media; let i = index" class="{{ item.name }}">
+        <a href="{{ item.url }}" target="_blank" title=""></a>
     </figure>
 </div>

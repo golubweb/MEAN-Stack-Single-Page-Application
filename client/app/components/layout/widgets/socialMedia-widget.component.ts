@@ -1,12 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import { Router }    from '@angular/router';
+import { Store }             from '@ngrx/store';
+
+import Media from './interfaces/social-media.interface';
 
 @Component({
     selector:    '[app-social-Media-widget]',
     templateUrl: '/templates/widgets/social-media-widget.component.html'
 })
 export default class SocialMediaWidgetComponent implements OnInit {
-    constructor() {}
+    media: Media = [];
 
-    ngOnInit() {}
+    constructor(private _store: Store) {}
+
+    ngOnInit() {
+        this.fetchSocialMedia();
+    }
+
+    private fetchSocialMedia(): any {
+        this._store.select('widgets').subscribe(respose => {
+            this.media = respose.socialMedia;
+        });
+    }
 }

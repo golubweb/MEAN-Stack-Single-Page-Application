@@ -1,12 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import { Router }    from '@angular/router';
+import { Store }             from '@ngrx/store';
+
+import Html from './interfaces/social-media.interface';
 
 @Component({
     selector:    '[app-custom-html-widget]',
     templateUrl: '/templates/widgets/custom-html-widget.component.html'
 })
 export default class CustomHtmlWidgetComponent implements OnInit {
-    constructor() {}
+    custom: Html = [];
 
-    ngOnInit() {}
+    constructor(private _store: Store) {}
+
+    ngOnInit() {
+        this.fetchCustomHtml();
+    }
+
+    private fetchCustomHtml(): any {
+        this._store.select('widgets').subscribe(respose => {
+            this.custom = respose.customHtml[0];
+        });
+    }
 }

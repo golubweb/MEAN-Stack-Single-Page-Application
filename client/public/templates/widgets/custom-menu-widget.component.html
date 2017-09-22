@@ -1,6 +1,11 @@
 <div id="custom-menu" class="widget">
     <div>
         <h2>Custom Menu Widget</h2>
-        <div></div>
+
+        <ul>
+            <li *ngFor="let item of menu; let i = index">
+                <a href="{{ item.url }}" target="_blank">{{ item.title }}</a>
+            </li>
+        </ul>
     </div>
 </div>

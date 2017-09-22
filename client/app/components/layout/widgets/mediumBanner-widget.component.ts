@@ -1,12 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import { Router }    from '@angular/router';
+import { Store }             from '@ngrx/store';
+
+import Medium from './interfaces/banner.interface';
 
 @Component({
     selector:    '[app-medium-banner-widget]',
     templateUrl: '/templates/widgets/medium-banner-widget.component.html'
 })
 export default class MediumBannerWidgetComponent implements OnInit {
-    constructor() {}
+    banners: Medium = [];
 
-    ngOnInit() {}
+    constructor(private _store: Store) {}
+
+    ngOnInit() {
+        this.fetchMediumImg();
+    }
+
+    private fetchMediumImg(): void {
+        this._store.select('widgets').subscribe(respose => {
+            this.banners = respose.mediumBanner;
+        });
+    }
 }
