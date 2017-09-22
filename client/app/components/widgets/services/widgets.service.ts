@@ -13,14 +13,14 @@ export default class WidgetsService {
     private optionJson  = new RequestOptions({ headers: this.headersJson });
 
     constructor(private _http: Http) {}
-        console.log('http: ', this._http)
-    }
 
-    /*getAll(): Observable {
+    public getAll(): Observable {
         const url = '/api/data/widgets';
 
-        this._http.get(url, this.optionJson).map((data: Response) => {
-            resolve(data.json());
+        return this._http.get(url, this.optionJson).map((data: Response) => {
+            this.widgetsData = data.json();
+
+            return this.widgetsData.widgets;
         });
-    }*/
+    }
 }

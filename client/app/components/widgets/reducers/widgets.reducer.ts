@@ -11,16 +11,15 @@ const defaultState: Widgets = {
     socialMedia: []
 }
 
-let widgetsData = [];
-
 export default function widgetReducer(state: Widgets = defaultState, action: Action) {
-    console.log(action.type, state);
-
     switch(action.type) {
         case WidgetsActions.GET_WIDGET:
             return {
-                ...state,
-                widgetsData: action.payload
+                bigBanner:    action.payload.bigBanner,
+                mediumBanner: action.payload.mediumBanner,
+                customHtml:   action.payload.customHtml,
+                customMenu:   action.payload.customMenu,
+                socialMedia:  action.payload.socialMedia
             }
         default:
             return defaultState;

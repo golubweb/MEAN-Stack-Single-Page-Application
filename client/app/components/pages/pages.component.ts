@@ -5,4 +5,6 @@ import { Router, ActivatedRoute } from '@angular/router';
     selector:    '[app-pages-root]',
     templateUrl: 'templates/pages/pages.component.html'
 })
-export default class PagesComponent implements OnInit {}
+export default class PagesComponent implements OnInit {
+    constructor() {}
+}
