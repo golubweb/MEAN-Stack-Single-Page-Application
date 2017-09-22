@@ -51,6 +51,7 @@ app.use(cookieParser());
 //Support Validatin
 app.use(expressValidator());
 
+//Static file
 app.use("/client",       express.static(path.join(__dirname, '../client')));
 app.use("/node_modules", express.static(path.join(__dirname, '../node_modules')));
 
