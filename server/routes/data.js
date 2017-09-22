@@ -1,6 +1,6 @@
 "use strict";
 
-const app = require('../../app'),
+const app = require('../app'),
       router  = require('express').Router();
 
 const generateToken  = require('../function/middleware/generate-token'),

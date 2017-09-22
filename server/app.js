@@ -1,4 +1,4 @@
-var config = require('./config/development');
+var config = require('../config/development');
 
 // BASE MODULES
 // ==============================================
@@ -27,13 +27,13 @@ var mongoose = require('mongoose');
 
 // ROUTES
 // ==============================================
-var index   = require('./server/routes/index'),
-    data    = require('./server/routes/data'),
-    widgets = require('./server/routes/widgets'),
-    users   = require('./server/routes/users'),
-    pages   = require('./server/routes/pages'),
-    blog    = require('./server/routes/blog'),
-    menius  = require('./server/routes/menius');
+var index   = require('./routes/index'),
+    data    = require('./routes/data'),
+    widgets = require('./routes/widgets'),
+    users   = require('./routes/users'),
+    pages   = require('./routes/pages'),
+    blog    = require('./routes/blog'),
+    menius  = require('./routes/menius');
 
 // ALLOW CROSS DOMAIN
 // ==============================================
@@ -50,9 +50,6 @@ app.use(cookieParser());
 
 //Support Validatin
 app.use(expressValidator());
-
-//Support Static files
-app.set('views', express.static(path.join(__dirname, '../client/public/views')));
 
 app.use("/client",       express.static('client'));
 app.use("/node_modules", express.static('node_modules'));
