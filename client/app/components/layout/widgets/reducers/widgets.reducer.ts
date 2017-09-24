@@ -13,8 +13,6 @@ const defaultState: Widgets = {
 }
 
 export default function widgetReducer(state: Widgets = defaultState, action: Action) {
-    console.log(action);
-
     switch(action.type) {
         case WidgetsActions.GET_WIDGET: {
             return Object.assign({}, state, {
