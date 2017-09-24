@@ -14,8 +14,8 @@ import Third  from './interfaces/third-menius.interface';
 })
 class MeniusComponent {
     mainMenu:    MainMenius[] = [];
-    subMenu:     Second[] = [];
-    thirdMenius: Third = [];
+    subMenu:     Second[]     = [];
+    thirdMenius: Third[]      = [];
 
     constructor(
         private router: Router,

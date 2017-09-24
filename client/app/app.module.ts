@@ -43,7 +43,10 @@ const AppRoutesModule: any[] = [
         PostsModule,
         ProfileModule,
         RouterModule.forRoot(AppRoutesModule, { useHash: true }),
-        StoreModule.forRoot({ widgets: WidgetsReducer, menius: MeniusReducer })
+        StoreModule.forRoot({
+            widgets: WidgetsReducer,
+            menius: MeniusReducer
+        })
     ],
     declarations: [
         AppComponent,
