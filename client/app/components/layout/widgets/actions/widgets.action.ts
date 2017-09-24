@@ -4,10 +4,10 @@ import Widgets    from '../interfaces/widgets.interface';
 
 export const GET_WIDGET = 'GET_WIDGET';
 
-export class DownloadWidget implements Action {
+export class setWidgetState implements Action {
     readonly type = GET_WIDGET;
 
     constructor(public payload: any) {}
 }
 
-export type All = DownloadWidget;
+export type All = setWidgetStore;

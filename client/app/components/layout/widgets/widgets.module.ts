@@ -8,6 +8,7 @@ import RecentPostsComponent  from './recentPosts-widget.component';
 import CustomHtmlComponent   from './customHtml-widget.component';
 import CustomMenuComponent   from './customMenu-widget.component';
 import NewslettersComponent  from './newsletters-widget.component';
+import ContactUsComponent    from './contactUs-widget.component';
 import PostTagsComponent     from './postTags-widget.component';
 import CategoryComponent     from './categoryTags-widget.component';
 import SocialMediaComponent  from './socialMedia-widget.component';
@@ -20,6 +21,7 @@ const WidgetsList: any[] = [
     CustomHtmlComponent,
     CustomMenuComponent,
     NewslettersComponent,
+    ContactUsComponent,
     PostTagsComponent,
     CategoryComponent,
     SocialMediaComponent

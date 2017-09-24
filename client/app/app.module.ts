@@ -1,7 +1,7 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { BrowserModule }                    from '@angular/platform-browser';
-//import { BrowserAnimationsModule }          from '@angular/platform-browser/animations';
+//import { BrowserAnimationsModule }        from '@angular/platform-browser/animations';
 import { HttpModule }                       from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes }             from '@angular/router';
@@ -15,6 +15,10 @@ import HomePageComponent from './components/pages/home-page.component';
 
 import WidgetsService    from './components/layout/widgets/services/widgets.service';
 import WidgetsReducer    from './components/layout/widgets/reducers/widgets.reducer';
+
+import MeniusService     from './components/layout/menius/services/menius.service';
+import MeniusReducer     from './components/layout/menius/reducers/menius.reducer';
+
 
 import PagesModule       from './components/pages/pages.module';
 import PostsModule       from './components/blog/posts.module';
@@ -39,7 +43,7 @@ const AppRoutesModule: any[] = [
         PostsModule,
         ProfileModule,
         RouterModule.forRoot(AppRoutesModule, { useHash: true }),
-        StoreModule.forRoot({ widgets: WidgetsReducer })
+        StoreModule.forRoot({ widgets: WidgetsReducer, menius: MeniusReducer })
     ],
     declarations: [
         AppComponent,
@@ -48,6 +52,7 @@ const AppRoutesModule: any[] = [
     providers:    [
         CookieService,
         WidgetsService,
+        MeniusService,
         SHARED_PROVIDERS,
     ],
     schemas:      [ CUSTOM_ELEMENTS_SCHEMA ],

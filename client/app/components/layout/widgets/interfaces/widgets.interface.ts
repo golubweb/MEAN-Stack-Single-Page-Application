@@ -1,4 +1,5 @@
 export default interface Widgets {
+    recentPost: Array;
     bigBanner: Array;
     mediumBanner: Array;
     customHtml: Array;

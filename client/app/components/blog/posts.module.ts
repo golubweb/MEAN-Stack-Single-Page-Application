@@ -31,12 +31,12 @@ const TimerRoutsModule: any[] = [
         RouterModule.forRoot(TimerRoutsModule)
     ],
     declarations: [
-        DateConvertPipe,
-        DateYearPipe,
-        DateMonthPipe,
         PostsComponent,
         PostsCategoryComponent,
         PostSingleComponent,
+        DateConvertPipe,
+        DateYearPipe,
+        DateMonthPipe,
         PostsAllCategoryComponent
     ],
     providers:    [ BlogService ],

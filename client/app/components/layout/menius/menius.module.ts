@@ -3,13 +3,12 @@ import { CommonModule }  from '@angular/common';
 import { RouterModule }  from '@angular/router';
 
 import MeniusComponent from './menius.component';
-import MeniusService   from './services/menius.service';
 import SubMeniusPipe   from './pipes/sub-menius.pipe';
 
 @NgModule({
     imports:      [ CommonModule, RouterModule ],
     declarations: [ MeniusComponent, SubMeniusPipe ],
-    providers:    [ MeniusService ],
+    providers:    [ ],
     exports:      [ MeniusComponent ]
 })
 export default class MeniusModule { }

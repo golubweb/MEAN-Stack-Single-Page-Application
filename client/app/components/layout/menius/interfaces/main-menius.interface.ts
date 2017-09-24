@@ -1,5 +1,5 @@
 interface MainMeniusInterfaces {
-    id     : Numbar;
+    id     : String;
     title  : String;
     url    : String;
     sub_url: String;
