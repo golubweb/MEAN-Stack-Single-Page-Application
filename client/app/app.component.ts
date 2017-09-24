@@ -42,7 +42,7 @@ export default class AppComponent implements OnInit {
         });
 
         this._store.subscribe(state => {
-            //console.log(state.widgets)
+            console.log(state.widgets)
             //console.log(state.menius);
         });
     }
