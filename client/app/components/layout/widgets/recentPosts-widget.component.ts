@@ -18,7 +18,8 @@ export default class RecentPostsWidgetComponent implements OnInit {
 
     private fetchRecentPost(): void {
         this._store.select('widgets').subscribe(respose => {
-            this.recent = respose.recentPosts;
+            console.log(respose.data);
+            this.recent = respose.data.recentPosts;
         });
     }
 }

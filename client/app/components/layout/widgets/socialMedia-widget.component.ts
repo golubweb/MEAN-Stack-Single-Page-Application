@@ -18,7 +18,7 @@ export default class SocialMediaWidgetComponent implements OnInit {
 
     private fetchSocialMedia(): any {
         this._store.select(state => state.widgets).subscribe(respose => {
-            this.media = respose.socialMedia;
+            this.media = respose.data.socialMedia;
         });
     }
 }

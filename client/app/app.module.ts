@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes }             from '@angular/router';
 import { CookieService }                    from 'ngx-cookie-service';
 import { StoreModule }                      from '@ngrx/store';
+import { EffectsModule, Actions  }          from '@ngrx/effects';
 
 import { SHARED_PROVIDERS, SHARED_PIPES } from './shared/shared';
 
@@ -15,10 +16,11 @@ import HomePageComponent from './components/pages/home-page.component';
 
 import WidgetsService    from './components/layout/widgets/services/widgets.service';
 import WidgetsReducer    from './components/layout/widgets/reducers/widgets.reducer';
+import WidgetsEffects    from './components/layout/widgets/effects/widgets.effects';
+import WidgetsActions    from './components/layout/widgets/actions/widgets.action';
 
 import MeniusService     from './components/layout/menius/services/menius.service';
 import MeniusReducer     from './components/layout/menius/reducers/menius.reducer';
-
 
 import PagesModule       from './components/pages/pages.module';
 import PostsModule       from './components/blog/posts.module';
@@ -38,7 +40,6 @@ const AppRoutesModule: any[] = [
         FormsModule,
         HttpModule,
         ReactiveFormsModule,
-        //BrowserAnimationsModule,
         PagesModule,
         PostsModule,
         ProfileModule,
@@ -46,7 +47,8 @@ const AppRoutesModule: any[] = [
         StoreModule.forRoot({
             widgets: WidgetsReducer,
             menius: MeniusReducer
-        })
+        }),
+        EffectsModule.forRoot([WidgetsEffects])
     ],
     declarations: [
         AppComponent,
@@ -57,6 +59,8 @@ const AppRoutesModule: any[] = [
         WidgetsService,
         MeniusService,
         SHARED_PROVIDERS,
+        WidgetsActions,
+        Actions
     ],
     schemas:      [ CUSTOM_ELEMENTS_SCHEMA ],
     bootstrap:    [ AppComponent ]

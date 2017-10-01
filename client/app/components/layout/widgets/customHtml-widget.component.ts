@@ -18,7 +18,7 @@ export default class CustomHtmlWidgetComponent implements OnInit {
 
     private fetchCustomHtml(): any {
         this._store.select('widgets').subscribe(respose => {
-            this.content = respose.customHtml[0];
+            this.content = respose.data.customHtml[0];
         });
     }
 }

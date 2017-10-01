@@ -18,7 +18,7 @@ export default class BigBannerWidgetComponent implements OnInit {
 
     private fetchMediumImg(): void {
         this._store.select('widgets').subscribe(respose => {
-            this.banners = respose.bigBanner;
+            this.banners = respose.data.bigBanner;
         });
     }
 }

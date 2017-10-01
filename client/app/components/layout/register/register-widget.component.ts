@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { Store }      from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { Router }     from '@angular/router';
 
@@ -9,10 +8,6 @@ import { AuthenticationService, CountryService } from '../../../shared/shared';
 
 import * as CountryActions from './actions/country.action';
 import Country             from './interfaces/country.interface';
-
-interface LayoutState {
-    country: Country
-}
 
 @Component({
     selector:    '[app-register-widget]',
@@ -33,25 +28,15 @@ export default class RegisterWidgetComponent implements OnInit {
     showPasswordlHint: Boolean = false;
 
     countries$: Observable<Country> = [];
-    userCountry: Any<Country> = [];
 
     constructor(
         private _fb: FormBuilder,
         private _authService: AuthenticationService,
-        private _store: Store<LayoutState>,
         private _countryService: CountryService
     ) {
-        this.userCountry = this._store.select('registerCountry');
-
-        console.log(this.userCountry);
-
         this._countryService.getCountries().subscribe(data => {
             this.countries$ = data;
         });
-    }
-
-    public setNewCountry(value) {
-        //this._store.dispatch(new CountryActions.SetCountry({'SET_COUNTRY', value}));
     }
 
     ngOnInit() {

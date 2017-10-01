@@ -1,31 +1,29 @@
-import * as WidgetsActions from '../actions/widgets.action';
-import Widgets             from '../interfaces/widgets.interface';
-
-export type Action = WidgetsActions.All;
+import Widgets        from '../interfaces/widgets.interface';
+import WidgetsActions from '../actions/widgets.action';
 
 const defaultState: Widgets = {
-    recentPost: [],
+    recentPosts: [],
     bigBanner: [],
     mediumBanner: [],
     customHtml: [],
     customMenu: [],
-    socialMedia: []
+    socialMedia: [],
+    loading: true
 }
 
-export default function widgetReducer(state: Widgets = defaultState, action: Action) {
+export default function widgetReducer(state: Widgets = defaultState, action) {
     switch(action.type) {
-        case WidgetsActions.GET_WIDGET: {
+        case 'GET_ALL_SUCCESS': {
+            return { ...state, data: action.payload };
+        }
+
+        case 'GET_ALL_FAIL': {
             return Object.assign({}, state, {
-                recentPosts:  action.payload.recentPosts,
-                categoryTags: action.payload.categoryTags,
-                postTags:     action.payload.postTags,
-                bigBanner:    action.payload.bigBanner,
-                mediumBanner: action.payload.mediumBanner,
-                customHtml:   action.payload.customHtml,
-                customMenu:   action.payload.customMenu,
-                socialMedia:  action.payload.socialMedia
+                error: action.payload,
+                loading: true
             });
         }
+
         default: {
             return state;
         }

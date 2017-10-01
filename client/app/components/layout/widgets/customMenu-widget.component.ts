@@ -18,7 +18,7 @@ export default class CustomMenuWidgetComponent implements OnInit {
 
     private fetchMenu(): any {
         this._store.select('widgets').subscribe(respose => {
-            this.menu = respose.customMenu;
+            this.menu = respose.data.customMenu;
         });
     }
 }

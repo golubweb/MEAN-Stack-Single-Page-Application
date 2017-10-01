@@ -20,7 +20,6 @@
     </div>
 
     <div class="form-group">
-        <label>{{ userCountry[0] }} {{ userCountry[1] }} {{ userCountry[2] }}</label>
         <select #selectCountry (change)="setNewCountry(selectCountry.value)" formControlName="country" required>
             <option *ngFor="let item of countries$" [attr.selected]="item.name == 'Serbia' ? true : null" [attr.value]="item.label">{{ item.name }}</option>
         </select>

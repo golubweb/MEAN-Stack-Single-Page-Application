@@ -1,13 +1,31 @@
-import { Action } from '@ngrx/store';
+import { Action } from "@ngrx/store";
+import { Injectable } from '@angular/core';
 
-import Widgets    from '../interfaces/widgets.interface';
+@Injectable()
+export default class WidgetsActions implements Action {
+    static GET_ALL = 'GET_ALL';
 
-export const GET_WIDGET = 'GET_WIDGET';
+    public loadBlogs(): Action {
+        return {
+            type: WidgetsActions.GET_ALL
+        };
+    }
 
-export class setWidgetState implements Action {
-    readonly type = GET_WIDGET;
+    static GET_ALL_SUCCESS = 'GET_ALL_SUCCESS';
 
-    constructor(public payload: any) {}
+    public loadWidgetsSuccess(data): Action {
+        return {
+            type: WidgetsActions.GET_ALL_SUCCESS,
+            payload: data
+        };
+    }
+
+    static GET_ALL_FAIL = 'GET_ALL_FAIL';
+
+    public loadWidgetsFail(error): Action {
+        return {
+            type: WidgetsActions.GET_ALL_FAIL,
+            payload: error
+        };
+    }
 }
-
-export type All = setWidgetStore;

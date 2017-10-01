@@ -14,6 +14,7 @@
             '@angular/http':                        'npm:@angular/http/bundles/http.umd.js',
             '@angular/router':                      'npm:@angular/router/bundles/router.umd.js',
             '@angular/forms':                       'npm:@angular/forms/bundles/forms.umd.js',
+            '@ngrx/effects':                        'npm:@ngrx/effects/bundles/effects.umd.js',
 
             'rxjs': '../node_modules/rxjs'
         },
