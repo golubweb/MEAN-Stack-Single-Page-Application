@@ -28,10 +28,11 @@ export default class AppComponent implements OnInit {
         private _widgetsService: WidgetsService,
         private _meniusService:  MeniusService,
         private _widgetsActions: WidgetsActions
-    ) {}
+    ) {
+        this._store.dispatch({type: 'GET_ALL'}));
+    }
 
     ngOnInit() {
-        this._store.dispatch({type: 'GET_ALL'}));
 
         this._meniusService.getMainMenus().subscribe((meniusData) => {
             this._store.dispatch(new MeniusActions.setMeniusState(meniusData));
