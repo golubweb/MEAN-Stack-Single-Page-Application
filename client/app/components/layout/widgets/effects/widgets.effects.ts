@@ -31,7 +31,7 @@ export default class WidgetsEffects {
             return this._widgetsActions.loadWidgetsSuccess(payload);
         })
         .catch(error => of(
-            return this._widgetsActions.loadWidgetsFail(error);
+            this._widgetsActions.loadWidgetsFail(error);
         ));
 }
 
