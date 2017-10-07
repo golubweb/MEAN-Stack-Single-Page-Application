@@ -10,6 +10,8 @@ import PostSingleComponent       from './posts-single.component';
 import PostsAllCategoryComponent from './posts-all-category.component';
 import PostsCategoryComponent    from './posts-category.component';
 
+import WidgetsResolver from '../../shared/resolvers/widgets.resolver';
+
 import LayoutModule from '../layout/layout.module';
 
 const TimerRoutsModule: any[] = [
@@ -17,9 +19,9 @@ const TimerRoutsModule: any[] = [
         path: 'blog',
         component: PostsComponent,
         children: [
-            { path: 'post/:id',           component: PostSingleComponent },
-            { path: 'category',           component: PostsAllCategoryComponent },
-            { path: 'category/posts/:id', component: PostsCategoryComponent }
+            { path: 'post/:id',           component: PostSingleComponent,       resolve: { widgets: WidgetsResolver } },
+            { path: 'category',           component: PostsAllCategoryComponent, resolve: { widgets: WidgetsResolver } },
+            { path: 'category/posts/:id', component: PostsCategoryComponent,    resolve: { widgets: WidgetsResolver } }
         ]
     }
 ];
@@ -39,7 +41,7 @@ const TimerRoutsModule: any[] = [
         DateMonthPipe,
         PostsAllCategoryComponent
     ],
-    providers:    [ BlogService ],
+    providers:    [ BlogService, WidgetsResolver ],
     schemas:      [ CUSTOM_ELEMENTS_SCHEMA ],
     exports:      [ PostsComponent ]
 })

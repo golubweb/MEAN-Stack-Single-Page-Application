@@ -1,17 +1,17 @@
 <div app-search-widget></div>
-<div app-recent-posts-widget></div>
+<div app-recent-posts-widget [posts]="Widgets.recentPosts"></div>
 
-<div app-post-tags-widget></div>
-<div app-category-tags-widget></div>
+<div app-post-tags-widget [tags]="Widgets.postTags"></div>
+<div app-category-tags-widget [tags]="Widgets.categoryTags"></div>
 
-<div app-big-banner-widget></div>
-<div app-medium-banner-widget></div>
+<div app-big-banner-widget [banner]="Widgets.bigBanner"></div>
+<div app-medium-banner-widget [banner]="Widgets.mediumBanner"></div>
 
-<div app-custom-menu-widget></div>
-<div app-custom-html-widget></div>
+<div app-custom-menu-widget [menius]="Widgets.customMenu"></div>
+<div app-custom-html-widget [html]="Widgets.customHtml"></div>
 
 <div app-newsletters-widget></div>
 <div app-contact-widget></div>
 
-<div app-social-Media-widget></div>
+<div app-social-Media-widget [media]="Widgets.socialMedia"></div>
 

@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { Store }             from '@ngrx/store';
+import { Component, OnInit, Input } from '@angular/core';
 
 import Menu from './interfaces/banner.interface';
 
@@ -8,17 +7,15 @@ import Menu from './interfaces/banner.interface';
     templateUrl: '/templates/widgets/custom-menu-widget.component.html'
 })
 export default class CustomMenuWidgetComponent implements OnInit {
-    menu: Menu = [];
+    @Input('menius') meniusData: any;
 
-    constructor(private _store: Store) {}
+    menu: Menu = [];
 
     ngOnInit() {
         this.fetchMenu();
     }
 
     private fetchMenu(): any {
-        this._store.select('widgets').subscribe(respose => {
-            this.menu = respose.data.customMenu;
-        });
+        this.menu = this.meniusData;
     }
 }

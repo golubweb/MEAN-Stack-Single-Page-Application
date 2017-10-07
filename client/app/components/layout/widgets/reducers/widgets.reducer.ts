@@ -11,7 +11,7 @@ const defaultState: Widgets = {
     loading: true
 }
 
-export default function widgetReducer(state: Widgets = defaultState, action) {
+export default function widgetReducer(state: Widgets, action) {
     switch(action.type) {
         case 'GET_ALL_SUCCESS': {
             return { ...state, data: action.payload };

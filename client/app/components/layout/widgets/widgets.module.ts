@@ -1,5 +1,6 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 import SearchComponent       from './search-widget.component';
 import BigBannerComponent    from './bigBanner-widget.component';
@@ -29,7 +30,8 @@ const WidgetsList: any[] = [
 
 @NgModule({
     imports:      [
-        CommonModule
+        CommonModule,
+        RouterModule
     ],
     declarations: [
         WidgetsList

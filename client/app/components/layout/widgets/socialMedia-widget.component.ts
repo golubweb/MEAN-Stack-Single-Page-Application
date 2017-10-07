@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { Store }             from '@ngrx/store';
+import { Component, OnInit, Input } from '@angular/core';
 
 import Media from './interfaces/social-media.interface';
 
@@ -8,17 +7,15 @@ import Media from './interfaces/social-media.interface';
     templateUrl: '/templates/widgets/social-media-widget.component.html'
 })
 export default class SocialMediaWidgetComponent implements OnInit {
-    media: Media = [];
+    @Input('media') MediaData: any;
 
-    constructor(private _store: Store) {}
+    media: Media = [];
 
     ngOnInit() {
         this.fetchSocialMedia();
     }
 
     private fetchSocialMedia(): any {
-        this._store.select(state => state.widgets).subscribe(respose => {
-            this.media = respose.data.socialMedia;
-        });
+        this.media = this.MediaData;
     }
 }

@@ -23,9 +23,9 @@ class MeniusComponent {
         private _store: Store
     ) {
         this._store.select('menius').subscribe((response) => {
-            this.mainMenu =    response.menius;
-            this.subMenu  =    response.subMenius;
-            this.thirdMenius = response.thirdMenius;
+            this.mainMenu =    response.data.menius;
+            this.subMenu  =    response.data.subMenius;
+            this.thirdMenius = response.data.thirdMenius;
         });
     }
 }

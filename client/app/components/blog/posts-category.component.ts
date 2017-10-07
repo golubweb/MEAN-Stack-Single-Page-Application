@@ -9,23 +9,26 @@ import BlogService  from './services/blog.service';
     templateUrl: 'templates/blog/posts-category.component.html'
 })
 export default class PostsCategoryComponent implements OnInit {
+    widgets:  any[] = [];
     postList: Post[] = [];
 
     constructor(
-        private router: Router,
-        private route: ActivatedRoute,
-        private blogService: BlogService
-    ) {}
+        private _router: Router,
+        private _route: ActivatedRoute,
+        private _blogService: BlogService
+    ) {
+        this._route.data.subscribe(data => this.widgets = data['widgets']);
+    }
 
     ngOnInit() {
-        let catID = this.route.snapshot.params['id'];
+        let catID = this._route.snapshot.params['id'];
 
-        this.blogService.getSingleCategory(catID).subscribe(response => {
+        this._blogService.getSingleCategory(catID).subscribe(response => {
             this.postList = response;
         });
     }
 
     getPost(post_id: number): void {
-        this.router.navigate(['/blog/category/posts/' + post_id]);
+        this._router.navigate(['/blog/category/posts/' + post_id]);
     }
 }

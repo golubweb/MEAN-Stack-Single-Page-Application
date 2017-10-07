@@ -1,12 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { Router }    from '@angular/router';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
     selector:    '[app-post-tags-widget]',
     templateUrl: '/templates/widgets/post-tags-widget.component.html'
 })
 export default class PostTagsWidgetComponent implements OnInit {
-    constructor() {}
+    @Input('tags') PostTags: any;
 
-    ngOnInit() {}
+    tags: any[] = [];
+
+    ngOnInit() {
+        this.tags = this.PostTags;
+    }
 }

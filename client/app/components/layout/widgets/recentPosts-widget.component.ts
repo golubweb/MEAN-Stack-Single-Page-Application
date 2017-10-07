@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { Store }             from '@ngrx/store';
+import { Component, OnInit, Input } from '@angular/core';
 
 import Post from '../../blog/interfaces/posts.interface';
 
@@ -8,18 +7,15 @@ import Post from '../../blog/interfaces/posts.interface';
     templateUrl: '/templates/widgets/recent-posts-widget.component.html'
 })
 export default class RecentPostsWidgetComponent implements OnInit {
-    recent: Post = [];
+    @Input('posts') PostsData: any;
 
-    constructor(private _store: Store) {}
+    recent: Post = [];
 
     ngOnInit() {
         this.fetchRecentPost();
     }
 
     private fetchRecentPost(): void {
-        this._store.select('widgets').subscribe(respose => {
-            console.log(respose.data);
-            this.recent = respose.data.recentPosts;
-        });
+        this.recent = this.PostsData;
     }
 }

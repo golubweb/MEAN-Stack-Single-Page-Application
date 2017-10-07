@@ -5,4 +5,8 @@ import { Router, ActivatedRoute } from '@angular/router';
     selector:    '[app-posts-wrap]',
     templateUrl: 'templates/blog/posts.component.html'
 })
-export default class PostsComponent { };
+export default class PostsComponent implements OnInit {
+    constructor() {}
+
+    ngOnInit() {}
+};

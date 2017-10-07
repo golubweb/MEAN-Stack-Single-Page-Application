@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { Store }             from '@ngrx/store';
+import { Component, OnInit, Input } from '@angular/core';
 
 import Html from './interfaces/social-media.interface';
 
@@ -8,17 +7,15 @@ import Html from './interfaces/social-media.interface';
     templateUrl: '/templates/widgets/custom-html-widget.component.html'
 })
 export default class CustomHtmlWidgetComponent implements OnInit {
-    content: Html = [];
+    @Input('html') HtmlData: any;
 
-    constructor(private _store: Store) {}
+    content: Html = [];
 
     ngOnInit() {
         this.fetchCustomHtml();
     }
 
     private fetchCustomHtml(): any {
-        this._store.select('widgets').subscribe(respose => {
-            this.content = respose.data.customHtml[0];
-        });
+        this.content = this.HtmlData;
     }
 }

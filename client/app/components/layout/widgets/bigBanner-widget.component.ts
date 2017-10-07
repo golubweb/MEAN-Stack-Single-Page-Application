@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { Store }             from '@ngrx/store';
+import { Component, OnInit, Input } from '@angular/core';
 
 import Big from './interfaces/banner.interface';
 
@@ -8,17 +7,15 @@ import Big from './interfaces/banner.interface';
     templateUrl: '/templates/widgets/big-banner-widget.component.html'
 })
 export default class BigBannerWidgetComponent implements OnInit {
-    banners: Big = [];
+    @Input('banner') BannerData: any;
 
-    constructor(private _store: Store) {}
+    banners: Big = [];
 
     ngOnInit() {
         this.fetchMediumImg();
     }
 
     private fetchMediumImg(): void {
-        this._store.select('widgets').subscribe(respose => {
-            this.banners = respose.data.bigBanner;
-        });
+        this.banners = this.BannerData;
     }
 }

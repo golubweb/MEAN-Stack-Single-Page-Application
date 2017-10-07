@@ -1,12 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { Router }    from '@angular/router';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
     selector:    '[app-category-tags-widget]',
     templateUrl: '/templates/widgets/category-tags-widget.component.html'
 })
 export default class CategoryTagsWidgetComponent implements OnInit {
-    constructor() {}
+    @Input('tags') CategoryTags: any;
 
-    ngOnInit() {}
+    tags: any[] = [];
+
+    ngOnInit() {
+        this.tags = this.CategoryTags;
+    }
 }

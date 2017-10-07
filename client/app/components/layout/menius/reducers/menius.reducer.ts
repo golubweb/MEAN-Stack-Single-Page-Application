@@ -15,14 +15,11 @@ const defaultState = {
 export default function widgetReducer(state: Widgets = defaultState, action: Action) {
     switch(action.type) {
         case MeniusActions.GET_MENU: {
-            return Object.assign({}, state, {
-                menius:      action.payload.menius,
-                subMenius:   action.payload.subMenius,
-                thirdMenius: action.payload.thirdMenius
-            });
+            return { data: action.payload };
         }
+
         default: {
-            return state;
+            return { data: state };
         }
     }
 }

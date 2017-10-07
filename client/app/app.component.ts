@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router }            from '@angular/router';
-import { Effect, Actions }   from '@ngrx/effects';
 
 import { Store }      from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
@@ -33,14 +32,8 @@ export default class AppComponent implements OnInit {
     }
 
     ngOnInit() {
-
         this._meniusService.getMainMenus().subscribe((meniusData) => {
             this._store.dispatch(new MeniusActions.setMeniusState(meniusData));
-        });
-
-        this._store.subscribe(state => {
-            //console.log(state.widgets);
-            //console.log(state.menius);
         });
     }
 }
