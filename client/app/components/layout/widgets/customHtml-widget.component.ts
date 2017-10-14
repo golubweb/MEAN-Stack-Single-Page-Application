@@ -16,6 +16,6 @@ export default class CustomHtmlWidgetComponent implements OnInit {
     }
 
     private fetchCustomHtml(): any {
-        this.content = this.HtmlData;
+        this.content = this.HtmlData[0]['content'];
     }
 }
