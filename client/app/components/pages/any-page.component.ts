@@ -1,5 +1,5 @@
-import { Component, OnInit }      from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute }    from '@angular/router';
 
 import PageService from './services/pages.service';
 import Page        from './interfaces/';
@@ -10,18 +10,20 @@ import Page        from './interfaces/';
 })
 export default class PagesComponent implements OnInit {
     single: Page[] = [];
+    widgets:  any[] = [];
 
     constructor(
-        private router: Router,
-        private route: ActivatedRoute,
-        private pageService: PageService
-    ) { }
+        private _route: ActivatedRoute,
+        private _pageService: PageService
+    ) {
+        this._route.data.subscribe(data => this.widgets = data['widgets']);
+    }
 
     ngOnInit() {
-        this.route.params.subscribe(params => {
+        this._route.params.subscribe(params => {
             let pageID = params['id'];
 
-            this.pageService.getPage(pageID).subscribe((response)=> {
+            this._pageService.getPage(pageID).subscribe((response)=> {
                 this.single = response[0];
             });
         });

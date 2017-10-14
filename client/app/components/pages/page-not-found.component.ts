@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute }    from '@angular/router';
 
 @Component({
     selector:    '[app-not-found]',
@@ -6,8 +7,10 @@ import { Component } from '@angular/core';
 })
 export default class PageNotFoundComponent {
     title: string;
+    widgets:  any[] = [];
 
-    constructor() {
+    constructor(private _route: ActivatedRoute) {
         this.title = 'Page Not Found!! 404';
+        this._route.data.subscribe(data => this.widgets = data['widgets']);
     }
 }

@@ -24,7 +24,7 @@ export default class WidgetsEffects {
 
     @Effect()
     GetWidgets$: Observable<Action> = this._actions.ofType('GET_ALL')
-        .mergeMap(action => {
+        .switchMap(action => {
             return this._widgetsService.getAll();
         })
         .map((payload: any) => {

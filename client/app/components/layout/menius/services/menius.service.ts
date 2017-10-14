@@ -5,6 +5,8 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 class MeniusService {
+    meniusData: any[] = [];
+
     private headersJson = new Headers({ 'Content-Type': 'application/json' });
     private optionJson  = new RequestOptions({ headers: this.headersJson });
 
@@ -12,11 +14,14 @@ class MeniusService {
         private http: Http
     ) {}
 
-    getMainMenus(): Observable {
+    getMenius(): Observable {
         const url = '/api/main/menius';
 
         return this.http.get(url, this.optionJson).map((data: Response ) => {
-                return data.json();
+            this.meniusData = data.json();
+
+            return this.meniusData.menius;
+
         });
     }
 }

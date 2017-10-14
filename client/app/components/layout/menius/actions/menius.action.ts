@@ -1,14 +1,31 @@
 import { Action } from '@ngrx/store';
+import { Injectable } from '@angular/core';
 
-import Main    from '../interfaces/main-menius.interface';
-import SubMenu from '../interfaces/sub-menius.interface';
+@Injectable()
+export default class MeniusActions implements Action {
+    static GET_MENIUS = 'GET_MENIUS';
 
-export const GET_MENU = 'GET_MENU';
+    public loadMenius(): Action {
+        return {
+            type: MeniusActions.GET_MENIUS
+        };
+    }
 
-export class setMeniusState implements Action {
-    readonly type = GET_MENU;
+    static GET_MENIUS_SUCCESS = 'GET_MENIUS_SUCCESS';
 
-    constructor(public payload: any) {}
+    public loadMeniusSuccess(data): Action {
+        return {
+            type: MeniusActions.GET_MENIUS_SUCCESS,
+            payload: data
+        };
+    }
+
+    static GET_MENIUS_FAIL = 'GET_MENIUS_FAIL';
+
+    public loadMeniusFail(error): Action {
+        return {
+            type: MeniusActions.GET_MENIUS_FAIL,
+            payload: error
+        };
+    }
 }
-
-export type All = setMeniusState;

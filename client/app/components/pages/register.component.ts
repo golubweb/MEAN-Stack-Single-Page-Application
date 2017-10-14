@@ -7,5 +7,9 @@ import { FormBuilder, FormGroup, FormControl, Validators, ControlGroup, Control 
     templateUrl: 'templates/pages/register.component.html'
 })
 export default class RegisterComponent {
-    constructor() {}
+    widgets:  any[] = [];
+
+    constructor(private _route: ActivatedRoute) {
+        this._route.data.subscribe(data => this.widgets = data['widgets']);
+    }
 }

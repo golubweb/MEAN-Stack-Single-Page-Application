@@ -1,10 +1,14 @@
 import { Component, OnInit }      from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector:    '[app-pages-root]',
     templateUrl: 'templates/pages/pages.component.html'
 })
-export default class PagesComponent implements OnInit {
-    constructor() {}
+export default class PagesComponent {
+    widgets:  any[] = [];
+
+    constructor(private _route: ActivatedRoute) {
+        this._route.data.subscribe(data => this.widgets = data['widgets']);
+    }
 }

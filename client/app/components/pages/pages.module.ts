@@ -12,6 +12,8 @@ import LoginComponent        from './login.component';
 import RegisterComponent     from './register.component';
 import PageNotFoundComponent from './page-not-found.component';
 
+import WidgetsResolver from '../../shared/resolvers/widgets.resolver';
+
 import PagesService from './services/pages.service';
 import LayoutModule from '../layout/layout.module';
 
@@ -20,11 +22,11 @@ const PagesRoutesModule: any[] = [
         path: 'page',
         component: PagesComponent,
         children: [
-            { path: 'login',     component: LoginComponent, canActivate: [AuthGuard] },
+            { path: 'login',     component: LoginComponent, canActivate: [AuthGuard], resolve: { widgets: WidgetsResolver } },
             { path: 'home-page', component: HomePageComponent },
-            { path: 'register',  component: RegisterComponent },
-            { path: ':id',       component: AnyPageComponent },
-            { path: '**',        component: PageNotFoundComponent }
+            { path: 'register',  component: RegisterComponent, resolve: { widgets: WidgetsResolver } },
+            { path: ':id',       component: AnyPageComponent, resolve: { widgets: WidgetsResolver } },
+            { path: '**',        component: PageNotFoundComponent, resolve: { widgets: WidgetsResolver } }
         ],
     }
 ];

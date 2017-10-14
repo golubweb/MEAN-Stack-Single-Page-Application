@@ -19,6 +19,8 @@ import WidgetsActions    from './components/layout/widgets/actions/widgets.actio
 
 import MeniusService     from './components/layout/menius/services/menius.service';
 import MeniusReducer     from './components/layout/menius/reducers/menius.reducer';
+import MeniusEffects    from './components/layout/menius/effects/menius.effects';
+import MeniusActions    from './components/layout/menius/actions/menius.action';
 
 import SharedModule      from './shared/shared.module';
 import PagesModule       from './components/pages/pages.module';
@@ -46,17 +48,18 @@ const AppRoutesModule: any[] = [
         RouterModule.forRoot(AppRoutesModule, { useHash: true }),
         StoreModule.forRoot({
             widgets: WidgetsReducer,
-            menius: MeniusReducer
+            menius:  MeniusReducer
         }),
-        EffectsModule.forRoot([WidgetsEffects])
+        EffectsModule.forRoot([WidgetsEffects, MeniusEffects])
     ],
     declarations: [
         AppComponent
     ],
     providers:    [
         CookieService,
-        WidgetsService,
         MeniusService,
+        MeniusActions,
+        WidgetsService,
         WidgetsActions,
         Actions
     ],

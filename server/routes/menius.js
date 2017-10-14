@@ -10,11 +10,14 @@ const Menius = require('../function/mongoDB/menius'),
 
 router.get('/main/menius', (req, res) => {
     menuDB.getMainMenu().then((response)=> {
-        let menu = response[0],
-            subMenu = response[1],
-            thirdmenu = response[2];
-
-        res.json({ menius: menu, subMenius: subMenu, thirdMenius: thirdmenu });
+         res.json({
+            success: true,
+            menius: {
+                firstMenius: response[0],
+                secondMenius: response[1],
+                thirdMenius: response[2]
+            }
+        });
         res.end();
     });
 });

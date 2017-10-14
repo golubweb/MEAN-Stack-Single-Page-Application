@@ -12,22 +12,21 @@ import Third  from './interfaces/third-menius.interface';
     selector:    '[app-nav-menu]',
     templateUrl: 'templates/common/menius.component.html'
 })
-class MeniusComponent {
+export default class MeniusComponent {
     mainMenu:    MainMenius[] = [];
     subMenu:     Second[]     = [];
     thirdMenius: Third[]      = [];
 
     constructor(
-        private router: Router,
-        private route: ActivatedRoute,
+        private _route: ActivatedRoute,
         private _store: Store
     ) {
-        this._store.select('menius').subscribe((response) => {
-            this.mainMenu =    response.data.menius;
-            this.subMenu  =    response.data.subMenius;
-            this.thirdMenius = response.data.thirdMenius;
+        this._store.select('menius').subscribe((data: response) => {
+            if(data !== undefined) {
+                this.mainMenu    = data.menius.firstMenius;
+                this.subMenu     = data.menius.secondMenius;
+                this.thirdMenius = data.menius.thirdMenius;
+            }
         });
     }
-}
-
-export default MeniusComponent;
+};
