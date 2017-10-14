@@ -3,8 +3,6 @@ import { CommonModule }                     from '@angular/common';
 import { RouterModule }                     from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { SHARED_DIRECTIVES } from '../../shared/shared';
-import LoginAnimateDirective from './login/directive/login-animate.directive';
 
 import LayoutComponent         from './layout.component';
 import HeaderComponent         from './header/header.component';
@@ -13,6 +11,9 @@ import SidebarRightComponent   from './sidebar/sidebar-right.component';
 import FooterComponent         from './footer/footer.component';
 import LoginWidgetComponent    from './login/login-widget.component';
 import RegisterWidgetComponent from './register/register-widget.component';
+
+import LoginAnimateDirective from './login/directive/login-animate.directive';
+import ToggleElementDirective from '../../shared/directives/toggle-element.directive';
 
 import MeniusModule  from './menius/menius.module';
 import WidgetsModule from './widgets/widgets.module';
@@ -38,8 +39,8 @@ const layoutList: any[] = [
     ],
     declarations: [
         layoutList,
-        SHARED_DIRECTIVES,
-        LoginAnimateDirective
+        LoginAnimateDirective,
+        ToggleElementDirective
     ],
     schemas:      [ CUSTOM_ELEMENTS_SCHEMA ],
     exports:      [ layoutList ]

@@ -3,7 +3,6 @@ import { CommonModule }                     from '@angular/common';
 import { RouterModule, Routes }             from '@angular/router';
 
 import BlogService from './services/blog.service';
-import { DateConvertPipe, DateYearPipe, DateMonthPipe } from '../../shared/shared';
 
 import PostsComponent            from './posts.component';
 import PostSingleComponent       from './posts-single.component';
@@ -13,6 +12,7 @@ import PostsCategoryComponent    from './posts-category.component';
 import WidgetsResolver from '../../shared/resolvers/widgets.resolver';
 
 import LayoutModule from '../layout/layout.module';
+import SharedModule from '../../shared/shared.module';
 
 const TimerRoutsModule: any[] = [
     {
@@ -30,15 +30,13 @@ const TimerRoutsModule: any[] = [
     imports:      [
         CommonModule,
         LayoutModule,
+        SharedModule,
         RouterModule.forRoot(TimerRoutsModule)
     ],
     declarations: [
         PostsComponent,
         PostsCategoryComponent,
         PostSingleComponent,
-        DateConvertPipe,
-        DateYearPipe,
-        DateMonthPipe,
         PostsAllCategoryComponent
     ],
     providers:    [ BlogService, WidgetsResolver ],

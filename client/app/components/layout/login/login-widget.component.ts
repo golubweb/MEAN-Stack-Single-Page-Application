@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, FormControl, Validators, ControlGroup, Control 
 import { Router }        from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 
-import { AuthenticationService } from '../../../shared/shared';
+import AuthenticationService from '../../../shared/services/authentication.service';
 
 @Component({
     selector:    '[app-login-widget]',

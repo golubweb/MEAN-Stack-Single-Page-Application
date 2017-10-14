@@ -4,7 +4,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { Router }     from '@angular/router';
 
-import { AuthenticationService, CountryService } from '../../../shared/shared';
+import AuthenticationService from '../../../shared/services/authentication.service';
+import CountryService        from '../../../shared/services/country.service';
 
 import * as CountryActions from './actions/country.action';
 import Country             from './interfaces/country.interface';

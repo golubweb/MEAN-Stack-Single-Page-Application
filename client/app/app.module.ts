@@ -9,8 +9,6 @@ import { CookieService }                    from 'ngx-cookie-service';
 import { StoreModule }                      from '@ngrx/store';
 import { EffectsModule, Actions  }          from '@ngrx/effects';
 
-import { SHARED_PROVIDERS, SHARED_PIPES } from './shared/shared';
-
 import AppComponent      from './app.component';
 import HomePageComponent from './components/pages/home-page.component';
 
@@ -22,6 +20,7 @@ import WidgetsActions    from './components/layout/widgets/actions/widgets.actio
 import MeniusService     from './components/layout/menius/services/menius.service';
 import MeniusReducer     from './components/layout/menius/reducers/menius.reducer';
 
+import SharedModule      from './shared/shared.module';
 import PagesModule       from './components/pages/pages.module';
 import PostsModule       from './components/blog/posts.module';
 import ProfileModule     from './components/profile/profile.module';
@@ -40,6 +39,7 @@ const AppRoutesModule: any[] = [
         FormsModule,
         HttpModule,
         ReactiveFormsModule,
+        SharedModule,
         PagesModule,
         PostsModule,
         ProfileModule,
@@ -51,14 +51,12 @@ const AppRoutesModule: any[] = [
         EffectsModule.forRoot([WidgetsEffects])
     ],
     declarations: [
-        AppComponent,
-        SHARED_PIPES
+        AppComponent
     ],
     providers:    [
         CookieService,
         WidgetsService,
         MeniusService,
-        SHARED_PROVIDERS,
         WidgetsActions,
         Actions
     ],

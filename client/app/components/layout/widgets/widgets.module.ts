@@ -14,6 +14,8 @@ import PostTagsComponent     from './postTags-widget.component';
 import CategoryComponent     from './categoryTags-widget.component';
 import SocialMediaComponent  from './socialMedia-widget.component';
 
+import SharedModule from '../../../shared/shared.module';
+
 const WidgetsList: any[] = [
     SearchComponent,
     BigBannerComponent,
@@ -31,7 +33,8 @@ const WidgetsList: any[] = [
 @NgModule({
     imports:      [
         CommonModule,
-        RouterModule
+        RouterModule,
+        SharedModule
     ],
     declarations: [
         WidgetsList

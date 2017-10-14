@@ -33,6 +33,7 @@ export default class AppComponent implements OnInit {
 
     ngOnInit() {
         this._meniusService.getMainMenus().subscribe((meniusData) => {
+            console.log(meniusData);
             this._store.dispatch(new MeniusActions.setMeniusState(meniusData));
         });
     }

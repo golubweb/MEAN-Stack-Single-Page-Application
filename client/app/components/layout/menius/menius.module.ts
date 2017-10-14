@@ -7,7 +7,10 @@ import SubMeniusPipe   from './pipes/sub-menius.pipe';
 
 @NgModule({
     imports:      [ CommonModule, RouterModule ],
-    declarations: [ MeniusComponent, SubMeniusPipe ],
+    declarations: [
+        MeniusComponent,
+        SubMeniusPipe
+    ],
     providers:    [ ],
     exports:      [ MeniusComponent ]
 })

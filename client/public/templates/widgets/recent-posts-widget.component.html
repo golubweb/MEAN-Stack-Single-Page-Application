@@ -4,7 +4,7 @@
     <ul>
         <li *ngFor="let item of recent; let i = index ">
             <h3></h3>
-            <p>{{ item.title }} <span>{{ item.created }}</span></p>
+            <p>{{ item.title }} <span>{{ item.created | dateConvert }}</span></p>
         </li>
     </ul>
 </div>
