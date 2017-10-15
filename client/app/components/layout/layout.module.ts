@@ -3,7 +3,6 @@ import { CommonModule }                     from '@angular/common';
 import { RouterModule }                     from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-
 import LayoutComponent         from './layout.component';
 import HeaderComponent         from './header/header.component';
 import SidebarLeftComponent    from './sidebar/sidebar-left.component';

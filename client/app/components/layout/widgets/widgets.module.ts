@@ -1,6 +1,7 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import SearchComponent       from './search-widget.component';
 import BigBannerComponent    from './bigBanner-widget.component';
@@ -34,7 +35,9 @@ const WidgetsList: any[] = [
     imports:      [
         CommonModule,
         RouterModule,
-        SharedModule
+        SharedModule,
+        FormsModule,
+        ReactiveFormsModule
     ],
     declarations: [
         WidgetsList

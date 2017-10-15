@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Observable } from 'rxjs/Observable';
-import { Router }     from '@angular/router';
 
 import AuthenticationService from '../../../shared/services/authentication.service';
 import CountryService        from '../../../shared/services/country.service';

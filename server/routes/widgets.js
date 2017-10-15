@@ -3,6 +3,9 @@
 const app = require('../app'),
       router  = require('express').Router();
 
+const Joi = require('joi'),
+      validationContent = require('../function/middleware/validation/validation-contact');
+
 const Widgets = require('../function/mongoDB/widgets'),
       widgetsDB = new Widgets();
 
@@ -31,6 +34,18 @@ router.get('/data/widgets', (req, res) => {
             }
         });
         res.end();
+    });
+});
+
+router.post('/data/widgets/contact', (req, res) => {
+    Joi.validate(req.body, validationContent, (err, validator) => {
+        if(!err)
+            widgetsDB.setContactUs(req.body).then((response) => {
+                res.json(response);
+                res.end();
+            });
+        else
+            res.json({ success: false, error: err.toString().slice(7, err.length) });
     });
 });
 

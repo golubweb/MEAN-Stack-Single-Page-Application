@@ -1,26 +1,23 @@
 <div id="contact-form" class="widget">
     <h2>Concat Us!!!</h2>
 
-    <form>
-        <input
-            type="text"
-            placeholder="Title"
-            required
-        />
-        <label>Title</label>
+    <form [formGroup]="contactForm" (ngSubmit)="sendContact(contactForm.value)">
+        <div class="form-group">
+            <label>Title</label>
+            <input type="text" placeholder="Title" formControlName="title" required />
+            <p *ngIf="showTitleHint">Title is invalid, must have between 3 and 30 letters!</p>
+        </div>
 
-        <input
-            type="email"
-            placeholder="Email"
-            required
-        />
-        <label>Email</label>
+        <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="Email" formControlName="email" required />
+            <p *ngIf="showEmailHint">The email must be in an email format!</p>
+        </div>
 
-        <textarea
-                class="area"
-                placeholder="Text Message"
-                required
-        ></textarea>
+        <div class="form-group">
+            <textarea class="area" placeholder="Text Message" formControlName="content" required></textarea>
+            <p *ngIf="showContentHint">The message must be in an text format!</p>
+        </div>
 
         <input type="submit" value="Send" />
     </form>

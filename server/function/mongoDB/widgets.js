@@ -91,6 +91,24 @@ class Widgets {
         });
     }
 
+    setContactUs(body) {
+        return new Promise((resolve, reject) => {
+            this.newContact = {
+                title:   body.title,
+                email:   body.email,
+                content: body.content,
+                created: new Date(),
+                stats:   0
+            };
+
+            this.mc.collection('widget_countact_us', (err, collection) => {
+                collection.insertOne(this.newContact, (err, result) => {
+                    resolve({success: true, msg: 'Your message has been sent!'});
+                });
+            });
+        });
+    }
+
     getSocialMedia() {
         return new Promise((resolve, reject) => {
             this.mc.collection('widget_social_media', (err, collection) => {

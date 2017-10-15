@@ -8,6 +8,7 @@ import Widgets from '../interfaces/widgets.interface';
 @Injectable()
 export default class WidgetsService {
     widgetsData: Widgets[] = [];
+    contactData: any;
 
     private headersJson = new Headers({ 'Content-Type': 'application/json' });
     private optionJson  = new RequestOptions({ headers: this.headersJson });
@@ -21,6 +22,14 @@ export default class WidgetsService {
             this.widgetsData = data.json();
 
             return this.widgetsData.widgets;
+        });
+    }
+
+    public sendContact(body): Observable {
+        const url = '/api/data/widgets/contact';
+
+        return this._http.post(url, body, this.optionJson).map((data: Response) => {
+            return this.contactData = data.json();
         });
     }
 }
