@@ -2,15 +2,15 @@
     <h2>Email Newsletters</h2>
     <p>Inspirations, ideas, and your feedback.</p>
 
-    <form >
-        <input
-            type="email"
-            placeholder="Enter Email"
-            required
-        />
-        <input type="submit" value="SUSCRIBE" />
+    <form [formGroup]="newslettersForm" (ngSubmit)="sendNewsletters(newslettersForm.value)">
+        <div class="form-group">
+            <input type="email" placeholder="Enter Email" formControlName="email" required />
+            <p *ngIf="showEmailHint">The email must be in an email format!</p>
+        </div>
 
-        <span>required!</span>
-        <span>not an email!</span>
+        <div class="form-group">
+            <input type="submit" value="SUSCRIBE" />
+            <p *ngIf="errorDisplay">{{ successMsg }}</p>
+        </div>
     </form>
 </div>

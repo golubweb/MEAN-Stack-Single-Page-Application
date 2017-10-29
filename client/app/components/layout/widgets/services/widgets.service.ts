@@ -32,4 +32,12 @@ export default class WidgetsService {
             return this.contactData = data.json();
         });
     }
+
+    public sendNewsletters(email): Observable {
+        const url = '/api/data/widgets/newsletters';
+
+        return this._http.post(url, email, this.optionJson).map((data: Response) => {
+            return this.newslettersData = data.json();
+        });
+    }
 }

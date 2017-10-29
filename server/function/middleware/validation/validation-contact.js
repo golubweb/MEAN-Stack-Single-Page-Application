@@ -1,7 +1,7 @@
 const Joi = require('joi');
 const messages = require('./validator-messages');
 
-var validationContent = Joi.object().keys({
+var validationContactUs = Joi.object().keys({
     title: Joi.string().regex(/^[^;]{3,30}$/).required().error(
         new Error(JSON.stringify({ field: 'title', msg: messages.title }))
     ),
@@ -13,4 +13,4 @@ var validationContent = Joi.object().keys({
     )
 });
 
-module.exports = validationContent;
+module.exports = validationContactUs;

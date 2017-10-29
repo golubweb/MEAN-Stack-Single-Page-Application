@@ -109,6 +109,22 @@ class Widgets {
         });
     }
 
+    setNewsletters(email) {
+        return new Promise((resolve, reject) => {
+            this.newNewsletters = {
+                email: email,
+                created: new Date,
+                stats: 0
+            }
+
+            this.mc.collection('widget_newsletters', (err, collection) => {
+               collection.insertOne(this.newNewsletters, () => {
+                   resolve({success: true, msg: 'Your email is saved in the database!'});
+               });
+            });
+        });
+    }
+
     getSocialMedia() {
         return new Promise((resolve, reject) => {
             this.mc.collection('widget_social_media', (err, collection) => {

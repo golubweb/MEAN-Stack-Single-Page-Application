@@ -4,7 +4,8 @@ const app = require('../app'),
       router  = require('express').Router();
 
 const Joi = require('joi'),
-      validationContent = require('../function/middleware/validation/validation-contact');
+      validationContactUs   = require('../function/middleware/validation/validation-contact'),
+      validationNewsletters = require('../function/middleware/validation/validation-newsletters');
 
 const Widgets = require('../function/mongoDB/widgets'),
       widgetsDB = new Widgets();
@@ -33,12 +34,13 @@ router.get('/data/widgets', (req, res) => {
                 socialMedia:  data[7]
             }
         });
+
         res.end();
     });
 });
 
 router.post('/data/widgets/contact', (req, res) => {
-    Joi.validate(req.body, validationContent, (err, validator) => {
+    Joi.validate(req.body, validationContactUs, (err, validator) => {
         if(!err)
             widgetsDB.setContactUs(req.body).then((response) => {
                 res.json(response);
@@ -48,5 +50,17 @@ router.post('/data/widgets/contact', (req, res) => {
             res.json({ success: false, error: err.toString().slice(7, err.length) });
     });
 });
+
+router.post('/data/widgets/newsletters', (req, res) => {
+    Joi.validate(req.body, validationNewsletters, (err, validator) => {
+        if(!err)
+            widgetsDB.setNewsletters(req.body.email).then(response => {
+                res.json(response);
+                res.end;
+            });
+        else
+            res.json({ success: false, error: err.toString().slice(7, err.length) });
+    });
+})
 
 module.exports = router;
