@@ -8,5 +8,6 @@ module.exports = {
     email:    'Email is not valid',
     password: 'Password has to have at least 8 characters, one upper case letter and at least one number',
     content:  'Message must be between 10 and 140 characters',
-    newsletters: 'Email is not valid'
+    newsletters: 'Email is not valid',
+    string:      'The parameter must be a string'
 };

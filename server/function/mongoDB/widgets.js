@@ -1,11 +1,42 @@
 "use strict";
 
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const Schema   = mongoose.Schema;
 
 class Widgets {
 	constructor() {
         this.mc = mongoose.connection.db;
+    }
+
+    getSearchData(params) {
+        return new Promise((resolve, reject) => {
+            switch(params.paremType) {
+                case 'Blog':
+                    this.getSearchType('blog_category', params).then(category => resolve(['category', category]));
+                    break;
+
+                case 'Post':
+                    this.getSearchType('blog_posts', params).then(posts => resolve(['posts', posts]));
+                    break;
+
+                case 'Tag':
+                    this.getSearchType('blog_category_tags', params).then(tags => resolve(['tags', tags]));
+                    break;
+
+                default:
+                    return;
+            }
+        });
+    }
+
+    getSearchType(_dc, _value, resolve) {
+        return new Promise((resolve, reject) => {
+            this.mc.collection(_dc, (err, collection) => {
+                return collection.find({ 'title': { '$regex' : _value.search, '$options' : 'i' }}).toArray((err, results) => {
+                    resolve(results);
+                });
+            });
+        });
     }
 
     getRecentPosts() {

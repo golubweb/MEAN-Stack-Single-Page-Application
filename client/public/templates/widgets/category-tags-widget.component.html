@@ -2,7 +2,7 @@
     <h2>Category Tags</h2>
     <ul>
         <li *ngFor="let item of tags; let i = index">
-            <h3><a [routerLink]="['/blog/category/posts/' + item._id]">{{ item.name }}</a></h3>
+            <h3><a [routerLink]="['/blog/category/posts/' + item._id]">{{ item.title }}</a></h3>
         </li>
     </ul>
 </div>

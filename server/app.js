@@ -17,13 +17,13 @@ var cors             = require('cors'),
 var mongoose = require('mongoose');
 
     mongoose.Promise = global.Promise;
-    mongoose.connect(config.mongoDB.database, (err)=> {
+    mongoose.connect(config.mongoDB.database, (err) => {
         if(err) console.log(err);
     });
 
-    mongoose.connection.on('connected', ()=> {
+    mongoose.connection.on('connected', () => {
         console.log('Connected to database ' + config.mongoDB.database );
-    })
+    });
 
 // ROUTES
 // ==============================================

@@ -5,7 +5,8 @@ const app = require('../app'),
 
 const Joi = require('joi'),
       validationContactUs   = require('../function/middleware/validation/validation-contact'),
-      validationNewsletters = require('../function/middleware/validation/validation-newsletters');
+      validationNewsletters = require('../function/middleware/validation/validation-newsletters'),
+      validationSearch      = require('../function/middleware/validation/validation-search');
 
 const Widgets = require('../function/mongoDB/widgets'),
       widgetsDB = new Widgets();
@@ -36,6 +37,22 @@ router.get('/data/widgets', (req, res) => {
         });
 
         res.end();
+    });
+});
+
+router.post('/data/widgets/search', (req, res) => {
+    Joi.validate(req.body, validationSearch, (err, validator) => {
+        if(!err)
+            widgetsDB.getSearchData(req.body).then(response => {
+                let responseType = response[0];
+
+                if(Object.keys(response[1]).length > 0)
+                    res.json({ success: true, data: response[1], type: responseType });
+                else
+                    res.json({ success: false, error: 'No data for this search!' });
+            });
+        else
+            res.json({ success: false, error: err.toString().slice(7, err.length) });
     });
 });
 
