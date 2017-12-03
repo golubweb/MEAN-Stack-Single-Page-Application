@@ -7,15 +7,17 @@ import Widgets from '../interfaces/widgets.interface';
 
 @Injectable()
 export default class WidgetsService {
-    widgetsData: Widgets[] = [];
-    contactData: any;
+    widgetsData:     Widgets = [];
+    searchData:      any;
+    contactData:     any;
+    newslettersData: any;
 
     private headersJson = new Headers({ 'Content-Type': 'application/json' });
     private optionJson  = new RequestOptions({ headers: this.headersJson });
 
     constructor(private _http: Http) {}
 
-    public getAll(): Observable {
+    public getAll(): Observable<any> {
         const url = '/api/data/widgets';
 
         return this._http.get(url, this.optionJson).map((data: Response) => {
@@ -25,18 +27,27 @@ export default class WidgetsService {
         });
     }
 
-    public sendContact(body): Observable {
+    public getSearchData(_body): Observable<any> {
+        console.log('BODY: ', _body);
+        const url = '/api/data/widgets/search';
+
+        return this._http.post(url, _body, this.optionJson).map((data: Response) => {
+            return data.json();
+        });
+    }
+
+    public sendContact(_body): Observable<any> {
         const url = '/api/data/widgets/contact';
 
-        return this._http.post(url, body, this.optionJson).map((data: Response) => {
+        return this._http.post(url, _body, this.optionJson).map((data: Response) => {
             return this.contactData = data.json();
         });
     }
 
-    public sendNewsletters(email): Observable {
+    public sendNewsletters(_email): Observable<any> {
         const url = '/api/data/widgets/newsletters';
 
-        return this._http.post(url, email, this.optionJson).map((data: Response) => {
+        return this._http.post(url, _email, this.optionJson).map((data: Response) => {
             return this.newslettersData = data.json();
         });
     }

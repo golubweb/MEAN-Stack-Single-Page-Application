@@ -12,20 +12,20 @@ import { EffectsModule, Actions  }          from '@ngrx/effects';
 import AppComponent      from './app.component';
 import HomePageComponent from './components/pages/home-page.component';
 
-import WidgetsService    from './components/layout/widgets/services/widgets.service';
-import WidgetsReducer    from './components/layout/widgets/reducers/widgets.reducer';
-import WidgetsEffects    from './components/layout/widgets/effects/widgets.effects';
-import WidgetsActions    from './components/layout/widgets/actions/widgets.action';
+import WidgetsService from './components/layout/widgets/services/widgets.service';
+import WidgetsReducer from './components/layout/widgets/reducers/widgets.reducer';
+import WidgetsEffects from './components/layout/widgets/effects/widgets.effects';
+import WidgetsActions from './components/layout/widgets/actions/widgets.action';
 
-import MeniusService     from './components/layout/menius/services/menius.service';
-import MeniusReducer     from './components/layout/menius/reducers/menius.reducer';
-import MeniusEffects    from './components/layout/menius/effects/menius.effects';
-import MeniusActions    from './components/layout/menius/actions/menius.action';
+import MeniusService from './components/layout/menius/services/menius.service';
+import MeniusReducer from './components/layout/menius/reducers/menius.reducer';
+import MeniusEffects from './components/layout/menius/effects/menius.effects';
+import MeniusActions from './components/layout/menius/actions/menius.action';
 
-import SharedModule      from './shared/shared.module';
-import PagesModule       from './components/pages/pages.module';
-import PostsModule       from './components/blog/posts.module';
-import ProfileModule     from './components/profile/profile.module';
+import SharedModule  from './shared/shared.module';
+import PagesModule   from './components/pages/pages.module';
+import PostsModule   from './components/blog/posts.module';
+import ProfileModule from './components/profile/profile.module';
 
 const AppRoutesModule: any[] = [
     { path: '',               redirectTo:   'page/home-page', pathMatch: 'full' },

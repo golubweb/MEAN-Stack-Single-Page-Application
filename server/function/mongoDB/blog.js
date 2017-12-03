@@ -7,7 +7,7 @@ class Blog {
 	constructor() {
         this.mc = mongoose.connection.db;
 
-        this.postSchema = new Schema({
+        /*this.postSchema = new Schema({
             title            : { type: String, required: true },
             summary          : { type: String, required: true },
             content          : { type: String, required: true },
@@ -24,7 +24,7 @@ class Blog {
             stats            : { type: Number, required: true }
         });
 
-        this.ModelPost = mongoose.model('blog_posts', this.postSchema);
+        this.ModelPost = mongoose.model('blog_posts', this.postSchema);*/
     }
 
     getCategory(id) {
@@ -53,7 +53,7 @@ class Blog {
         return new Promise((resolve, reject) => {
             let postID = mongoose.Types.ObjectId(id);
 
-            this.ModelPost.findOne({'_id': postID}, (err, results)=> {
+            this.mc.collection.findOne({'_id': postID}, (err, results)=> {
                 if(err) console.log(err);
 
                 resolve(results);
