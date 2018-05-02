@@ -20,11 +20,12 @@ router.get('/blog/category', (req, res) => {
         res.json({ allCategory: response });
         res.end();
     });
-
 });
 
 router.get('/blog/post/:id', (req, res) => {
 	var post_id = req.params.id;
+
+    console.log('PP: ', post_id);
 
 	blogDB.getPost(post_id).then((response)=> {
 		res.json({ post: response });

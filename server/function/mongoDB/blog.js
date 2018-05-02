@@ -50,10 +50,14 @@ class Blog {
     }
 
     getPost(id) {
+        console.log('results id: ', id);
+
         return new Promise((resolve, reject) => {
             let postID = mongoose.Types.ObjectId(id);
 
             this.mc.collection.findOne({'_id': postID}, (err, results)=> {
+                console.log('results: ', results);
+
                 if(err) console.log(err);
 
                 resolve(results);
