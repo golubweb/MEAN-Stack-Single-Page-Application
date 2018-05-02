@@ -9,6 +9,8 @@ import WidgetsService from './services/widgets.service';
 })
 export default class SearchWidgetComponent {
     searchForm:    FormGroup;
+    searchData:    any = [];
+    searchType:    string;
     showInputHint: boolean;
     successMsg:    String;
     errorField:    String;
@@ -33,10 +35,13 @@ export default class SearchWidgetComponent {
         if(this.searchForm.dirty && this.searchForm.valid) {
             this._widgetsService.getSearchData(formValue).subscribe((response) => {
                 if(response.success) {
-                    console.log('SUCCESS: ', response.success);
+                    this.searchData = response.data;
+                    this.searchType = response.type;
                 } else {
-                    console.log('ERR: ', response);
+                    this.errorField = response.error;
                 }
+
+                this.successMsg = response.success;
             });
         }
     }

@@ -8,13 +8,31 @@
         </div>
 
         <div class="form-group">
-            <input type="radio" value="Blog" formControlName="paremType" />
-            <input type="radio" value="Post" formControlName="paremType" />
-            <input type="radio" value="Tag"  formControlName="paremType" />
+            <input type="radio" value="Blog" formControlName="paremType" /> Category
+            <input type="radio" value="Post" formControlName="paremType" /> Post
+            <input type="radio" value="Tag"  formControlName="paremType" /> Tag
         </div>
 
         <div class="form-group">
             <input type="submit" value="Submit" />
         </div>
+
+        <div *ngIf="!successMsg">
+            <p>{{ errorField }}</p>
+        </div>
+
+        <container-element [ngSwitch]="searchType">
+            <div *ngSwitchCase="category">
+                <a *ngFor="let item of searchData" routerLink="/blog/category/posts/{{ item._id }}">{{ item.title }}</a>
+            </div>
+
+            <div *ngSwitchCase="posts">
+                <a *ngFor="let item of searchData" routerLink="/blog/post/{{ item._id }}">{{ item.title }}</a>
+            </div>
+
+            <div *ngSwitchCase="tags">
+                <a *ngFor="let item of searchData.categories" routerLink="/blog/category/{{ item._id }}">{{ item.title }}</a>
+            </div>
+        </container-element>
     </form>
 </div>
